@@ -16,8 +16,6 @@
       --muted:rgba(232,237,242,.72);
       --gold:#f7b955;
       --ember:#ff5a2a;
-      --wood1:#7b4a2a;
-      --wood2:#b7773e;
       --shadow: 0 20px 60px rgba(0,0,0,.55);
       --radius: 18px;
       --radius2: 28px;
@@ -55,26 +53,22 @@
     .brand{
       display:flex; align-items:center; gap:12px; min-width:240px;
     }
-    .mark{
-      width:40px; height:40px; border-radius:12px;
-      background:
-        linear-gradient(135deg, rgba(247,185,85,.18), rgba(255,90,42,.08)),
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.18), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.0));
+    .brandLogo{
+      width:44px; height:44px;
+      border-radius:14px;
       border:1px solid rgba(247,185,85,.22);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      position:relative;
       overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      background: rgba(255,255,255,.03);
+      display:grid; place-items:center;
     }
-    .mark:before{
-      content:"";
-      position:absolute; inset:-30px;
-      background:
-        repeating-linear-gradient(90deg, rgba(183,119,62,.22), rgba(183,119,62,.22) 8px, rgba(123,74,42,.10) 8px, rgba(123,74,42,.10) 16px);
-      transform: rotate(-12deg);
-      opacity:.55;
-      filter: blur(.2px);
+    .brandLogo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
+
     .brand h1{
       font-size:14px; letter-spacing:.12em; text-transform:uppercase; margin:0;
       display:flex; flex-direction:column; line-height:1.1;
@@ -101,7 +95,7 @@
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
       color:var(--text);
-      font-weight:700; font-size:13px;
+      font-weight:800; font-size:13px;
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       display:inline-flex; align-items:center; gap:10px;
       cursor:pointer;
@@ -117,16 +111,13 @@
       border:1px solid rgba(247,185,85,.28);
       color: rgba(247,185,85,.95);
       background: rgba(247,185,85,.06);
-      font-weight:800;
+      font-weight:900;
       letter-spacing:.06em;
       text-transform:uppercase;
     }
 
     /* HERO */
-    .hero{
-      padding:54px 0 26px;
-      position:relative;
-    }
+    .hero{padding:54px 0 26px; position:relative;}
     .heroGrid{
       display:grid;
       grid-template-columns: 1.25fr .75fr;
@@ -134,7 +125,7 @@
       align-items:stretch;
     }
     @media (max-width: 980px){
-      .heroGrid{grid-template-columns: 1fr; }
+      .heroGrid{grid-template-columns: 1fr;}
       .cta{min-width:auto}
       .brand{min-width:auto}
     }
@@ -152,23 +143,43 @@
       position:relative;
     }
 
-    .heroMain{padding:34px 34px 28px}
+    /* Aigle watermark (subtil mais insane) */
+    .eagleMark{
+      position:absolute;
+      top:-30px;
+      right:-40px;
+      width:260px;
+      height:260px;
+      opacity:.08;
+      filter: blur(.0px);
+      pointer-events:none;
+      transform: rotate(8deg);
+    }
+    .eagleMark img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .heroMain{padding:34px 34px 28px; position:relative}
     .headline{
-      font-size:46px; line-height:1.02; margin:14px 0 14px;
+      font-size:46px; line-height:1.02; margin:14px 0 12px;
       letter-spacing:-.02em;
     }
     .sub{
       font-size:16px; line-height:1.55; color:var(--muted);
-      max-width: 58ch;
+      max-width: 62ch;
       margin:0 0 18px;
     }
+
     .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 22px}
     .badge{
       padding:10px 12px; border-radius:14px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.03);
       color: rgba(232,237,242,.86);
-      font-weight:800;
+      font-weight:900;
       font-size:12px;
       letter-spacing:.04em;
     }
@@ -185,7 +196,7 @@
       border-radius: var(--radius);
       padding:16px;
     }
-    .sideBox h3{margin:0 0 8px; font-size:14px; letter-spacing:.08em; text-transform:uppercase}
+    .sideBox h3{margin:0 0 8px; font-size:13px; letter-spacing:.12em; text-transform:uppercase}
     .sideBox p{margin:0; color:var(--muted); line-height:1.55; font-size:14px}
     .statRow{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
     .stat{
@@ -194,7 +205,7 @@
       border-radius: 16px;
       padding:14px;
     }
-    .stat .n{font-size:22px; font-weight:900; letter-spacing:-.02em}
+    .stat .n{font-size:22px; font-weight:1000; letter-spacing:-.02em}
     .stat .l{font-size:12px; color:var(--muted); margin-top:6px; line-height:1.35}
 
     /* SECTION */
@@ -203,10 +214,9 @@
       display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
       margin-bottom:14px;
     }
-    .sectionTitle h2{
-      margin:0; font-size:22px; letter-spacing:-.01em;
-    }
+    .sectionTitle h2{margin:0; font-size:22px; letter-spacing:-.01em;}
     .sectionTitle p{margin:0; color:var(--muted); font-size:14px; line-height:1.45; max-width:60ch}
+
     .grid3{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
     .grid2{display:grid; grid-template-columns: repeat(2,1fr); gap:14px}
     @media (max-width: 980px){
@@ -237,27 +247,39 @@
     .tile h3{margin:0 0 8px; font-size:15px}
     .tile p{margin:0; color:var(--muted); line-height:1.6; font-size:14px}
 
-    .quote{
-      padding:22px;
+    /* Callout (pro + impact) */
+    .callout{
       border-radius: var(--radius2);
+      border:1px solid rgba(247,185,85,.24);
       background:
-        linear-gradient(135deg, rgba(247,185,85,.10), rgba(255,90,42,.06)),
-        rgba(255,255,255,.03);
-      border:1px solid rgba(247,185,85,.22);
+        linear-gradient(135deg, rgba(247,185,85,.11), rgba(255,90,42,.06)),
+        rgba(255,255,255,.02);
+      padding:22px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
     }
-    .quote p{margin:0; color: rgba(232,237,242,.90); line-height:1.7}
-    .quote .who{margin-top:12px; color:var(--muted); font-weight:700}
+    .callout p{
+      margin:0;
+      line-height:1.65;
+      font-size:15px;
+      color: rgba(232,237,242,.92);
+      font-weight:800;
+    }
+    .callout p strong{color: var(--gold)}
+    .callout .small{
+      margin-top:10px;
+      color: var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
 
     /* Gallery mock */
-    .gallery{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:14px;
-    }
+    .gallery{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px;}
     .mock{
       border-radius: var(--radius2);
       border:1px solid var(--line);
       background:
-        radial-gradient(800px 300px at 20% 0%, rgba(183,119,62,.20), transparent 55%),
-        radial-gradient(700px 300px at 90% 40%, rgba(247,185,85,.12), transparent 60%),
+        radial-gradient(800px 300px at 20% 0%, rgba(247,185,85,.12), transparent 55%),
+        radial-gradient(700px 300px at 90% 40%, rgba(255,90,42,.08), transparent 60%),
         linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.0)),
         rgba(10,12,15,.6);
       min-height: 320px;
@@ -265,19 +287,9 @@
       overflow:hidden;
       box-shadow: var(--shadow);
     }
-    .mock:after{
-      content:"";
-      position:absolute; inset:-40px;
-      background: repeating-linear-gradient(90deg,
-        rgba(183,119,62,.18), rgba(183,119,62,.18) 10px,
-        rgba(123,74,42,.08) 10px, rgba(123,74,42,.08) 20px);
-      transform: rotate(-10deg);
-      opacity:.30;
-      filter: blur(.2px);
-    }
     .mock .cap{
       position:absolute; left:18px; bottom:18px; right:18px;
-      padding:14px 14px;
+      padding:14px;
       border-radius: 18px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.35);
@@ -336,9 +348,7 @@
       color:var(--muted);
       font-size:13px;
     }
-    .footRow{
-      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
-    }
+    .footRow{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;}
     .tagline{
       display:inline-flex; gap:8px; align-items:center;
       padding:10px 12px;
@@ -346,10 +356,10 @@
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       color: rgba(232,237,242,.80);
-      font-weight:800;
+      font-weight:900;
     }
 
-    /* subtle “chain” divider */
+    /* subtle divider */
     .chain{
       height:1px;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
@@ -375,7 +385,10 @@
     <div class="wrap">
       <div class="nav">
         <div class="brand">
-          <div class="mark" aria-hidden="true"></div>
+          <div class="brandLogo" aria-hidden="true">
+            <!-- Logo feu -->
+            <img src="assets/logo-fire.png" alt="Deck Goliath" />
+          </div>
           <h1>DECK GOLIATH <span>Patios haut de gamme · Outaouais</span></h1>
         </div>
 
@@ -383,7 +396,7 @@
           <a href="#pourquoi">Pourquoi</a>
           <a href="#materiaux">Matériaux</a>
           <a href="#realisations">Réalisations</a>
-          <a href="#processus">Processus</a>
+          <a href="#verification">Vérifier</a>
           <a href="#contact">Soumission</a>
         </div>
 
@@ -401,23 +414,33 @@
       <div class="heroGrid">
         <div class="card">
           <div class="heroMain">
+            <!-- Aigle watermark -->
+            <div class="eagleMark" aria-hidden="true">
+              <img src="assets/eagle.png" alt="" />
+            </div>
+
             <span class="pill">Deck Goliath</span>
-            <h2 class="headline">Un patio qui a l’air <span style="color:var(--gold)">luxueux</span><br/>et qui reste <span style="color:var(--ember)">solide</span> pendant des années.</h2>
+            <h2 class="headline">
+              Minimaliste.<br/>
+              <span style="color:var(--gold)">Luxueux</span>.<br/>
+              <span style="color:var(--ember)">Inébranlable</span>.
+            </h2>
+
             <p class="sub">
-              Conception + installation avec des matériaux <b>haut de gamme</b>, pensés pour être
-              <b>sans entretien</b>. Un seul responsable du début à la fin — aucun intermédiaire, aucune confusion.
+              Conception + installation avec des matériaux <b>haut de gamme</b> (sans entretien).
+              Un seul responsable du début à la fin — aucune confusion.
             </p>
 
             <div class="badges">
+              <div class="badge">🏆 <b>Choix du consommateur</b> · 3 années de suite</div>
               <div class="badge">✅ <b>1</b> responsable</div>
               <div class="badge">✅ Finition <b>premium</b></div>
-              <div class="badge">✅ Détails <b>au laser</b></div>
               <div class="badge">✅ Propreté &amp; rigueur</div>
             </div>
 
             <div class="heroBtns">
               <a class="btn primary" href="#contact">Obtenir une estimation</a>
-              <a class="btn" href="#realisations">Voir des réalisations</a>
+              <a class="btn" href="#verification">Vérifier l’entrepreneur</a>
             </div>
 
             <div class="chain" aria-hidden="true"></div>
@@ -431,65 +454,54 @@
 
         <aside class="heroSide">
           <div class="sideBox">
-            <h3>Pourquoi ça marche</h3>
+            <h3>Approche</h3>
             <p>
-              Un chantier premium, c’est surtout du <b>contrôle qualité</b>.
-              Avec <b>un seul</b> intervenant, tu obtiens une exécution constante, des décisions rapides,
-              et un résultat qui “fit” parfaitement.
+              Un chantier premium = <b>contrôle qualité</b>.
+              Un seul intervenant = exécution constante + décisions rapides.
             </p>
           </div>
 
           <div class="statRow">
             <div class="stat">
               <div class="n">0</div>
-              <div class="l">intermédiaire<br/>sur ton projet</div>
+              <div class="l">intermédiaire</div>
             </div>
             <div class="stat">
               <div class="n">100%</div>
-              <div class="l">responsable unique<br/>du début à la fin</div>
+              <div class="l">responsable unique</div>
             </div>
           </div>
 
           <div class="sideBox">
-            <h3>Style “Goliath”</h3>
-            <p>
-              Lignes droites, finition nette, symétrie, détails de coupe impeccables.
-              C’est ce qui fait dire “wow” quand on arrive dans la cour.
-            </p>
+            <h3>RBQ</h3>
+            <p><b>RBQ 5756-0096-01</b><br/>Transparence totale. Vérifiable.</p>
           </div>
         </aside>
       </div>
     </div>
   </header>
 
-  <!-- POURQUOI -->
+  <!-- POURQUOI (minimaliste) -->
   <section id="pourquoi">
     <div class="wrap">
       <div class="sectionTitle">
-        <h2>Pourquoi choisir Deck Goliath ?</h2>
-        <p>Parce que chez nous, tout est fait par une seule et même personne — du premier pieu jusqu’à la dernière vis de finition.</p>
+        <h2>Pourquoi Deck Goliath</h2>
+        <p>Un seul responsable. Du premier pieu à la dernière vis de finition.</p>
       </div>
 
       <div class="grid3">
         <div class="tile">
           <h3>Aucun intermédiaire</h3>
-          <p>Un seul point de contact. Tu sais toujours à qui tu parles et qui est responsable du résultat.</p>
+          <p>Une seule personne, un seul standard, un résultat cohérent.</p>
         </div>
         <div class="tile">
           <h3>Zéro malcommunication</h3>
-          <p>Pas de téléphone “cassé” entre vendeur, contremaître, équipe et sous-traitant. Les décisions restent cohérentes.</p>
+          <p>Décisions rapides. Exécution propre. Pas de “téléphone cassé”.</p>
         </div>
         <div class="tile">
           <h3>Qualité contrôlée</h3>
-          <p>Chaque détail est fait avec la même exigence : alignements, coupes, vis, finition, propreté du chantier.</p>
+          <p>Alignements, coupes, finition, propreté : tout est vérifié.</p>
         </div>
-      </div>
-
-      <div style="margin-top:14px" class="quote">
-        <p>
-          « Salut Maxim, Nous sommes sur notre patio et j’ai pensé t’envoyer un message pour te dire que nous sommes très satisfaits encore une fois et que les deux decks sont vraiment super. Bonne continuité. »
-        </p>
-        <div class="who">— Client (message reçu après quelques années)</div>
       </div>
     </div>
   </section>
@@ -498,46 +510,35 @@
   <section id="materiaux">
     <div class="wrap">
       <div class="sectionTitle">
-        <h2>Matériaux : haute gamme, sans entretien</h2>
-        <p>On privilégie des matériaux conçus pour durer et garder un look propre saison après saison.</p>
+        <h2>Matériaux : haut de gamme</h2>
+        <p>On privilégie le durable, le stable et le sans-entretien.</p>
       </div>
 
       <div class="grid2">
         <div class="tile">
-          <h3>Sans entretien (recommandé)</h3>
-          <p>
-            Platelage composite/PVC haut de gamme, visserie de finition, structures et détails pensés pour résister
-            au climat du Québec (gèle/dégèle) et rester beau longtemps.
-          </p>
+          <h3>Sans entretien (priorité)</h3>
+          <p>Platelage composite/PVC haut de gamme + visserie de finition + détails pensés pour le climat du Québec.</p>
         </div>
         <div class="tile">
-          <h3>Bois traité (exception seulement)</h3>
-          <p>
-            Nous ne faisons plus de finition bois traité en standard.
-            Exception possible pour <b>très grands projets</b> (ex. &gt; 700 pi²) lorsque le budget du sans-entretien
-            devient trop élevé à cause de la superficie.
-          </p>
+          <h3>Bois traité (exception)</h3>
+          <p>Exception possible pour <b>très grands projets</b> (ex. &gt; 700 pi²) lorsque le budget sans-entretien devient trop élevé.</p>
         </div>
-      </div>
-
-      <div class="small" style="margin-top:10px;">
-        Astuce : si tu veux, on peut aussi ajouter une section “gammes” (Good / Better / Best) mais en restant 100% premium (ex. “Premium / Ultra-Premium / Signature”).
       </div>
     </div>
   </section>
 
-  <!-- REALISATIONS (mock) -->
+  <!-- REALISATIONS -->
   <section id="realisations">
     <div class="wrap">
       <div class="sectionTitle">
         <h2>Réalisations</h2>
-        <p>Démo visuelle. Ici tu mettras tes vraies photos (avant/après, détails, escaliers, rampes, éclairage).</p>
+        <p>Place tes photos ici (avant/après + détails). Le site va être débile une fois rempli.</p>
       </div>
 
       <div class="gallery">
         <div class="mock" role="img" aria-label="Aperçu réalisation principale (placeholder)">
           <div class="cap">
-            <b>Projet Signature</b> — lignes propres, finition premium, détails impeccables (placeholder).
+            <b>Projet Signature</b> — lignes nettes, finition premium (placeholder).
           </div>
         </div>
 
@@ -553,26 +554,47 @@
     </div>
   </section>
 
-  <!-- PROCESSUS -->
-  <section id="processus">
+  <!-- VERIFICATION -->
+  <section id="verification">
     <div class="wrap">
       <div class="sectionTitle">
-        <h2>Processus simple (et carré)</h2>
-        <p>Tu sais exactement ce qui se passe, quand, et pourquoi. Pas de surprises.</p>
+        <h2>Guide du citoyen — Vérifier un entrepreneur</h2>
+        <p>La vraie tranquillité d’esprit commence avant la signature.</p>
       </div>
 
-      <div class="grid3">
+      <div class="grid2">
         <div class="tile">
-          <h3>1) Discussion + besoins</h3>
-          <p>Dimensions, style, usage, contraintes. On vise un résultat haut de gamme, pas “juste un patio”.</p>
+          <h3>Checklist rapide</h3>
+          <p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.6;">
+            Avant de signer :
+          </p>
+          <div style="display:grid;gap:10px">
+            <div class="badge" style="display:inline-flex;align-items:center;gap:10px;width:fit-content">
+              ✅ Licence RBQ active (catégories + statut)
+            </div>
+            <div class="badge" style="display:inline-flex;align-items:center;gap:10px;width:fit-content">
+              ✅ Assurance responsabilité à jour
+            </div>
+            <div class="badge" style="display:inline-flex;align-items:center;gap:10px;width:fit-content">
+              ✅ Contrat clair (matériaux + inclus/exclus + échéancier)
+            </div>
+          </div>
+
+          <div class="small" style="margin-top:12px;">
+            Tu peux mettre ici 2 boutons plus tard : “Vérifier RBQ” + “Guide du citoyen”.
+          </div>
         </div>
-        <div class="tile">
-          <h3>2) Plan &amp; choix matériaux</h3>
-          <p>Proposition claire : look, finition, options. On garde ça premium, durable, et logique côté budget.</p>
-        </div>
-        <div class="tile">
-          <h3>3) Construction &amp; finition</h3>
-          <p>Un seul responsable sur place. Détails contrôlés jusqu’à la dernière vis de finition.</p>
+
+        <!-- TON TEXTE (emphase) -->
+        <div class="callout">
+          <p>
+            <strong>Un entrepreneur sérieux n’a jamais peur d’être vérifié.</strong><br/>
+            La transparence protège les citoyens.<br/><br/>
+            Oui, un entrepreneur sérieux a un prix.<br/>
+            Mais la conformité, la solidité et la tranquillité d’esprit…<br/>
+            <strong>ça, ça n’a pas de prix.</strong>
+          </p>
+          <div class="small">Deck Goliath · Transparence · Conformité · Solidité</div>
         </div>
       </div>
     </div>
@@ -583,46 +605,39 @@
     <div class="wrap">
       <div class="sectionTitle">
         <h2>Soumission</h2>
-        <p>Démo de formulaire. Tu peux le brancher à ton email, un Google Form, ou un CRM plus tard.</p>
+        <p>Démo de formulaire (on peut le brancher email/Google Form/CRM plus tard).</p>
       </div>
 
       <div class="grid2">
         <div class="tile">
-          <h3>Dis-moi ton projet</h3>
+          <h3>Ton projet</h3>
           <form onsubmit="return demoSubmit(event)">
             <input required name="nom" placeholder="Nom complet" />
             <input required name="tel" placeholder="Téléphone" />
             <input required type="email" name="email" placeholder="Courriel" />
-
             <select name="type">
               <option value="sans-entretien">Sans entretien (recommandé)</option>
               <option value="grand-projet">Très grand projet (+700 pi²)</option>
               <option value="a-discuter">À discuter</option>
             </select>
-
-            <textarea name="details" placeholder="Détails (dimension approx, emplacement, style, rampes/escaliers, délai souhaité)"></textarea>
-
+            <textarea name="details" placeholder="Détails (dimensions approx, style, rampes/escaliers, délai souhaité)"></textarea>
             <button class="btn primary" type="submit">Envoyer (démo)</button>
-            <div class="small">En démo, ça n’envoie rien : ça affiche un message de confirmation.</div>
+            <div class="small">En démo, ça n’envoie rien : message de confirmation seulement.</div>
           </form>
         </div>
 
         <div class="tile">
           <h3>Positionnement</h3>
-          <p style="margin-bottom:12px;">
-            <b>Deck Goliath</b> se spécialise dans le <b>haut de gamme</b> : matériaux premium, finition précise,
-            et contrôle total du projet par <b>une seule personne</b>.
+          <p style="margin:0;color:var(--muted);line-height:1.7">
+            Deck Goliath = haut de gamme, finition nette, contrôle total par une seule personne.
+            Si tu veux du “solide” qui reste beau, c’est ça.
           </p>
-          <div class="quote">
-            <p style="margin:0">
-              “Un seul responsable du début à la fin.”
-            </p>
-            <div class="who">— Deck Goliath</div>
-          </div>
 
-          <div style="margin-top:14px" class="small">
-            Tu veux que ça “pogne” encore plus? On peut ajouter : page “Services”, “FAQ premium”, “Garantie/entretien”, “Zones desservies (Outaouais)”, et une galerie avec filtres.
-          </div>
+          <div class="chain" aria-hidden="true" style="margin-top:14px"></div>
+
+          <p class="small" style="margin:12px 0 0;">
+            <b>RBQ :</b> 5756-0096-01 · <b>Zone :</b> Outaouais · <b>Approche :</b> sans compromis
+          </p>
         </div>
       </div>
     </div>
@@ -644,7 +659,7 @@
       e.preventDefault();
       const f = e.target;
       const nom = f.nom.value.trim() || "Client";
-      alert("Merci " + nom + " ! ✅\\n\\nDémo : ton message est prêt.\\nProchaine étape : brancher ce formulaire à ton email/CRM.");
+      alert("Merci " + nom + " ! ✅\n\nDémo : message prêt.\nProchaine étape : brancher à ton email/CRM.");
       f.reset();
       return false;
     }
