@@ -1096,6 +1096,42 @@
     .secteurs-intro__alert { flex-direction: column; gap: 10px; }
   }
 
+
+  .service-mention {
+    margin-top: 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  /* ═══ LOGOS PARTENAIRES AVEC IMAGE ═══ */
+  .logo-partner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-partner img {
+    height: 40px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    filter: grayscale(30%) brightness(0.75) sepia(20%);
+    opacity: 0.8;
+    transition: all 0.3s;
+  }
+
+  .logo-partner img:hover {
+    filter: grayscale(0%) brightness(1) sepia(0%);
+    opacity: 1;
+  }
+
+  .logo-partner__fallback {
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 </head>
 <body>
@@ -1145,18 +1181,73 @@
 
 <!-- ═══ LOGOS BAR ═══ -->
 <div class="logos-bar">
-  <div class="partner partner-timber">
-    <span>⊙ TimberTech<sup>®</sup></span>
-    <span>by Azek Building Products</span>
+
+  <!-- LOGO 1 — remplacer "assets/fabriquant1.png" par ton fichier -->
+  <div class="logo-partner">
+    <img src="assets/fabriquant1.png" alt="Deckorators"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="logo-partner__fallback" style="display:none;">
+      <div class="partner partner-timber">
+        <span>⊙ TimberTech<sup>®</sup></span>
+        <span>by Azek Building Products</span>
+      </div>
+    </div>
   </div>
-  <span class="partner partner-deckstars">DeckStars</span>
-  <div class="partner partner-google">
-    <span style="font-size:15px; font-weight:700; letter-spacing:1px;">Google</span>
-    <span class="stars">★★★★★</span>
-    <span style="font-size:11px;">5.0</span>
+
+  <!-- LOGO 2 — remplacer "assets/fabriquant2.png" par ton fichier -->
+  <div class="logo-partner">
+    <img src="assets/fabriquant2.png" alt="TimberTech"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="logo-partner__fallback" style="display:none;">
+      <span class="partner partner-deckstars">DeckStars</span>
+    </div>
   </div>
-  <span class="partner" style="font-size:15px; letter-spacing:3px; line-height:1.3;">Regal<br>ideas</span>
-  <span class="partner" style="font-size:17px; letter-spacing:1px; font-weight:700;">:COOL</span>
+
+  <!-- LOGO 3 — remplacer "assets/fabriquant3.png" par ton fichier -->
+  <div class="logo-partner">
+    <img src="assets/fabriquant3.png" alt="Google 5.0"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="logo-partner__fallback" style="display:none;">
+      <div class="partner partner-google">
+        <span style="font-size:15px; font-weight:700; letter-spacing:1px;">Google</span>
+        <span class="stars">★★★★★</span>
+        <span style="font-size:11px;">5.0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO 4 — remplacer "assets/fabriquant4.png" par ton fichier -->
+  <div class="logo-partner">
+    <img src="assets/fabriquant4.png" alt="Regal Ideas"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="logo-partner__fallback" style="display:none;">
+      <span class="partner" style="font-size:15px; letter-spacing:3px; line-height:1.3;">Regal<br>ideas</span>
+    </div>
+  </div>
+
+  <!-- FABRIQUANT 5 — DeckStars — remplacer "assets/fabriquant5.png" par ton fichier -->
+  <div class="logo-partner">
+    <img src="assets/fabriquant5.png" alt="DeckStars"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="logo-partner__fallback" style="display:none;">
+      <span class="partner partner-deckstars">DeckStars</span>
+    </div>
+  </div>
+
+
+  <!-- FABRIQUANT 6 — Choix du consommateur 2026 — remplacer "assets/fabriquant6.png" par ton fichier -->
+  <div class="logo-partner">
+    <img src="assets/fabriquant6.png" alt="Choix du consommateur 2026"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="logo-partner__fallback" style="display:none;">
+      <div class="partner" style="text-align:center;">
+        <span style="font-size:18px; display:block;">🏆</span>
+        <span style="font-size:11px; letter-spacing:1.5px; font-family:'Cinzel',serif;">Choix du consommateur</span>
+        <span style="font-size:10px; color:var(--gold); display:block; letter-spacing:2px;">2026</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══ POURQUOI NOUS ═══ -->
@@ -1175,7 +1266,7 @@
         <div class="why-item">
           <span class="why-icon">💎</span>
           <h3>Matériaux premium</h3>
-          <p>Composite, aluminium, PVC — des produits sans entretien qui tiennent des décennies.</p>
+          <p>Produits à base de minéraux, aluminium, PVC — des produits avec minimum d'entretien qui tiennent des décennies.</p>
         </div>
         <div class="why-item">
           <span class="why-icon">🛡️</span>
@@ -1240,7 +1331,8 @@
         <div class="service-num">01</div>
         <div class="service-icon">🪵</div>
         <h3>Construction de patio sans entretien</h3>
-        <p>Conception et installation complète de patios en matériaux composites, PVC et minéraux. Zéro entretien, durabilité maximale, esthétique premium.</p>
+        <p>Conception et installation complète de patios en matériaux composites, PVC et minéraux. Minimum d'entretien, durabilité maximale, esthétique premium.</p>
+        <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
       </div>
 
       <div class="service-card">
@@ -1248,14 +1340,15 @@
         <div class="service-icon">🔩</div>
         <h3>Remplacement de rampes en aluminium</h3>
         <p>Remplacement de vos rampes existantes par des rampes en aluminium de qualité supérieure. Solides, élégantes et sans entretien pour des décennies.</p>
+        <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
       </div>
 
       <div class="service-card">
         <div class="service-num">03</div>
         <div class="service-icon">⚙️</div>
         <h3>Installation de pieux vissés CCMC</h3>
-        <p>Installation de pieux vissés certifiés CCMC pour fondations résidentielles. Une solution permanente, rapide et approuvée — résidentiel uniquement.</p>
-        <div class="service-badge">Résidentiel uniquement</div>
+        <p>Installation de pieux vissés certifiés CCMC pour fondations résidentielles. Une solution permanente, rapide et approuvée.</p>
+        <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
       </div>
 
     </div>
@@ -1379,7 +1472,7 @@
   </a>
   <div class="footer-info">
     <p>RBQ 5756-0096-01</p>
-    <p>Montréal &amp; environs · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b0b7bfb699bdbcbab2beb6b5b0b8adb1f7bab8">[email&#160;protected]</a></p>
+    <p>info@deckgoliath.ca</p>
   </div>
   <ul class="footer-links">
     <li><a href="#pourquoi">Pourquoi nous</a></li>
@@ -1389,7 +1482,7 @@
     <li><a href="#verifier">Vérifier</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <p style="font-size:11px; color:var(--text-dim); letter-spacing:0.5px;">© 2025 Deck Goliath. Tous droits réservés.</p>
+  <p style="font-size:11px; color:var(--text-dim); letter-spacing:0.5px;">© 2026 Deck Goliath. Tous droits réservés.</p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-d
