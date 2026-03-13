@@ -43,7 +43,7 @@
 
   /* ═══════════════════════ NAV ═══════════════════════ */
   nav {
-    position: fixed;
+    position: absolute;
     top: 0; left: 0; right: 0;
     z-index: 1000;
     display: flex;
@@ -67,7 +67,7 @@
   }
 
   .logo img {
-    height: 52px;
+    height: 160px;
     width: auto;
     filter: drop-shadow(0 0 12px rgba(201,150,42,0.5));
   }
@@ -509,6 +509,10 @@
     border-bottom: 1px solid rgba(201,150,42,0.08);
   }
 
+  .why-bg > .section {
+    padding-top: 60px;
+  }
+
   .why-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -785,7 +789,6 @@
   </a>
   <ul>
     <li><a href="#pourquoi">Pourquoi</a></li>
-    <li><a href="#materiaux">Matériaux</a></li>
     <li><a href="#realisations">Réalisations</a></li>
     <li><a href="#verifier">Vérifier</a></li>
   </ul>
@@ -910,31 +913,7 @@
   </div>
 </section>
 
-<!-- ═══ MATÉRIAUX ═══ -->
-<section class="section" id="materiaux">
-  <div class="section-inner">
-    <div class="gold-line"></div>
-    <h2 class="section-title">Nos <span class="gold">Matériaux</span></h2>
-    <p class="section-sub">Sélectionnés pour leur durabilité, leur beauté et leur résistance aux hivers québécois.</p>
-    <div class="mat-grid">
-      <div class="mat-card">
-        <div class="mat-num">01</div>
-        <h3>Composite TimberTech®</h3>
-        <p>Le meilleur composite sur le marché. Résistant à la teinture, aux égratignures, aux insectes et aux moisissures. Garantie 30 ans.</p>
-      </div>
-      <div class="mat-card">
-        <div class="mat-num">02</div>
-        <h3>Aluminium structural</h3>
-        <p>Cadre en aluminium peint en poudre. Ne rouille pas, ne pourrit pas. Idéal pour pergolas, garde-corps et structures hors sol.</p>
-      </div>
-      <div class="mat-card">
-        <div class="mat-num">03</div>
-        <h3>Vinyle &amp; PVC</h3>
-        <p>Clôtures, rampes et revêtements en PVC de qualité commerciale. Entretien zéro, couleurs qui durent, installation nette.</p>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ═══ CTA ═══ -->
 <section class="cta-section" id="contact">
@@ -955,7 +934,6 @@
   </div>
   <ul class="footer-links">
     <li><a href="#pourquoi">Pourquoi nous</a></li>
-    <li><a href="#materiaux">Matériaux</a></li>
     <li><a href="#verifier">Vérifier</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
