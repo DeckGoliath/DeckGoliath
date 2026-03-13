@@ -147,43 +147,46 @@
       radial-gradient(ellipse 35% 50% at 72% 38%, rgba(110,68,10,0.2) 0%, transparent 60%);
   }
 
-  /* Eagle hero image - sits right next to text, black fills right side */
+  /* Eagle hero image - right side, fades left into text */
   .hero-eagle {
     position: absolute;
-    left: 46%;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 46%;
-    max-width: 680px;
-    opacity: 0.88;
+    width: 55%;
+    max-width: 900px;
+    min-width: 400px;
+    opacity: 0.82;
     mix-blend-mode: screen;
     pointer-events: none;
   }
 
-  /* Fade eagle: left edge blends into text, right side fades to black */
+  /* Fade eagle left edge into background only */
   .hero-eagle-mask {
     position: absolute;
-    left: 46%;
+    right: 0;
     top: 0;
     bottom: 0;
-    width: 54%;
+    width: 55%;
+    max-width: 900px;
+    min-width: 400px;
     background: linear-gradient(to right,
       #0A0806 0%,
-      rgba(10,8,6,0.55) 8%,
-      rgba(10,8,6,0) 22%,
-      rgba(10,8,6,0) 68%,
-      rgba(10,8,6,0.7) 82%,
-      #0A0806 100%
+      rgba(10,8,6,0.75) 18%,
+      rgba(10,8,6,0.2) 38%,
+      rgba(10,8,6,0) 55%
     );
     pointer-events: none;
     z-index: 1;
   }
 
+  /* Fix 2: text takes ~half the screen width */
   .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 48%;
+    max-width: 50%;
     min-width: 320px;
+    padding-right: 40px;
   }
 
   .hero-title {
@@ -732,31 +735,28 @@
       padding: 100px 22px 60px;
       min-height: 100vh;
     }
-    /* Eagle reste visible — en overlay sur tout le hero, fondu droit */
+    /* Eagle visible on mobile — soft overlay */
     .hero-eagle {
-      left: auto;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 75%;
+      width: 80%;
       min-width: 0;
-      opacity: 0.28;
+      opacity: 0.25;
     }
     .hero-eagle-mask {
       display: block;
-      left: auto;
       right: 0;
-      width: 75%;
+      width: 80%;
       min-width: 0;
       background: linear-gradient(to right,
         #0A0806 0%,
-        rgba(10,8,6,0.6) 15%,
-        rgba(10,8,6,0) 40%,
-        rgba(10,8,6,0) 75%,
-        #0A0806 100%
+        rgba(10,8,6,0.65) 18%,
+        rgba(10,8,6,0) 42%,
+        rgba(10,8,6,0) 100%
       );
     }
-    .hero-content { max-width: 100%; }
+    .hero-content { max-width: 100%; padding-right: 0; }
     .section { padding: 70px 22px; }
     .logos-bar { gap: 28px; padding: 24px 22px; }
     .guide-layout { grid-template-columns: 1fr; }
