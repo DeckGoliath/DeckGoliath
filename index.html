@@ -191,7 +191,7 @@
     font-size: clamp(36px, 4.8vw, 72px);
     font-weight: 700;
     line-height: 1.02;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
     letter-spacing: -0.5px;
   }
 
@@ -202,11 +202,22 @@
 
   .hero-subtitle {
     font-family: 'EB Garamond', serif;
-    font-size: 18.5px;
+    font-size: 17px;
     color: rgba(240,234,214,0.72);
-    line-height: 1.75;
+    line-height: 2.1;
     margin-bottom: 48px;
     max-width: 500px;
+  }
+
+  .hero-subtitle br + br {
+    display: block;
+    content: '';
+    margin-top: 10px;
+  }
+
+  .hero-subtitle--p2 {
+    margin-top: 32px;
+    margin-bottom: 48px;
   }
 
   .hero-badges {
@@ -792,7 +803,8 @@
     </h1>
     <p class="hero-subtitle">
       Chez Deck Goliath, nous privilégions une approche claire : un accompagnement direct du début à la fin, une exécution maîtrisée et des matériaux de qualité supérieure tels que la gamme minérale de Deckorators, le PVC de TimberTech / AZEK, ainsi que les rampes en aluminium Regal Ideas. Par souci de qualité et de durabilité, nous ne réalisons plus de patios avec finition en bois traité.
-      <br><br>
+    </p>
+    <p class="hero-subtitle hero-subtitle--p2">
       Pour nous, il n'y a ni petit projet ni gros projet : il y a <em>votre</em> projet. Il mérite le même sérieux, la même écoute et le même niveau d'attention. Le service à la clientèle est une priorité, au même titre que la qualité de ce que nous construisons. Dès la première rencontre, nous prenons le temps de bien évaluer vos besoins, de vous orienter selon vos priorités et de vous présenter une estimation cohérente avec vos choix.
     </p>
     <div class="hero-badges">
