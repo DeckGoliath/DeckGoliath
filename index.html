@@ -786,7 +786,7 @@
     nav { padding: 14px 22px; }
     nav ul { display: none; }
     .btn-nav { display: none; }
-    .hero-mobile-cta { display: inline-block !important; }
+    .hero-mobile-cta { display: none !important; }
     .hero {
       padding: 100px 22px 60px;
       min-height: auto;
@@ -2173,7 +2173,7 @@
   <div class="section-inner">
     <div class="gold-line"></div>
     <h2 class="section-title">Guide du citoyen — <span class="gold">Vérifier un entrepreneur</span></h2>
-    <p class="section-sub">Avant de signer, prends 2 minutes pour valider que l'entrepreneur est en règle.</p>
+    <p class="section-sub">Avant de signer, prenez 2 minutes pour valider que l'entrepreneur est en règle.</p>
 
     <!-- Medallion + intro centered -->
     <div class="verifier-intro">
@@ -2234,11 +2234,13 @@
 
 
 
+<div style="max-width:72px;height:1px;background:linear-gradient(to right,transparent,#C9962A,transparent);margin:0 auto 0;"></div>
+
 <!-- ═══ CTA ═══ -->
 <section class="cta-section" id="contact">
   <h2 class="section-title"><span class="gold">Prêt à construire</span><br>quelque chose d'exceptionnel?</h2>
   <div class="gold-line" style="margin:16px auto 24px;"></div>
-  <p>Soumission gratuite, sans engagement — réponse en 24h.</p>
+  <p>Soumission gratuite, sans engagement.</p>
   <button class="btn-cta" onclick="ouvrirFormulaire()">Demander une soumission</button>
 </section>
 
@@ -2269,7 +2271,7 @@
     <div id="mode-formulaire" style="display:none;">
       <div class="gold-line" style="margin:0 0 20px;"></div>
       <h2 style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#E8B84B;margin-bottom:6px;text-align:center;">Demande de soumission</h2>
-      <p style="font-family:'EB Garamond',serif;font-size:15px;color:var(--text-muted);text-align:center;margin-bottom:28px;font-style:italic;">Sans engagement — réponse sous 24h</p>
+      <p style="font-family:'EB Garamond',serif;font-size:15px;color:var(--text-muted);text-align:center;margin-bottom:28px;font-style:italic;">Par souci de qualité et de durabilité, nous ne réalisons plus de patios avec finition en bois traité.</p>
 
       <form id="form-soumission" action="https://formspree.io/f/mdawwpzg" method="POST" enctype="multipart/form-data">
 
@@ -2309,7 +2311,7 @@
 
         <div class="form-group">
           <label>Photos de votre cour actuelle</label>
-          <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--text-muted);line-height:1.7;margin-top:6px;">Des photos nous aident à mieux évaluer votre projet. Veuillez les envoyer par courriel à <strong style="color:var(--gold-light);">info@deckgoliath.com</strong> en indiquant votre adresse en objet.</p>
+          <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--text-muted);line-height:1.7;margin-top:6px;">Des photos nous aident à mieux évaluer votre projet. Veuillez les envoyer par courriel à <strong style="color:var(--gold-light);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c25222a230c28292f272b2320252d3824622f2321">[email&#160;protected]</a></strong> en indiquant votre adresse en objet.</p>
         </div>
 
         <button type="submit" class="btn-cta" style="width:100%;margin-top:8px;">ENVOYER</button>
@@ -2332,7 +2334,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ══════════════════════════════════════════════════
 //  CHANGER ICI POUR ACTIVER/DÉSACTIVER LE FORMULAIRE
 //  false = mode hiver (message seulement)
@@ -2398,7 +2400,6 @@ document.addEventListener('keydown', function(e) {
     <li><a href="#services">Réalisations</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#verifier">Vérifier</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
   <p style="font-size:11px; color:var(--text-dim); letter-spacing:0.5px;">© 2026 Deck Goliath. Tous droits réservés.</p>
 </footer>
@@ -2441,12 +2442,4 @@ function lbRender(){
 }
 document.addEventListener('keydown',function(e){
   if(document.getElementById('lb').style.display==='none')return;
-  if(e.key==='ArrowRight')lbNav(1);
-  if(e.key==='ArrowLeft')lbNav(-1);
-  if(e.key==='Escape')lbClose();
-});
-document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
-</script>
-
-</body>
-</html>
+  if
