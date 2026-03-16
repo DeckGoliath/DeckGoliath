@@ -785,6 +785,8 @@
   @media (max-width: 960px) {
     nav { padding: 14px 22px; }
     nav ul { display: none; }
+    .btn-nav { display: none; }
+    .hero-mobile-cta { display: inline-block !important; }
     .hero {
       padding: 100px 22px 60px;
       min-height: auto;
@@ -1793,6 +1795,26 @@
     color: var(--gold);
     margin-bottom: 14px;
   }
+
+  .hero-mobile-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 14px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+  }
+
+  .hero-mobile-cta:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
 </style>
 </head>
 <body>
@@ -1838,6 +1860,7 @@
     <p class="hero-subtitle hero-subtitle--p2">
       Pour nous, il n'y a ni petit projet ni gros projet : il y a <em>votre</em> projet. Il mérite le même sérieux, la même écoute et le même niveau d'attention. Le service à la clientèle est une priorité, au même titre que la qualité de ce que nous construisons. Dès la première rencontre, nous prenons le temps de bien évaluer vos besoins, de vous orienter selon vos priorités et de vous présenter une estimation cohérente avec vos choix.
     </p>
+    <button class="hero-mobile-cta" style="display:none; margin-top:28px;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Demander une soumission</button>
 
   </div>
 </section>
