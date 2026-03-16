@@ -766,6 +766,10 @@
   .hero-content > *:nth-child(3) { animation-delay: 0.55s; }
 
   /* ═══════════════════════ RESPONSIVE ═══════════════════════ */
+  @media (max-width: 1100px) {
+    .why-grid { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 960px) {
     nav { padding: 14px 22px; }
     nav ul { display: none; }
@@ -802,7 +806,7 @@
     .guide-card h3 { white-space: normal; min-width: unset; }
     .medallion-wrap { margin-bottom: 20px; }
     .guide-cards { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
     .mat-grid { grid-template-columns: 1fr; }
     .cta-section { padding: 70px 22px; }
     footer { padding: 30px 22px; flex-direction: column; align-items: flex-start; }
@@ -1192,7 +1196,7 @@
 
   /* ═══════════════════════ SERVICE BLOCS COMBINÉS ═══════════════════════ */
   .service-bloc {
-    padding: 60px 6vw;
+    padding: 40px 6vw 60px;
     border-top: 1px solid rgba(201,150,42,0.1);
   }
 
@@ -1822,12 +1826,7 @@
     <p class="hero-subtitle hero-subtitle--p2">
       Pour nous, il n'y a ni petit projet ni gros projet : il y a <em>votre</em> projet. Il mérite le même sérieux, la même écoute et le même niveau d'attention. Le service à la clientèle est une priorité, au même titre que la qualité de ce que nous construisons. Dès la première rencontre, nous prenons le temps de bien évaluer vos besoins, de vous orienter selon vos priorités et de vous présenter une estimation cohérente avec vos choix.
     </p>
-    <div class="hero-badges">
-      <div class="badge badge-primary">🏆 Choix du consommateur</div>
-      <div class="badge badge-secondary">✓ 1 responsable</div>
-      <div class="badge badge-secondary">✓ Finition premium</div>
-      <div class="badge badge-secondary">✓ Propreté &amp; soin</div>
-    </div>
+
   </div>
 </section>
 
@@ -1957,7 +1956,7 @@
       <div class="secteur-card">
         <div class="secteur-icon">📍</div>
         <h3>Gatineau à Buckingham</h3>
-        <div class="secteur-period">Mai — Septembre 2026</div>
+        <div class="secteur-period">De mai à octobre 2026</div>
         <p>Disponibilité complète pour les travaux prévus durant la saison principale de construction.</p>
       </div>
       <div class="secteur-card secteur-card--limited">
@@ -1971,22 +1970,22 @@
 </section>
 
 <!-- ═══ SERVICES & RÉALISATIONS ═══ -->
-<section class="section" id="services" style="padding-bottom: 0;">
+<section class="section" id="services" style="padding-top: 70px; padding-bottom: 20px;">
   <div class="section-inner">
-    <div class="gold-line"></div>
     <h2 class="section-title">Nos <span class="gold">Services</span> &amp; Réalisations</h2>
     <p class="section-sub">Une expertise ciblée — quelques projets qui en témoignent.</p>
   </div>
 </section>
 
 <!-- SERVICE 01 -->
-<div class="service-bloc">
+<div class="service-bloc" style="padding-top: 30px;">
   <div class="service-bloc__inner">
     <div class="service-bloc__header">
       <div class="service-bloc__num">01</div>
       <div class="service-bloc__info">
         <div class="service-icon">🪵</div>
         <h3>Construction de patio avec minimum d'entretien</h3>
+        <p>Par souci de qualité et de durabilité, nous ne réalisons plus de patios avec finition en bois traité.</p>
         <p>Conception et installation complète de patios en matériaux composites, PVC et minéraux. Minimum d'entretien, durabilité maximale, esthétique premium.</p>
         <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
       </div>
