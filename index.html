@@ -1815,6 +1815,70 @@
     background: var(--gold);
     color: var(--dark);
   }
+
+  /* ═══ FORMULAIRE ═══ */
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(240,234,214,0.8);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(10,8,6,0.8);
+    border: 1px solid rgba(201,150,42,0.25);
+    color: var(--text-white);
+    padding: 12px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--text-dim);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: rgba(201,150,42,0.6);
+  }
+
+  .form-group select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9962A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .form-group select option {
+    background: #13100A;
+    color: var(--text-white);
+  }
+
+  .form-group input[type="file"] {
+    padding: 10px 16px;
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 960px) {
+    #popup-inner { padding: 32px 20px; }
+  }
 </style>
 </head>
 <body>
@@ -2175,8 +2239,141 @@
   <h2 class="section-title"><span class="gold">Prêt à construire</span><br>quelque chose d'exceptionnel?</h2>
   <div class="gold-line" style="margin:16px auto 24px;"></div>
   <p>Soumission gratuite, sans engagement — réponse en 24h.</p>
-  <a href="tel:+15141234567" class="btn-cta">Demander une soumission</a>
+  <button class="btn-cta" onclick="ouvrirFormulaire()">Demander une soumission</button>
 </section>
+
+<!-- ═══ POPUP FORMULAIRE ═══ -->
+<div id="popup-formulaire" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:8000; align-items:center; justify-content:center; padding:20px;">
+  <div id="popup-inner" style="background:#13100A; border:1px solid rgba(201,150,42,0.3); max-width:640px; width:100%; max-height:90vh; overflow-y:auto; padding:48px 40px; position:relative;">
+    <button onclick="fermerFormulaire()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#E8B84B;font-size:32px;cursor:pointer;line-height:1;">&#215;</button>
+
+    <!-- ══ MODE HIVER (actif quand FORMULAIRE_ACTIF = false) ══ -->
+    <div id="mode-hiver">
+      <div class="gold-line" style="margin:0 0 20px;"></div>
+      <h2 style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#E8B84B;margin-bottom:20px;text-align:center;">❄️ Demandes de soumission présentement fermées</h2>
+      <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:16px;">En raison de la saison hivernale, les demandes de soumission sont présentement <strong style="color:#E8B84B;">fermées</strong> jusqu'à la fin de la fonte des neiges, soit <strong style="color:#E8B84B;">fin mars / début avril</strong>.</p>
+      <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:16px;">Le formulaire de demande de rendez-vous pour soumission sera réactivé dès que les conditions le permettront.</p>
+      <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:24px;">Merci et au plaisir de planifier votre projet très bientôt!</p>
+      <div style="background:rgba(201,150,42,0.06);border:1px solid rgba(201,150,42,0.2);padding:20px 24px;margin-bottom:20px;">
+        <p style="font-family:'EB Garamond',serif;font-size:16px;color:rgba(240,234,214,0.75);line-height:1.8;">Veuillez noter qu'en raison de la qualité moindre du bois traité disponible aujourd'hui, nous construisons exclusivement nos patios avec des <strong style="color:#E8B84B;">matériaux à faible entretien</strong> — produits minéraux Deckorators ou PVC TimberTech (Azek) — accompagnés de rampes en aluminium.</p>
+      </div>
+      <p style="font-family:'Cinzel',serif;font-size:13px;color:#E8B84B;margin-bottom:12px;letter-spacing:1px;">📅 Prises de rendez-vous 2026 :</p>
+      <ul style="font-family:'EB Garamond',serif;font-size:16px;color:rgba(240,234,214,0.75);line-height:1.9;padding-left:20px;margin-bottom:20px;">
+        <li><strong style="color:rgba(240,234,214,0.9);">Gatineau à Buckingham</strong> — à partir du <strong style="color:#E8B84B;">1er avril 2026</strong>, pour des travaux prévus entre mai et octobre 2026.</li>
+        <li style="margin-top:8px;"><strong style="color:rgba(240,234,214,0.9);">Hull · Aylmer · Chelsea · Cantley</strong> — juillet et août 2026 seulement. Prises de rendez-vous dès la fin mars 2026, selon les disponibilités restantes.</li>
+      </ul>
+      <button onclick="fermerFormulaire()" style="width:100%;background:linear-gradient(135deg,#E8B84B,#C9962A);color:#0A0806;border:none;padding:14px;font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;cursor:pointer;">FERMER</button>
+    </div>
+
+    <!-- ══ MODE FORMULAIRE (actif quand FORMULAIRE_ACTIF = true) ══ -->
+    <div id="mode-formulaire" style="display:none;">
+      <div class="gold-line" style="margin:0 0 20px;"></div>
+      <h2 style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#E8B84B;margin-bottom:6px;text-align:center;">Demande de soumission</h2>
+      <p style="font-family:'EB Garamond',serif;font-size:15px;color:var(--text-muted);text-align:center;margin-bottom:28px;font-style:italic;">Sans engagement — réponse sous 24h</p>
+
+      <form id="form-soumission" action="https://formspree.io/f/VOTRE_ID" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Nom <span style="color:#C9962A;">*</span></label>
+          <input type="text" name="nom" placeholder="Entrez votre nom." required>
+        </div>
+
+        <div class="form-group">
+          <label>Numéro de téléphone <span style="color:#C9962A;">*</span></label>
+          <input type="tel" name="telephone" required>
+        </div>
+
+        <div class="form-group">
+          <label>E-mail <span style="color:#C9962A;">*</span></label>
+          <input type="email" name="email" placeholder="Entrez votre adresse e-mail." required>
+        </div>
+
+        <div class="form-group">
+          <label>Secteur <span style="color:#999;font-size:13px;">(date d'ouverture de prise de rendez-vous selon le secteur)</span></label>
+          <select name="secteur" id="select-secteur" onchange="verifierSecteur(this.value)" required>
+            <option value="">SVP - Faire un choix</option>
+            <option value="gatineau-buckingham">Gatineau à Buckingham</option>
+            <option value="hull-aylmer">Hull · Aylmer · Chelsea · Cantley</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Descriptif de votre projet</label>
+          <textarea name="projet" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Une photo de votre cour actuelle</label>
+          <input type="file" name="photo" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn-cta" style="width:100%;margin-top:8px;">ENVOYER</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ══ POPUP HULL/AYLMER ══ -->
+<div id="popup-hull" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9000;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;max-width:560px;width:100%;padding:36px;border-radius:4px;position:relative;">
+    <h3 style="font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:#1a1200;margin-bottom:16px;">Information importante — Secteur Hull / Aylmer / Chelsea / Cantley</h3>
+    <p style="font-size:15px;color:#333;line-height:1.75;margin-bottom:12px;">En raison du trafic et de notre réalité familiale liée aux horaires scolaires de nos enfants, nous ne pourrons réaliser de projets dans ce secteur qu'en <strong>juillet et août 2026</strong>.</p>
+    <p style="font-size:15px;color:#333;line-height:1.75;margin-bottom:12px;">Les prises de rendez-vous pour les soumissions y <strong>débuteront à la fin mars 2026</strong>, à la fonte de la neige, <strong>selon les disponibilités restantes</strong>.</p>
+    <p style="font-size:15px;color:#333;line-height:1.75;margin-bottom:24px;">Nous vous remercions sincèrement de votre compréhension et vous invitons à nous recontacter en avril afin de vérifier les disponibilités restantes et planifier un rendez-vous.</p>
+    <div style="display:flex;gap:12px;justify-content:flex-end;">
+      <button onclick="fermerHull(false)" style="padding:10px 24px;background:#f0f0f0;border:none;cursor:pointer;font-size:14px;">Fermer</button>
+      <button onclick="fermerHull(true)" style="padding:10px 24px;background:#1a1200;color:#E8B84B;border:none;cursor:pointer;font-size:14px;font-weight:700;">J'ai compris</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════
+//  CHANGER ICI POUR ACTIVER/DÉSACTIVER LE FORMULAIRE
+//  false = mode hiver (message seulement)
+//  true  = mode saison (formulaire actif)
+var FORMULAIRE_ACTIF = false;
+// ══════════════════════════════════════════════════
+
+function ouvrirFormulaire() {
+  var popup = document.getElementById('popup-formulaire');
+  popup.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  if (FORMULAIRE_ACTIF) {
+    document.getElementById('mode-hiver').style.display = 'none';
+    document.getElementById('mode-formulaire').style.display = 'block';
+  } else {
+    document.getElementById('mode-hiver').style.display = 'block';
+    document.getElementById('mode-formulaire').style.display = 'none';
+  }
+}
+
+function fermerFormulaire() {
+  document.getElementById('popup-formulaire').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function verifierSecteur(val) {
+  if (val === 'hull-aylmer') {
+    document.getElementById('popup-hull').style.display = 'flex';
+  }
+}
+
+function fermerHull(compris) {
+  document.getElementById('popup-hull').style.display = 'none';
+  if (!compris) {
+    document.getElementById('select-secteur').value = '';
+  }
+}
+
+document.getElementById('popup-formulaire').addEventListener('click', function(e) {
+  if (e.target === this) fermerFormulaire();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') fermerFormulaire();
+});
+</script>
 
 <!-- Logo feu entre CTA et footer -->
 <div style="text-align:center; padding: 40px 0 20px; background: var(--dark);">
