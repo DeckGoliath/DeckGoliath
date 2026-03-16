@@ -2271,7 +2271,7 @@
       <h2 style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#E8B84B;margin-bottom:6px;text-align:center;">Demande de soumission</h2>
       <p style="font-family:'EB Garamond',serif;font-size:15px;color:var(--text-muted);text-align:center;margin-bottom:28px;font-style:italic;">Sans engagement — réponse sous 24h</p>
 
-      <form id="form-soumission" action="https://formspree.io/f/VOTRE_ID" method="POST" enctype="multipart/form-data">
+      <form id="form-soumission" action="https://formspree.io/f/mdawwpzg" method="POST" enctype="multipart/form-data">
 
         <div class="form-group">
           <label>Nom <span style="color:#C9962A;">*</span></label>
@@ -2292,8 +2292,13 @@
           <label>Secteur <span style="color:#999;font-size:13px;">(date d'ouverture de prise de rendez-vous selon le secteur)</span></label>
           <select name="secteur" id="select-secteur" onchange="verifierSecteur(this.value)" required>
             <option value="">SVP - Faire un choix</option>
-            <option value="gatineau-buckingham">Gatineau à Buckingham</option>
-            <option value="hull-aylmer">Hull · Aylmer · Chelsea · Cantley</option>
+            <option value="gatineau">Secteur de Gatineau</option>
+            <option value="masson-angers">Secteur de Masson-Angers</option>
+            <option value="buckingham">Secteur de Buckingham</option>
+            <option value="hull">Secteur de Hull</option>
+            <option value="aylmer">Secteur Aylmer</option>
+            <option value="chelsea">Chelsea Secteur</option>
+            <option value="cantley">Cantley</option>
           </select>
         </div>
 
@@ -2332,7 +2337,7 @@
 //  CHANGER ICI POUR ACTIVER/DÉSACTIVER LE FORMULAIRE
 //  false = mode hiver (message seulement)
 //  true  = mode saison (formulaire actif)
-var FORMULAIRE_ACTIF = true;
+var FORMULAIRE_ACTIF = false;
 // ══════════════════════════════════════════════════
 
 function ouvrirFormulaire() {
@@ -2354,7 +2359,8 @@ function fermerFormulaire() {
 }
 
 function verifierSecteur(val) {
-  if (val === 'hull-aylmer') {
+  var secteursLimites = ['hull', 'aylmer', 'chelsea', 'cantley'];
+  if (secteursLimites.indexOf(val) !== -1) {
     document.getElementById('popup-hull').style.display = 'flex';
   }
 }
@@ -2364,6 +2370,7 @@ function fermerHull(compris) {
   if (!compris) {
     document.getElementById('select-secteur').value = '';
   }
+  // si compris, on garde le choix
 }
 
 document.getElementById('popup-formulaire').addEventListener('click', function(e) {
@@ -2384,7 +2391,6 @@ document.addEventListener('keydown', function(e) {
 <footer>
   <div class="footer-info">
     <p>RBQ 5756-0096-01</p>
-    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb82858d84ab8f8e88808c8487828a9f83c5888a">[email&#160;protected]</a></p>
   </div>
   <ul class="footer-links">
     <li><a href="#pourquoi">Pourquoi nous</a></li>
