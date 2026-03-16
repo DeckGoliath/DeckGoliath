@@ -1183,12 +1183,16 @@
     background: var(--dark-surface);
   }
 
+  .service-bloc__inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
   .service-bloc__header {
     display: flex;
     align-items: flex-start;
-    gap: 32px;
-    max-width: 1140px;
-    margin: 0 auto 44px;
+    gap: 28px;
+    margin-bottom: 36px;
   }
 
   .service-bloc__num {
@@ -1198,11 +1202,7 @@
     color: rgba(201,150,42,0.12);
     line-height: 1;
     flex-shrink: 0;
-    width: 80px;
-  }
-
-  .service-bloc__info {
-    flex: 1;
+    width: 90px;
   }
 
   .service-bloc__info h3 {
@@ -1210,7 +1210,7 @@
     font-size: 20px;
     font-weight: 700;
     color: var(--gold-light);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: 0.5px;
   }
 
@@ -1219,38 +1219,30 @@
     font-size: 17px;
     color: var(--text-muted);
     line-height: 1.75;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
+  /* Photos grid — toujours 4 colonnes, 2 rangées max (8 photos) */
   .service-bloc__photos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    max-width: 1140px;
-    margin: 0 auto;
+    gap: 12px;
   }
 
   .service-bloc__photos .realisation-card {
     aspect-ratio: 4/3;
   }
 
-  /* 3-photo row */
-  .service-bloc__photos:has(.realisation-card:nth-child(3):last-child) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* 2-photo row */
-  .service-bloc__photos:has(.realisation-card:nth-child(2):last-child) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 600px;
-    margin-left: 0;
+  /* Images manquantes = fond sombre discret, pas de bris */
+  .service-bloc__photos .realisation-card img {
+    background: #0f0d08;
   }
 
   @media (max-width: 960px) {
     .service-bloc { padding: 50px 22px; }
-    .service-bloc__header { flex-direction: column; gap: 16px; }
+    .service-bloc__header { flex-direction: column; gap: 12px; }
     .service-bloc__num { font-size: 48px; width: auto; }
-    .service-bloc__photos { grid-template-columns: repeat(2, 1fr) !important; max-width: 100% !important; }
+    .service-bloc__photos { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -1458,115 +1450,92 @@
 </section>
 
 <!-- SERVICE 01 -->
-<div class="service-bloc" id="realisations">
-  <div class="service-bloc__header">
-    <div class="service-bloc__num">01</div>
-    <div class="service-bloc__info">
-      <div class="service-icon">🪵</div>
-      <h3>Construction de patio avec minimum d'entretien</h3>
-      <p>Conception et installation complète de patios en matériaux composites, PVC et minéraux. Minimum d'entretien, durabilité maximale, esthétique premium.</p>
-      <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
+<div class="service-bloc">
+  <div class="service-bloc__inner">
+    <div class="service-bloc__header">
+      <div class="service-bloc__num">01</div>
+      <div class="service-bloc__info">
+        <div class="service-icon">🪵</div>
+        <h3>Construction de patio avec minimum d'entretien</h3>
+        <p>Conception et installation complète de patios en matériaux composites, PVC et minéraux. Minimum d'entretien, durabilité maximale, esthétique premium.</p>
+        <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
+      </div>
     </div>
-  </div>
-  <div class="service-bloc__photos">
-    <!--
-    AJOUTER UNE PHOTO PATIO — copier-coller ce bloc et changer le nom du fichier:
-    <div class="realisation-card">
-      <img src="assets/patio-nom.png" alt="Description">
-      <div class="realisation-info"><span>Description</span></div>
-    </div>
-    -->
-    <!-- PATIO 1 — changer "assets/patio-1.png" -->
-    <div class="realisation-card">
-      <img src="assets/patio-1.png" alt="Patio sur mesure Gatineau">
-      <div class="realisation-info"><span>Patio sur mesure — Gatineau</span></div>
-    </div>
-    <!-- PATIO 2 — changer "assets/patio-2.png" -->
-    <div class="realisation-card">
-      <img src="assets/patio-2.png" alt="Patio sur mesure Buckingham">
-      <div class="realisation-info"><span>Patio sur mesure — Buckingham</span></div>
-    </div>
-    <!-- PATIO 3 — changer "assets/patio-3.png" -->
-    <div class="realisation-card">
-      <img src="assets/patio-3.png" alt="Patio sur mesure Aylmer">
-      <div class="realisation-info"><span>Patio sur mesure — Aylmer</span></div>
-    </div>
-    <!-- PATIO 4 — changer "assets/patio-4.png" -->
-    <div class="realisation-card">
-      <img src="assets/patio-4.png" alt="Patio sur mesure Hull">
-      <div class="realisation-info"><span>Patio sur mesure — Hull</span></div>
+    <div class="service-bloc__photos">
+      <!-- PATIO 1 --><div class="realisation-card"><img src="assets/patio-1.png" alt="Patio sur mesure 1"></div>
+      <!-- PATIO 2 --><div class="realisation-card"><img src="assets/patio-2.png" alt="Patio sur mesure 2"></div>
+      <!-- PATIO 3 --><div class="realisation-card"><img src="assets/patio-3.png" alt="Patio sur mesure 3"></div>
+      <!-- PATIO 4 --><div class="realisation-card"><img src="assets/patio-4.png" alt="Patio sur mesure 4"></div>
+      <!-- PATIO 5 --><div class="realisation-card"><img src="assets/patio-5.png" alt="Patio sur mesure 5"></div>
+      <!-- PATIO 6 --><div class="realisation-card"><img src="assets/patio-6.png" alt="Patio sur mesure 6"></div>
+      <!-- PATIO 7 --><div class="realisation-card"><img src="assets/patio-7.png" alt="Patio sur mesure 7"></div>
+      <!-- PATIO 8 --><div class="realisation-card"><img src="assets/patio-8.png" alt="Patio sur mesure 8"></div>
+      <!--
+      AJOUTER UNE PHOTO PATIO — copier-coller ce bloc:
+      <div class="realisation-card"><img src="assets/patio-X.png" alt="Description"></div>
+      -->
     </div>
   </div>
 </div>
 
 <!-- SERVICE 02 -->
 <div class="service-bloc service-bloc--alt">
-  <div class="service-bloc__header">
-    <div class="service-bloc__num">02</div>
-    <div class="service-bloc__info">
-      <div class="service-icon">🔩</div>
-      <h3>Remplacement de rampes en aluminium</h3>
-      <p>Remplacement de vos rampes existantes par des rampes en aluminium de qualité supérieure. Solides, élégantes et avec minimum d'entretien pour des décennies.</p>
-      <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
+  <div class="service-bloc__inner">
+    <div class="service-bloc__header">
+      <div class="service-bloc__num">02</div>
+      <div class="service-bloc__info">
+        <div class="service-icon">🔩</div>
+        <h3>Remplacement de rampes en aluminium</h3>
+        <p>Remplacement de vos rampes existantes par des rampes en aluminium de qualité supérieure. Solides, élégantes et avec minimum d'entretien pour des décennies.</p>
+        <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
+      </div>
     </div>
-  </div>
-  <div class="service-bloc__photos">
-    <!--
-    AJOUTER UNE PHOTO RAMPE — copier-coller ce bloc et changer le nom du fichier:
-    <div class="realisation-card">
-      <img src="assets/rampe-nom.png" alt="Description">
-      <div class="realisation-info"><span>Description</span></div>
-    </div>
-    -->
-    <!-- RAMPE 1 — changer "assets/rampe-1.png" -->
-    <div class="realisation-card">
-      <img src="assets/rampe-1.png" alt="Rampes aluminium Gatineau">
-      <div class="realisation-info"><span>Rampes aluminium — Gatineau</span></div>
-    </div>
-    <!-- RAMPE 2 — changer "assets/rampe-2.png" -->
-    <div class="realisation-card">
-      <img src="assets/rampe-2.png" alt="Rampes aluminium Hull">
-      <div class="realisation-info"><span>Rampes aluminium — Hull</span></div>
-    </div>
-    <!-- RAMPE 3 — changer "assets/rampe-3.png" -->
-    <div class="realisation-card">
-      <img src="assets/rampe-3.png" alt="Rampes aluminium Aylmer">
-      <div class="realisation-info"><span>Rampes aluminium — Aylmer</span></div>
+    <div class="service-bloc__photos">
+      <!-- RAMPE 1 --><div class="realisation-card"><img src="assets/rampe-1.png" alt="Rampes aluminium 1"></div>
+      <!-- RAMPE 2 --><div class="realisation-card"><img src="assets/rampe-2.png" alt="Rampes aluminium 2"></div>
+      <!-- RAMPE 3 --><div class="realisation-card"><img src="assets/rampe-3.png" alt="Rampes aluminium 3"></div>
+      <!-- RAMPE 4 --><div class="realisation-card"><img src="assets/rampe-4.png" alt="Rampes aluminium 4"></div>
+      <!-- RAMPE 5 --><div class="realisation-card"><img src="assets/rampe-5.png" alt="Rampes aluminium 5"></div>
+      <!-- RAMPE 6 --><div class="realisation-card"><img src="assets/rampe-6.png" alt="Rampes aluminium 6"></div>
+      <!-- RAMPE 7 --><div class="realisation-card"><img src="assets/rampe-7.png" alt="Rampes aluminium 7"></div>
+      <!-- RAMPE 8 --><div class="realisation-card"><img src="assets/rampe-8.png" alt="Rampes aluminium 8"></div>
+      <!--
+      AJOUTER UNE PHOTO RAMPE — copier-coller ce bloc:
+      <div class="realisation-card"><img src="assets/rampe-X.png" alt="Description"></div>
+      -->
     </div>
   </div>
 </div>
 
 <!-- SERVICE 03 -->
 <div class="service-bloc">
-  <div class="service-bloc__header">
-    <div class="service-bloc__num">03</div>
-    <div class="service-bloc__info">
-      <div class="service-icon">⚙️</div>
-      <h3>Installation de pieux vissés CCMC</h3>
-      <p>Installation de pieux vissés certifiés CCMC pour fondations résidentielles. Une solution permanente, rapide et approuvée.</p>
-      <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
+  <div class="service-bloc__inner">
+    <div class="service-bloc__header">
+      <div class="service-bloc__num">03</div>
+      <div class="service-bloc__info">
+        <div class="service-icon">⚙️</div>
+        <h3>Installation de pieux vissés CCMC</h3>
+        <p>Installation de pieux vissés certifiés CCMC pour fondations résidentielles. Une solution permanente, rapide et approuvée.</p>
+        <p class="service-mention">— Résidentiel uniquement, propriétaire-occupant</p>
+      </div>
     </div>
-  </div>
-  <div class="service-bloc__photos">
-    <!--
-    AJOUTER UNE PHOTO PIEUX — copier-coller ce bloc et changer le nom du fichier:
-    <div class="realisation-card">
-      <img src="assets/pieux-nom.png" alt="Description">
-      <div class="realisation-info"><span>Description</span></div>
-    </div>
-    -->
-    <!-- PIEUX 1 — changer "assets/pieux-1.png" -->
-    <div class="realisation-card">
-      <img src="assets/pieux-1.png" alt="Pieux vissés Gatineau">
-      <div class="realisation-info"><span>Pieux vissés — Gatineau</span></div>
-    </div>
-    <!-- PIEUX 2 — changer "assets/pieux-2.png" -->
-    <div class="realisation-card">
-      <img src="assets/pieux-2.png" alt="Pieux vissés Buckingham">
-      <div class="realisation-info"><span>Pieux vissés — Buckingham</span></div>
+    <div class="service-bloc__photos">
+      <!-- PIEUX 1 --><div class="realisation-card"><img src="assets/pieux-1.png" alt="Pieux vissés 1"></div>
+      <!-- PIEUX 2 --><div class="realisation-card"><img src="assets/pieux-2.png" alt="Pieux vissés 2"></div>
+      <!-- PIEUX 3 --><div class="realisation-card"><img src="assets/pieux-3.png" alt="Pieux vissés 3"></div>
+      <!-- PIEUX 4 --><div class="realisation-card"><img src="assets/pieux-4.png" alt="Pieux vissés 4"></div>
+      <!-- PIEUX 5 --><div class="realisation-card"><img src="assets/pieux-5.png" alt="Pieux vissés 5"></div>
+      <!-- PIEUX 6 --><div class="realisation-card"><img src="assets/pieux-6.png" alt="Pieux vissés 6"></div>
+      <!-- PIEUX 7 --><div class="realisation-card"><img src="assets/pieux-7.png" alt="Pieux vissés 7"></div>
+      <!-- PIEUX 8 --><div class="realisation-card"><img src="assets/pieux-8.png" alt="Pieux vissés 8"></div>
+      <!--
+      AJOUTER UNE PHOTO PIEUX — copier-coller ce bloc:
+      <div class="realisation-card"><img src="assets/pieux-X.png" alt="Description"></div>
+      -->
     </div>
   </div>
 </div>
+
 
 <!-- ═══ GUIDE DU CITOYEN ═══ -->
 <section class="section" id="verifier">
