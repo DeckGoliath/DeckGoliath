@@ -2341,7 +2341,19 @@
 //  false = mode hiver (message seulement)
 //  true  = mode saison (formulaire actif)
 var FORMULAIRE_ACTIF = true;
+
+//  CHANGER ICI POUR AFFICHER/MASQUER LE BOUTON NAV
+//  false = bouton caché (le monde lit le site)
+//  true  = bouton visible
+var BOUTON_NAV_ACTIF = false;
 // ══════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (!BOUTON_NAV_ACTIF) {
+    var btn = document.querySelector('.btn-nav');
+    if (btn) btn.style.display = 'none';
+  }
+});
 
 function ouvrirFormulaire() {
   var popup = document.getElementById('popup-formulaire');
