@@ -1371,6 +1371,47 @@
     .lightbox-btn--next { right: 0; }
     .lightbox-btn { width: 40px; height: 40px; font-size: 20px; }
   }
+
+  .guide-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,150,42,0.3);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+  .guide-closing {
+    margin-top: 28px;
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: rgba(240,234,214,0.65);
+    border-top: 1px solid rgba(201,150,42,0.15);
+    padding-top: 20px;
+  }
+  .guide-link:hover {
+    color: var(--gold-pale);
+    border-bottom-color: var(--gold);
+  }
+  /* 4 cards in 2x2 grid */
+  .guide-cards {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .guide-closing {
+    margin-top: 28px;
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--gold-light);
+    border-left: 2px solid var(--gold);
+    padding-left: 16px;
+    line-height: 1.7;
+  }
 </style>
 </head>
 <body>
@@ -1683,24 +1724,39 @@
       <div class="guide-body">
         <h2>Un entrepreneur sérieux n'a jamais peur d'être vérifié.</h2>
         <p>La transparence protège les citoyens.</p>
-        <p>Oui, un entrepreneur sérieux a un <strong>prix.</strong><br>
-        Mais la conformité, la solidité et la <strong>tranquillité d'esprit…</strong><br>
-        <strong>ça, ça n'a pas de prix.</strong></p>
+        <p>Nous ne prétendons pas à la perfection. Mais nous croyons qu'un entrepreneur sérieux doit être <strong>transparent, conforme</strong> et faire tout en son pouvoir pour livrer des travaux de qualité, dans les règles de l'art. Oui, un entrepreneur sérieux a un <strong>prix.</strong> Mais la conformité, la qualité d'exécution et la tranquillité d'esprit ont une vraie valeur.</p>
 
         <div class="guide-cards">
+
           <div class="guide-card">
-            <h3><span class="check">✓</span> RBQ</h3>
-            <p>Vérifie la licence : catégories, statut et conditions. Demande le numéro et confirme qu'il est actif.</p>
+            <h3><span class="check">✓</span> Licence RBQ</h3>
+            <p>Le numéro de licence RBQ devrait être affiché clairement sur le site web, la soumission, les documents de l'entreprise ou le véhicule. S'il n'est pas visible, demandez-le. Vérifiez ensuite que la licence est bien <strong>active</strong> et que les catégories autorisées correspondent réellement aux travaux demandés.</p>
+            <a href="https://www.pes.rbq.gouv.qc.ca/RegistreLicences" target="_blank" class="guide-link">🔍 Vérifier au registre RBQ →</a>
           </div>
+
+          <div class="guide-card">
+            <h3><span class="check">✓</span> NEQ — Registre des entreprises</h3>
+            <p>Vérifiez que l'entreprise est bien immatriculée au Registre des entreprises du Québec et que ses informations sont à jour. Une entreprise <strong>établie, identifiable et transparente</strong> inspire davantage confiance.</p>
+            <a href="https://www.registreentreprises.gouv.qc.ca/fr/rechercher/" target="_blank" class="guide-link">🔍 Rechercher au Registre du Québec →</a>
+          </div>
+
           <div class="guide-card">
             <h3><span class="check">✓</span> Assurance responsabilité</h3>
-            <p>Demande une preuve d'assurance à leur montant et dates. Un pro sérieux ne s'envole pas sans hésiter.</p>
+            <p>Exigez une <strong>preuve d'assurance</strong> indiquant le montant de couverture ainsi que les dates de validité. Un entrepreneur sérieux devrait être en mesure de la fournir clairement, sans hésitation.</p>
           </div>
+
           <div class="guide-card">
-            <h3><span class="check">✓</span> Contrat &amp; détails</h3>
-            <p>Prix, matériaux, plan, échéancier. Inclus/exclus, garantie. Tout doit être clair avant le dépôt.</p>
+            <h3><span class="check">✓</span> Contrat clair</h3>
+            <p>Un bon contrat indique clairement les <strong>travaux prévus, les inclusions, les exclusions et le prix convenu</strong>. Avant de signer, assurez-vous de bien comprendre les conditions ainsi que toute situation exceptionnelle pouvant entraîner un ajustement.</p>
           </div>
+
+          <div class="guide-card">
+            <h3><span class="check">✓</span> Avis clients</h3>
+            <p>Les avis Google peuvent aider à mieux comprendre l'expérience vécue par d'autres clients. Au-delà de la note générale, prenez le temps de consulter les <strong>commentaires les plus récents</strong> et de voir si les avis sont répartis dans le temps, afin d'obtenir un portrait plus juste et plus actuel de l'entreprise.</p>
+          </div>
+
         </div>
+        <p class="guide-closing">Un entrepreneur sérieux n'a jamais peur d'être vérifié. Au contraire, il devrait vous encourager à le faire.</p>
       </div>
     </div>
   </div>
