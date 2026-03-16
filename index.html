@@ -647,7 +647,7 @@
 
   /* ═══════════════════════ CTA ═══════════════════════ */
   .cta-section {
-    padding: 120px 52px;
+    padding: 0px 52px 100px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1756,6 +1756,24 @@
   @media (max-width: 960px) {
     .vc-card { padding: 24px 20px; }
   }
+
+  .cta-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.7;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .vc-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
 </style>
 </head>
 <body>
@@ -2076,6 +2094,7 @@
       <div class="vc-card">
         <p class="vc-num">01</p>
         <h3 class="vc-title"><span class="check">✓</span> Licence RBQ</h3>
+        <p class="vc-ref">RBQ : 5756-0096-01</p>
         <p class="vc-text">Le numéro de licence RBQ devrait être affiché clairement sur le site web, la soumission, les documents de l'entreprise ou le véhicule. S'il n'est pas visible, demandez-le. Vérifiez ensuite que la licence est bien <strong>active</strong> et que les catégories autorisées correspondent réellement aux travaux demandés.</p>
         <a href="https://www.pes.rbq.gouv.qc.ca/RegistreLicences" target="_blank" class="vc-link">🔍 Vérifier au registre RBQ →</a>
       </div>
@@ -2083,6 +2102,7 @@
       <div class="vc-card">
         <p class="vc-num">02</p>
         <h3 class="vc-title"><span class="check">✓</span> NEQ — Registre des entreprises</h3>
+        <p class="vc-ref">NEQ : 2270858360</p>
         <p class="vc-text">Vérifiez que l'entreprise est bien immatriculée au Registre des entreprises du Québec et que ses informations sont à jour. Une entreprise <strong>établie, identifiable et transparente</strong> inspire davantage confiance.</p>
         <a href="https://www.registreentreprises.gouv.qc.ca/fr/rechercher/" target="_blank" class="vc-link">🔍 Rechercher au Registre du Québec →</a>
       </div>
@@ -2108,6 +2128,7 @@
     </div>
 
     <p class="guide-closing">Un entrepreneur sérieux n'a jamais peur d'être vérifié. Au contraire, il devrait vous encourager à le faire.</p>
+    <div class="gold-line" style="margin-top:36px;"></div>
 
   </div>
 </section>
@@ -2116,8 +2137,8 @@
 
 <!-- ═══ CTA ═══ -->
 <section class="cta-section" id="contact">
-  <div class="gold-line"></div>
   <h2 class="section-title"><span class="gold">Prêt à construire</span><br>quelque chose d'exceptionnel?</h2>
+  <div class="gold-line" style="margin:16px auto 24px;"></div>
   <p>Soumission gratuite, sans engagement — réponse en 24h.</p>
   <a href="tel:+15141234567" class="btn-cta">Demander une soumission</a>
 </section>
