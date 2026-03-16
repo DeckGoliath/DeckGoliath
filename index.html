@@ -67,7 +67,7 @@
   }
 
   .logo img {
-    height: 160px;
+    height: 110px;
     width: auto;
     filter: drop-shadow(0 0 12px rgba(201,150,42,0.5));
   }
@@ -87,6 +87,20 @@
     text-transform: uppercase;
     transition: color 0.2s;
     position: relative;
+    text-align: center;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul a span {
+    font-size: 10px;
+    letter-spacing: 1px;
+    opacity: 0.75;
+    font-weight: 400;
+    text-transform: none;
+    font-style: italic;
   }
 
   nav ul a::after {
@@ -129,7 +143,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 130px 6vw 90px;
+    padding: 190px 6vw 90px;
   }
 
   .hero-bg {
@@ -1171,10 +1185,10 @@
     <span class="logo-text-only" style="display:none;">DECK GOLIATH</span>
   </a>
   <ul>
-    <li><a href="#pourquoi">Pourquoi</a></li>
-    <li><a href="#secteurs">Secteurs</a></li>
-    <li><a href="#realisations">Réalisations</a></li>
-    <li><a href="#verifier">Vérifier</a></li>
+    <li><a href="#pourquoi">Pourquoi<br><span>nous</span></a></li>
+    <li><a href="#secteurs">Secteurs<br><span>d'activité</span></a></li>
+    <li><a href="#realisations">Réalisations<br><span>Signées Deck Goliath</span></a></li>
+    <li><a href="#verifier">Vérifier<br><span>un entrepreneur</span></a></li>
   </ul>
   <button class="btn-nav" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
     Demander une soumission
