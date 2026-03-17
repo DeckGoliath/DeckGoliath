@@ -65,7 +65,7 @@
   /* ═══════════════════════ NAV ═══════════════════════ */
   nav {
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 34px; left: 0; right: 0;
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -165,7 +165,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 200px 6vw 30px;
+    padding: 220px 6vw 30px;
   }
 
   .hero-bg {
@@ -2060,11 +2060,21 @@
     vertical-align: middle;
   }
 
+
+  @media (max-width: 960px) {
+    #topbar { padding: 6px 14px; }
+    #topbar p { font-size: 11px; letter-spacing: 0.5px; }
+  }
+  @media (max-width: 600px) {
+    #topbar span { display: none; }
+    #topbar p { text-align: right; }
+  }
 </style>
 <script>
 var LANG='fr';
 var T={
 'btn-soumission':{fr:'Demander une soumission',en:'Request a quote'},
+'slogan':{fr:'Vos besoins, vos r\u00eaves, notre sp\u00e9cialit\u00e9!',en:'Your needs, your dreams, our specialty!'},
 'hero-title':{fr:'Minimaliste.<br><span class="gold">Luxueux.<\/span><br>In\u00e9branlable.',en:'Minimalist.<br><span class="gold">Luxurious.<\/span><br>Unwavering.'},
 'hero-p1':{fr:'Deck Goliath réalise la construction de patios et terrasses haut de gamme à Gatineau et en Outaouais, avec une approche claire : un accompagnement direct du début à la fin, une exécution maîtrisée et des matériaux de qualité supérieure tels que la gamme minérale de Deckorators, le PVC de TimberTech / AZEK, ainsi que les rampes en aluminium Regal Ideas. Par souci de qualité et de durabilité, nous ne réalisons plus de patios avec finition en bois traité.',en:'At Deck Goliath, we provide high-end patio and deck construction in Gatineau and across Outaouais, with a clear approach: direct guidance from start to finish, precise execution, and premium materials including Deckorators mineral composite, TimberTech / AZEK PVC, and Regal Ideas aluminum railings. In the interest of quality and durability, we no longer build patios with pressure-treated wood finishes.'},
 'hero-p2':{fr:"Pour nous, il n'y a ni petit projet ni gros projet : il y a <em>votre<\/em> projet. Il m\u00e9rite le m\u00eame s\u00e9rieux, la m\u00eame \u00e9coute et le m\u00eame niveau d'attention. Le service \u00e0 la client\u00e8le est une priorit\u00e9, au m\u00eame titre que la qualit\u00e9 de ce que nous construisons.",en:"For us, there are no small projects \u2014 there is <em>your<\/em> project. It deserves the same attention, care, and commitment. Customer service is a priority. From the very first meeting, we take the time to understand your needs and present an estimate that aligns with your choices."},
@@ -2190,6 +2200,7 @@ function applyLang(){
   setTxt('t-hull-fermer','hull-fermer');
   setTxt('t-hull-compris','hull-compris');
   setTxt('t-sect1-period','sect1-period');
+  set('t-slogan','slogan');
   setTxt('t-sect2-period','sect2-period');
   var sel=document.getElementById('select-secteur');
   if(sel){var sk=['form-select','sect-gatineau','sect-masson','sect-buckingham','sect-hull','sect-aylmer','sect-chelsea','sect-cantley'];sk.forEach(function(k,i){if(sel.options[i])sel.options[i].text=T[k][l];});}
@@ -2207,6 +2218,13 @@ function applyLang(){
 </script>
 </head>
 <body>
+
+<!-- ═══ TOPBAR ═══ -->
+<div id="topbar" style="background:rgba(10,8,6,0.97); border-bottom:1px solid rgba(201,150,42,0.2); padding:7px 52px; position:fixed; top:0; left:0; right:0; z-index:1001; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+  <a href="tel:+18194847851" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:rgba(201,150,42,0.85); letter-spacing:1px; text-decoration:none; white-space:nowrap;">📞 819-484-7851</a>
+  <p id="t-slogan" style="font-family:'EB Garamond',serif; font-size:13px; font-style:italic; color:rgba(240,234,214,0.7); letter-spacing:1.5px; margin:0; text-align:center; flex:1;">Vos besoins, vos rêves, notre spécialité!</p>
+  <span style="font-family:'Montserrat',sans-serif; font-size:12px; color:rgba(201,150,42,0.85); letter-spacing:1px; white-space:nowrap;">📍 Gatineau, Outaouais</span>
+</div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
@@ -2744,7 +2762,7 @@ function applyLang(){
 //  CHANGER ICI POUR ACTIVER/DÉSACTIVER LE FORMULAIRE
 //  false = mode hiver (message seulement)
 //  true  = mode saison (formulaire actif)
-var FORMULAIRE_ACTIF = true;
+var FORMULAIRE_ACTIF = false;
 
 //  CHANGER ICI POUR AFFICHER/MASQUER LE BOUTON NAV
 //  false = bouton caché (le monde lit le site)
@@ -2823,34 +2841,31 @@ document.addEventListener('keydown', function(e) {
 </div>
 
 <!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="footer-info">
-    <p>RBQ 5756-0096-01</p>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/deckgoliath" target="_blank" class="social-link" title="Instagram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        Instagram
-      </a>
-      <a href="https://www.facebook.com/deckgoliath" target="_blank" class="social-link" title="Facebook">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        Facebook
-      </a>
-      <a href="https://g.co/kgs/3cV8qX" target="_blank" class="social-link" title="Google">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-        Google
-      </a>
-    </div>
+<footer style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding:28px 52px; background:#070503; border-top:1px solid rgba(201,150,42,0.12);">
+
+  <!-- Gauche : réseaux sociaux -->
+  <div class="footer-social">
+    <a href="https://www.instagram.com/deckgoliath" target="_blank" class="social-link" title="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.facebook.com/deckgoliath" target="_blank" class="social-link" title="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      Facebook
+    </a>
+    <a href="https://g.co/kgs/3cV8qX" target="_blank" class="social-link" title="Google">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Google
+    </a>
   </div>
-  <ul class="footer-links">
-    <li><a href="#pourquoi" id="t-footer-link1">Pourquoi nous</a></li>
-    <li><a href="#secteurs" id="t-footer-link2">Secteurs d'activité</a></li>
-    <li><a href="#services" id="t-footer-link3">Réalisations</a></li>
-    <li><a href="#services" id="t-footer-link4">Services</a></li>
-    <li><a href="#verifier" id="t-footer-link5">Vérifier</a></li>
-    <li id="footer-emploi"><a href="#emploi" style="color:var(--gold);">Emploi</a></li>
-  </ul>
-  <p style="font-size:11px; color:var(--text-dim); letter-spacing:0.5px;"><span id="t-footer-copy">© 2026 Deck Goliath. Tous droits réservés.</span>
-  <p id="t-footer-disclaimer" style="display:none; font-size:11px; color:var(--text-dim); font-style:italic; margin-top:8px; letter-spacing:0.3px;">The French version of this website is the original. The English version is a translation provided for convenience.</p></p>
+
+  <!-- Droite : RBQ + copyright -->
+  <div style="text-align:right;">
+    <p style="font-size:12px; color:var(--text-muted); letter-spacing:0.8px; margin-bottom:4px;">RBQ 5756-0096-01</p>
+    <p style="font-size:11px; color:var(--text-dim); letter-spacing:0.5px;"><span id="t-footer-copy">© 2026 Deck Goliath. Tous droits réservés.</span></p>
+    <p id="t-footer-disclaimer" style="display:none; font-size:11px; color:var(--text-dim); font-style:italic; margin-top:6px;">The French version of this website is the original. The English version is a translation provided for convenience.</p>
+  </div>
+
 </footer>
 
 <!-- LIGHTBOX -->
