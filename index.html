@@ -808,8 +808,7 @@
     nav { padding: 10px 16px; }
     nav ul { display: none; }
     .btn-nav { display: none; }
-    #nav-emploi { display: none !important; }
-    .btn-emploi-mobile { display: inline-flex !important; }
+
     .hero-mobile-cta { display: none !important; }
     #topbar { padding: 6px 14px; flex-wrap: wrap; gap: 4px; }
     #topbar p { font-size: 11px; flex: 1; text-align: center; }
@@ -2077,11 +2076,13 @@
     gap: 6px;
   }
 
-  .btn-emploi-mobile {
-    display: none;
-    font-size: 10px;
-    padding: 5px 10px;
-    letter-spacing: 1px;
+  /* Desktop + landscape: bouton dans nav, pas sous le logo */
+  .btn-emploi-mobile { display: none !important; }
+
+  /* Portrait mobile seulement */
+  @media (orientation: portrait) and (max-width: 600px) {
+    #nav-emploi { display: none !important; }
+    .btn-emploi-mobile { display: inline-flex !important; }
   }
 </style>
 <script>
