@@ -805,10 +805,14 @@
   }
 
   @media (max-width: 960px) {
-    nav { padding: 14px 22px; }
+    nav { padding: 10px 16px; }
     nav ul { display: none; }
     .btn-nav { display: none; }
+    #nav-emploi { display: none !important; }
+    .btn-emploi-mobile { display: inline-flex !important; }
     .hero-mobile-cta { display: none !important; }
+    #topbar { padding: 6px 14px; flex-wrap: wrap; gap: 4px; }
+    #topbar p { font-size: 11px; flex: 1; text-align: center; }
     .hero {
       padding: 40px 22px 60px;
       min-height: auto;
@@ -2065,6 +2069,20 @@
     #topbar p { font-size: 11px; letter-spacing: 0.5px; }
     #topbar span { display: none; }
   }
+
+  .logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .btn-emploi-mobile {
+    display: none;
+    font-size: 10px;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+  }
 </style>
 <script>
 var LANG='fr';
@@ -2224,12 +2242,15 @@ function applyLang(){
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
-  <a href="#" class="logo">
-    <img src="assets/logo.png" alt="Deck Goliath"
-      onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'"
-      style="height:80px; width:auto;">
-    <span class="logo-text-only" style="display:none;">DECK GOLIATH</span>
-  </a>
+  <div class="logo-wrap">
+    <a href="#" class="logo">
+      <img src="assets/logo.png" alt="Deck Goliath"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'"
+        style="height:80px; width:auto;">
+      <span class="logo-text-only" style="display:none;">DECK GOLIATH</span>
+    </a>
+    <button id="nav-emploi-mobile" class="btn-emploi btn-emploi-mobile" onclick="ouvrirEmploi()">Nous recrutons <span class="emploi-badge">!</span></button>
+  </div>
   <ul>
     <li><a href="#pourquoi" data-fr="Pourquoi<br><span>nous</span>" data-en="Why<br><span>us</span>">Pourquoi<br><span>nous</span></a></li>
     <li><a href="#secteurs" data-fr="Secteurs<br><span>d'activité</span>" data-en="Service<br><span>areas</span>">Secteurs<br><span>d'activité</span></a></li>
