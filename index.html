@@ -2059,9 +2059,6 @@
     vertical-align: middle;
   }
 
-  @media (max-width: 960px) {
-    .btn-emploi { display: none; }
-  }
 </style>
 <script>
 var LANG='fr';
@@ -2223,9 +2220,9 @@ function applyLang(){
     <li><a href="#secteurs" data-fr="Secteurs<br><span>d'activité</span>" data-en="Service<br><span>areas</span>">Secteurs<br><span>d'activité</span></a></li>
     <li><a href="#services" data-fr="Réalisations<br><span>Signées Deck Goliath</span>" data-en="Projects<br><span>By Deck Goliath</span>">Réalisations<br><span>Signées Deck Goliath</span></a></li>
     <li><a href="#verifier" data-fr="Vérifier<br><span>un entrepreneur</span>" data-en="Verify<br><span>a contractor</span>">Vérifier<br><span>un entrepreneur</span></a></li>
-    <button id="nav-emploi" class="btn-emploi" onclick="ouvrirEmploi()">Emploi <span class="emploi-badge">!</span></button>
   </ul>
   <div style="display:flex;align-items:center;gap:10px;">
+    <button id="nav-emploi" class="btn-emploi" onclick="ouvrirEmploi()">Emploi <span class="emploi-badge">!</span></button>
     <button class="btn-lang" onclick="toggleLang()" id="btn-lang">EN</button>
     <button class="btn-nav" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
       Demander une soumission
@@ -2948,8 +2945,7 @@ document.getElementById('lb').addEventListener('click',function(e){if(e.target==
       <p>Salaire compétitif à discuter. Si tu es réellement la bonne personne — <strong>la rémunération sera à la mesure de la qualité du travail</strong> et de la valeur réelle apportée sur le chantier.</p>
 
       <div class="emploi-cta">
-        <p>Si tu penses être la bonne personne, écris-nous avec ton expérience et tes disponibilités.</p>
-        <button class="btn-cta" style="margin-top:16px;" onclick="fermerEmploi(); ouvrirFormulaire();">Nous contacter</button>
+        <p>Si tu penses être la bonne personne, écris-nous à <strong style="color:var(--gold-light);">emploi&#64;deckgoliath&#46;com</strong> avec ton expérience et tes disponibilités.</p>
       </div>
     </div>
   </div>
