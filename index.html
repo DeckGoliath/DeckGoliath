@@ -1968,6 +1968,100 @@
       width: 95%;
     }
   }
+
+  /* ═══ OFFRE D'EMPLOI ═══ */
+  .emploi-body p {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: rgba(240,234,214,0.8);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .emploi-body p strong { color: var(--gold-light); }
+
+  .emploi-body h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin: 32px 0 14px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(201,150,42,0.2);
+    padding-bottom: 8px;
+  }
+
+  .emploi-body ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+  }
+
+  .emploi-body ul li {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: rgba(240,234,214,0.75);
+    line-height: 1.75;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .emploi-body ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  .emploi-cta {
+    margin-top: 40px;
+    padding: 28px 32px;
+    background: rgba(201,150,42,0.06);
+    border: 1px solid rgba(201,150,42,0.25);
+    text-align: center;
+  }
+
+  .btn-emploi {
+    background: rgba(201,150,42,0.12);
+    border: 1px solid rgba(201,150,42,0.5);
+    color: var(--gold-light);
+    padding: 8px 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  .btn-emploi:hover {
+    background: rgba(201,150,42,0.25);
+    border-color: var(--gold);
+  }
+
+  .emploi-badge {
+    display: inline-block;
+    background: #C9962A;
+    color: #0A0806;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 16px;
+    text-align: center;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 960px) {
+    .btn-emploi { display: none; }
+  }
 </style>
 <script>
 var LANG='fr';
@@ -2129,6 +2223,7 @@ function applyLang(){
     <li><a href="#secteurs" data-fr="Secteurs<br><span>d'activité</span>" data-en="Service<br><span>areas</span>">Secteurs<br><span>d'activité</span></a></li>
     <li><a href="#services" data-fr="Réalisations<br><span>Signées Deck Goliath</span>" data-en="Projects<br><span>By Deck Goliath</span>">Réalisations<br><span>Signées Deck Goliath</span></a></li>
     <li><a href="#verifier" data-fr="Vérifier<br><span>un entrepreneur</span>" data-en="Verify<br><span>a contractor</span>">Vérifier<br><span>un entrepreneur</span></a></li>
+    <button id="nav-emploi" class="btn-emploi" onclick="ouvrirEmploi()">Emploi <span class="emploi-badge">!</span></button>
   </ul>
   <div style="display:flex;align-items:center;gap:10px;">
     <button class="btn-lang" onclick="toggleLang()" id="btn-lang">EN</button>
@@ -2493,6 +2588,61 @@ function applyLang(){
   </div>
 </section>
 
+<!-- ═══ OFFRE D'EMPLOI (popup seulement) ═══ -->
+<section class="section" id="emploi" style="display:none;">
+  <div class="section-inner" style="max-width:860px;">
+    <div class="gold-line"></div>
+    <div style="display:inline-block; background:linear-gradient(135deg,#C9962A,#9A6B10); color:#0A0806; font-family:'Cinzel',serif; font-size:11px; font-weight:700; letter-spacing:2px; padding:6px 18px; margin-bottom:20px; text-transform:uppercase;">Nous embauchons</div>
+    <h2 class="section-title" style="text-align:left;">Deck Goliath embauche — <span class="gold">Charpentier / Installateur de patios</span></h2>
+    <p style="font-family:'Cinzel',serif; font-size:13px; color:var(--text-muted); letter-spacing:2px; margin-bottom:40px;">Secteur Outaouais</p>
+
+    <div class="emploi-body">
+      <p>Nous sommes à la recherche d'une personne d'expérience en patio, charpente et finition extérieure, qui aime le travail bien fait et qui est fière de ce qu'elle construit.</p>
+      <p>Chez Deck Goliath, nous réalisons des patios haut de gamme en PVC et composite. Nous cherchons donc quelqu'un qui comprend l'importance des détails, de la précision et de la belle finition.</p>
+
+      <h3>Profil recherché</h3>
+      <p>Nous cherchons quelqu'un qui :</p>
+      <ul>
+        <li>possède idéalement un minimum de <strong>5 ans d'expérience</strong> en patio, charpente ou construction extérieure;</li>
+        <li>fait un travail propre, solide et soigné;</li>
+        <li>aime les belles finitions;</li>
+        <li>n'a pas peur de se faire reprendre au besoin;</li>
+        <li>veut apprendre et comprend qu'il ne connaît pas tout;</li>
+        <li>ne prend pas les commentaires personnellement;</li>
+        <li>est fiable, mature, respectueux et professionnel;</li>
+        <li>peut prendre le relais sur un chantier et continuer de façon autonome si je dois quitter.</li>
+      </ul>
+
+      <h3>Réalité du poste</h3>
+      <p>Le poste peut convenir à quelqu'un qui cherche un horaire à <strong>temps plein, à temps partiel, sur appel</strong> au besoin, ou encore un revenu supplémentaire.</p>
+      <p>À savoir :</p>
+      <ul>
+        <li>nous travaillons principalement durant la saison estivale;</li>
+        <li>horaire de jour, du lundi au vendredi;</li>
+        <li>nous travaillons quand la météo le permet;</li>
+        <li>quand il pleut, nous ne travaillons pas;</li>
+        <li>certaines journées peuvent changer selon la météo ou les imprévus;</li>
+        <li>j'ai aussi des obligations personnelles, donc il peut arriver qu'une urgence m'oblige à partir. J'ai donc besoin de quelqu'un de fiable, capable de garder le chantier en ordre et de faire avancer les travaux comme il faut.</li>
+      </ul>
+
+      <h3>Ce qu'on veut</h3>
+      <p>On ne cherche pas quelqu'un qui pense tout savoir.<br>
+      On cherche quelqu'un de <strong>pro, avec une bonne attitude</strong>, qui aime bâtir du solide, bien faire les choses et être fier du résultat final.</p>
+      <p>Que tu sois un ami, une connaissance ou une nouvelle personne qui souhaite se joindre à nous, l'important pour nous est avant tout <strong>la bonne attitude, le professionnalisme et le bon fit sur le chantier</strong>.</p>
+      <p>Nous cherchons quelqu'un de mature, capable de comprendre que si jamais ça ne colle pas des deux côtés, ça peut simplement vouloir dire que ce n'était pas le bon match, sans rancune.</p>
+      <p>Parfait pour quelqu'un qui a déjà un emploi, mais qui veut quelque chose de <strong>flexible de jour, du lundi au vendredi</strong>, dans une équipe sérieuse.</p>
+
+      <h3>Salaire</h3>
+      <p>Salaire compétitif à discuter. Si tu es réellement la bonne personne — autonome, fiable, professionnelle et à la hauteur — <strong>la rémunération sera à la mesure de la qualité du travail</strong> et de la valeur réelle apportée sur le chantier.</p>
+
+      <div class="emploi-cta">
+        <p>Si tu penses être la bonne personne, écris-nous avec ton expérience et tes disponibilités.</p>
+        <button class="btn-cta" style="margin-top:20px;" onclick="ouvrirFormulaire()">Nous contacter</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CTA ═══ -->
 <section class="cta-section" id="contact">
   <h2 class="section-title" id="t-cta-title"><span class="gold">Prêt à construire</span><br>quelque chose d'exceptionnel?</h2>
@@ -2602,6 +2752,22 @@ var FORMULAIRE_ACTIF = false;
 //  false = bouton caché (le monde lit le site)
 //  true  = bouton visible
 var BOUTON_NAV_ACTIF = false;
+
+// ══════════════════════════════════════════════════
+//  OFFRE D'EMPLOI — activer/désactiver
+//  true  = offre visible
+//  false = offre cachée
+var EMPLOI_ACTIF = true;
+// ══════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', function() {
+  var lien = document.getElementById('nav-emploi');
+  var footerLien = document.getElementById('footer-emploi');
+  if (!EMPLOI_ACTIF) {
+    if (lien) lien.style.display = 'none';
+    if (footerLien) footerLien.style.display = 'none';
+  }
+});
 // ══════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -2683,6 +2849,7 @@ document.addEventListener('keydown', function(e) {
     <li><a href="#services" id="t-footer-link3">Réalisations</a></li>
     <li><a href="#services" id="t-footer-link4">Services</a></li>
     <li><a href="#verifier" id="t-footer-link5">Vérifier</a></li>
+    <li id="footer-emploi"><a href="#emploi" style="color:var(--gold);">Emploi</a></li>
   </ul>
   <p style="font-size:11px; color:var(--text-dim); letter-spacing:0.5px;"><span id="t-footer-copy">© 2026 Deck Goliath. Tous droits réservés.</span>
   <p id="t-footer-disclaimer" style="display:none; font-size:11px; color:var(--text-dim); font-style:italic; margin-top:8px; letter-spacing:0.3px;">The French version of this website is the original. The English version is a translation provided for convenience.</p></p>
@@ -2731,6 +2898,77 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape')lbClose();
 });
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
+</script>
+
+<!-- ═══ POPUP EMPLOI ═══ -->
+<div id="popup-emploi" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:8500; align-items:flex-start; justify-content:center; padding:20px; overflow-y:auto;">
+  <div style="background:#13100A; border:1px solid rgba(201,150,42,0.3); max-width:760px; width:100%; padding:48px 40px; position:relative; margin:40px auto;">
+    <button onclick="fermerEmploi()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#E8B84B;font-size:32px;cursor:pointer;line-height:1;">&#215;</button>
+
+    <div class="gold-line" style="margin:0 0 20px;"></div>
+    <div style="display:inline-block; background:linear-gradient(135deg,#C9962A,#9A6B10); color:#0A0806; font-family:'Cinzel',serif; font-size:11px; font-weight:700; letter-spacing:2px; padding:6px 18px; margin-bottom:20px; text-transform:uppercase;">Nous embauchons</div>
+    <h2 style="font-family:'Cinzel',serif; font-size:clamp(18px,3vw,28px); font-weight:700; color:var(--text-white); margin-bottom:6px; line-height:1.3;">Deck Goliath embauche — <span style="color:#E8B84B;">Charpentier / Installateur de patios</span></h2>
+    <p style="font-family:'Cinzel',serif; font-size:12px; color:var(--text-muted); letter-spacing:2px; margin-bottom:32px;">Secteur Outaouais</p>
+
+    <div class="emploi-body">
+      <p>Nous sommes à la recherche d'une personne d'expérience en patio, charpente et finition extérieure, qui aime le travail bien fait et qui est fière de ce qu'elle construit.</p>
+      <p>Chez Deck Goliath, nous réalisons des patios haut de gamme en PVC et composite. Nous cherchons donc quelqu'un qui comprend l'importance des détails, de la précision et de la belle finition.</p>
+
+      <h3>Profil recherché</h3>
+      <p>Nous cherchons quelqu'un qui :</p>
+      <ul>
+        <li>possède idéalement un minimum de <strong>5 ans d'expérience</strong> en patio, charpente ou construction extérieure;</li>
+        <li>fait un travail propre, solide et soigné;</li>
+        <li>aime les belles finitions;</li>
+        <li>n'a pas peur de se faire reprendre au besoin;</li>
+        <li>veut apprendre et comprend qu'il ne connaît pas tout;</li>
+        <li>ne prend pas les commentaires personnellement;</li>
+        <li>est fiable, mature, respectueux et professionnel;</li>
+        <li>peut prendre le relais sur un chantier et continuer de façon autonome si je dois quitter.</li>
+      </ul>
+
+      <h3>Réalité du poste</h3>
+      <p>Le poste peut convenir à quelqu'un qui cherche un horaire à <strong>temps plein, à temps partiel, sur appel</strong> au besoin, ou encore un revenu supplémentaire.</p>
+      <ul>
+        <li>nous travaillons principalement durant la saison estivale;</li>
+        <li>horaire de jour, du lundi au vendredi;</li>
+        <li>nous travaillons quand la météo le permet;</li>
+        <li>quand il pleut, nous ne travaillons pas;</li>
+        <li>certaines journées peuvent changer selon la météo ou les imprévus;</li>
+        <li>j'ai aussi des obligations personnelles, donc il peut arriver qu'une urgence m'oblige à partir. J'ai donc besoin de quelqu'un de fiable, capable de garder le chantier en ordre et de faire avancer les travaux comme il faut.</li>
+      </ul>
+
+      <h3>Ce qu'on veut</h3>
+      <p>On ne cherche pas quelqu'un qui pense tout savoir.<br>On cherche quelqu'un de <strong>pro, avec une bonne attitude</strong>, qui aime bâtir du solide, bien faire les choses et être fier du résultat final.</p>
+      <p>Que tu sois un ami, une connaissance ou une nouvelle personne, l'important pour nous est avant tout <strong>la bonne attitude, le professionnalisme et le bon fit sur le chantier</strong>.</p>
+      <p>Nous cherchons quelqu'un de mature, capable de comprendre que si jamais ça ne colle pas des deux côtés, ça peut simplement vouloir dire que ce n'était pas le bon match, sans rancune.</p>
+      <p>Parfait pour quelqu'un qui a déjà un emploi, mais qui veut quelque chose de <strong>flexible de jour, du lundi au vendredi</strong>, dans une équipe sérieuse.</p>
+
+      <h3>Salaire</h3>
+      <p>Salaire compétitif à discuter. Si tu es réellement la bonne personne — <strong>la rémunération sera à la mesure de la qualité du travail</strong> et de la valeur réelle apportée sur le chantier.</p>
+
+      <div class="emploi-cta">
+        <p>Si tu penses être la bonne personne, écris-nous avec ton expérience et tes disponibilités.</p>
+        <button class="btn-cta" style="margin-top:16px;" onclick="fermerEmploi(); ouvrirFormulaire();">Nous contacter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function ouvrirEmploi() {
+  var p = document.getElementById('popup-emploi');
+  p.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function fermerEmploi() {
+  document.getElementById('popup-emploi').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var p = document.getElementById('popup-emploi');
+  if (p) p.addEventListener('click', function(e) { if (e.target === this) fermerEmploi(); });
+});
 </script>
 </body>
 </html>
