@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Bannière Facebook — Deck Goliath</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=EB+Garamond:ital,wght@1,400&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#1a1a1a; display:flex; align-items:center; justify-content:center; min-height:100vh; }
+  body { background:#111; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
 
   .banniere {
     width: 820px;
@@ -13,173 +14,161 @@
     position: relative;
     overflow: hidden;
     background: #0A0806;
-    font-family: 'Cinzel', serif;
   }
 
-  /* Fond dégradé */
   .bg {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 80% at 40% 50%, rgba(70,45,8,0.6) 0%, transparent 65%),
-      radial-gradient(ellipse 30% 50% at 70% 40%, rgba(110,68,10,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 80% at 65% 50%, rgba(70,45,8,0.55) 0%, transparent 65%),
       #0A0806;
   }
 
-  /* Aigle en fond */
   .eagle {
     position: absolute;
-    right: -20px;
+    right: 160px;
     top: 50%;
     transform: translateY(-50%);
-    height: 340px;
+    height: 320px;
     width: auto;
-    opacity: 0.25;
+    opacity: 0.2;
     mix-blend-mode: screen;
+    pointer-events: none;
   }
 
-  /* Contenu gauche */
-  .left {
+  /* LIGNE 1 */
+  .top-bar {
     position: absolute;
-    left: 28px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0; left: 0; right: 0;
+    height: 32px;
+    background: rgba(0,0,0,0.55);
+    border-bottom: 1px solid rgba(201,150,42,0.25);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 20px;
+    z-index: 3;
+  }
+  .top-phone {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(201,150,42,0.9);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .top-slogan {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(240,234,214,0.7);
+  }
+
+  /* LIGNE 2 */
+  .middle {
+    position: absolute;
+    top: 32px;
+    left: 0; right: 0;
+    bottom: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 14px;
     z-index: 2;
   }
-
-  .logo-img {
-    height: 160px;
+  .badge-img {
+    height: 112px;
     width: auto;
-    filter: drop-shadow(0 0 20px rgba(201,150,42,0.4));
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(201,150,42,0.4));
   }
-
-  /* Contenu centre/droite */
-  .right {
-    position: absolute;
-    right: 200px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    text-align: left;
+  .logo-img {
+    height: 128px;
+    width: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 15px rgba(201,150,42,0.3));
   }
-
-  .title {
+  .divider-v {
+    width: 1px;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent, rgba(201,150,42,0.5), transparent);
+    flex-shrink: 0;
+  }
+  .trois-mots {
+    flex: 1;
     font-family: 'Cinzel', serif;
-    font-size: 38px;
+    font-size: 40px;
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.0;
     color: #F0EAD6;
     letter-spacing: -0.5px;
+    white-space: nowrap;
   }
+  .trois-mots .gold { color: #E8B84B; }
 
-  .title .gold { color: #E8B84B; }
-
-  .slogan {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 15px;
-    font-style: italic;
-    color: rgba(240,234,214,0.65);
-    margin-top: 10px;
-    letter-spacing: 0.5px;
-  }
-
-  /* Badge choix du consommateur */
-  .badge {
+  /* LIGNE 3 */
+  .fab-bar {
     position: absolute;
-    left: 200px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    height: 110px;
-    width: auto;
-    filter: drop-shadow(0 0 12px rgba(201,150,42,0.5));
-  }
-
-  /* Ligne dorée verticale */
-  .divider {
-    position: absolute;
-    left: 320px;
-    top: 20px;
-    bottom: 20px;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(201,150,42,0.5), transparent);
-    z-index: 2;
-  }
-
-  /* Bas de page : infos */
-  .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 38px;
-    background: rgba(0,0,0,0.5);
+    bottom: 0; left: 0; right: 0;
+    height: 48px;
+    background: rgba(20,16,10,0.9);
     border-top: 1px solid rgba(201,150,42,0.2);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 28px;
+    justify-content: space-around;
+    padding: 0 16px;
     z-index: 3;
   }
-
-  .bottom-bar span {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 11px;
-    color: rgba(201,150,42,0.8);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+  .fab-bar img {
+    height: 26px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
+    opacity: 0.8;
+    filter: grayscale(15%) brightness(0.85);
   }
-
-  .dot { color: rgba(201,150,42,0.4); margin: 0 10px; }
-
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=EB+Garamond:ital@1&family=Montserrat:wght@400;600&display=swap');
+  .fab-fallback {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 9px;
+    color: rgba(201,150,42,0.65);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=EB+Garamond:ital,wght@1,400&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <div class="banniere">
   <div class="bg"></div>
+  <img src="assets/eagle-line.png" class="eagle" alt="" onerror="this.style.display='none'">
 
-  <!-- Aigle en fond -->
-  <img src="assets/eagle-line.png" class="eagle" alt="">
-
-  <!-- Logo gauche -->
-  <div class="left">
-    <img src="assets/logo.png" class="logo-img" alt="Deck Goliath"
-      onerror="this.style.display='none'">
+  <!-- LIGNE 1 : Téléphone + Slogan -->
+  <div class="top-bar">
+    <span class="top-phone">📞 819-484-7851</span>
+    <span class="top-slogan">Vos besoins, vos rêves, notre spécialité!</span>
   </div>
 
-  <!-- Badge Choix du consommateur -->
-  <img src="assets/choix-president.png" class="badge" alt="Choix du consommateur 2026"
-    onerror="this.style.display='none'">
-
-  <!-- Ligne séparatrice -->
-  <div class="divider"></div>
-
-  <!-- Texte droite -->
-  <div class="right">
-    <div class="title">
+  <!-- LIGNE 2 : Badge + Logo + 3 mots -->
+  <div class="middle">
+    <img src="assets/choix-president.png" class="badge-img" alt="Choix du consommateur 2026" onerror="this.style.display='none'">
+    <img src="assets/logo.png" class="logo-img" alt="Deck Goliath" onerror="this.style.display='none'">
+    <div class="divider-v"></div>
+    <div class="trois-mots">
       Minimaliste.<br>
       <span class="gold">Luxueux.</span><br>
       Inébranlable.
     </div>
-    <p class="slogan">Vos besoins, vos rêves, notre spécialité!</p>
   </div>
 
-  <!-- Barre du bas -->
-  <div class="bottom-bar">
-    <span>deckgoliath.com</span>
-    <span>
-      819-484-7851
-      <span class="dot">·</span>
-      Gatineau, Outaouais
-      <span class="dot">·</span>
-      RBQ 5756-0096-01
-    </span>
-    <span>Patios · Rampes · Pieux vissés</span>
+  <!-- LIGNE 3 : Fabriquants -->
+  <div class="fab-bar">
+    <img src="assets/fabriquant1.png" alt="Deckorators" onerror="this.outerHTML='<span class=fab-fallback>Deckorators</span>'">
+    <img src="assets/fabriquant2.png" alt="TimberTech"  onerror="this.outerHTML='<span class=fab-fallback>TimberTech</span>'">
+    <img src="assets/fabriquant3.png" alt="Google 5★"   onerror="this.outerHTML='<span class=fab-fallback>Google ★★★★★ 5.0</span>'">
+    <img src="assets/fabriquant4.png" alt="Regal Ideas" onerror="this.outerHTML='<span class=fab-fallback>Regal Ideas</span>'">
+    <img src="assets/fabriquant5.png" alt="DeckStars"   onerror="this.outerHTML='<span class=fab-fallback>DeckStars</span>'">
+    <img src="assets/fabriquant6.png" alt="Choix conso" onerror="this.outerHTML='<span class=fab-fallback>Choix du consommateur</span>'">
   </div>
+
 </div>
-
 </body>
 </html>
