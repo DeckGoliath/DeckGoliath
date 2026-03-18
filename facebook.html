@@ -36,17 +36,16 @@
     pointer-events: none;
   }
 
-  /* LIGNE 1 */
+  /* ── LIGNE 1 : Téléphone gauche + Slogan CENTRÉ ── */
   .top-bar {
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 32px;
-    background: rgba(0,0,0,0.55);
+    height: 34px;
+    background: rgba(0,0,0,0.6);
     border-bottom: 1px solid rgba(201,150,42,0.25);
     display: flex;
     align-items: center;
     padding: 0 20px;
-    gap: 20px;
     z-index: 3;
   }
   .top-phone {
@@ -56,34 +55,43 @@
     color: rgba(201,150,42,0.9);
     letter-spacing: 1px;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .top-slogan {
+    flex: 1;
+    text-align: center;
     font-family: 'EB Garamond', serif;
-    font-size: 14px;
+    font-size: 15px;
     font-style: italic;
-    color: rgba(240,234,214,0.7);
+    color: rgba(240,234,214,0.75);
+    letter-spacing: 0.5px;
+  }
+  /* Espaceur droit pour équilibrer le téléphone gauche */
+  .top-spacer {
+    flex-shrink: 0;
+    width: 120px;
   }
 
-  /* LIGNE 2 */
+  /* ── LIGNE 2 : Badge + Logo + 3 mots ── */
   .middle {
     position: absolute;
-    top: 32px;
+    top: 34px;
     left: 0; right: 0;
-    bottom: 48px;
+    bottom: 52px;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    gap: 14px;
+    padding: 0 16px;
+    gap: 12px;
     z-index: 2;
   }
   .badge-img {
-    height: 112px;
+    height: 130px;
     width: auto;
     flex-shrink: 0;
-    filter: drop-shadow(0 0 10px rgba(201,150,42,0.4));
+    filter: drop-shadow(0 0 12px rgba(201,150,42,0.5));
   }
   .logo-img {
-    height: 128px;
+    height: 135px;
     width: auto;
     flex-shrink: 0;
     filter: drop-shadow(0 0 15px rgba(201,150,42,0.3));
@@ -97,7 +105,7 @@
   .trois-mots {
     flex: 1;
     font-family: 'Cinzel', serif;
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 700;
     line-height: 1.0;
     color: #F0EAD6;
@@ -106,31 +114,31 @@
   }
   .trois-mots .gold { color: #E8B84B; }
 
-  /* LIGNE 3 */
+  /* ── LIGNE 3 : Fabriquants — Google en dernier ── */
   .fab-bar {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 48px;
-    background: rgba(20,16,10,0.9);
+    height: 52px;
+    background: rgba(20,16,10,0.92);
     border-top: 1px solid rgba(201,150,42,0.2);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 0 16px;
+    padding: 0 20px;
     z-index: 3;
   }
   .fab-bar img {
-    height: 26px;
+    height: 32px;
     width: auto;
-    max-width: 110px;
+    max-width: 120px;
     object-fit: contain;
-    opacity: 0.8;
-    filter: grayscale(15%) brightness(0.85);
+    opacity: 0.85;
+    filter: grayscale(10%) brightness(0.9);
   }
   .fab-fallback {
     font-family: 'Cinzel', sans-serif;
     font-size: 9px;
-    color: rgba(201,150,42,0.65);
+    color: rgba(201,150,42,0.7);
     letter-spacing: 1px;
     white-space: nowrap;
   }
@@ -141,10 +149,11 @@
   <div class="bg"></div>
   <img src="assets/eagle-line.png" class="eagle" alt="" onerror="this.style.display='none'">
 
-  <!-- LIGNE 1 : Téléphone + Slogan -->
+  <!-- LIGNE 1 : Téléphone gauche + Slogan centré -->
   <div class="top-bar">
     <span class="top-phone">📞 819-484-7851</span>
     <span class="top-slogan">Vos besoins, vos rêves, notre spécialité!</span>
+    <span class="top-spacer"></span>
   </div>
 
   <!-- LIGNE 2 : Badge + Logo + 3 mots -->
@@ -159,14 +168,14 @@
     </div>
   </div>
 
-  <!-- LIGNE 3 : Fabriquants -->
+  <!-- LIGNE 3 : fab1→5 puis Google en dernier -->
   <div class="fab-bar">
-    <img src="assets/fabriquant1.png" alt="Deckorators" onerror="this.outerHTML='<span class=fab-fallback>Deckorators</span>'">
-    <img src="assets/fabriquant2.png" alt="TimberTech"  onerror="this.outerHTML='<span class=fab-fallback>TimberTech</span>'">
-    <img src="assets/fabriquant3.png" alt="Google 5★"   onerror="this.outerHTML='<span class=fab-fallback>Google ★★★★★ 5.0</span>'">
-    <img src="assets/fabriquant4.png" alt="Regal Ideas" onerror="this.outerHTML='<span class=fab-fallback>Regal Ideas</span>'">
-    <img src="assets/fabriquant5.png" alt="DeckStars"   onerror="this.outerHTML='<span class=fab-fallback>DeckStars</span>'">
-    <img src="assets/fabriquant6.png" alt="Choix conso" onerror="this.outerHTML='<span class=fab-fallback>Choix du consommateur</span>'">
+    <img src="assets/fabriquant1.png" alt="Deckorators"   onerror="this.outerHTML='<span class=fab-fallback>Deckorators</span>'">
+    <img src="assets/fabriquant2.png" alt="TimberTech"    onerror="this.outerHTML='<span class=fab-fallback>TimberTech</span>'">
+    <img src="assets/fabriquant4.png" alt="Regal Ideas"   onerror="this.outerHTML='<span class=fab-fallback>Regal Ideas</span>'">
+    <img src="assets/fabriquant5.png" alt="DeckStars"     onerror="this.outerHTML='<span class=fab-fallback>DeckStars</span>'">
+    <img src="assets/fabriquant6.png" alt="Choix conso"   onerror="this.outerHTML='<span class=fab-fallback>Choix du consommateur</span>'">
+    <img src="assets/fabriquant3.png" alt="Google 5★"     onerror="this.outerHTML='<span class=fab-fallback>Google ★★★★★ 5.0</span>'">
   </div>
 
 </div>
