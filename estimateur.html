@@ -755,8 +755,9 @@ body {
 
 <!-- NAV ONGLETS -->
 <div class="tab-nav">
-  <button class="tab-btn active" onclick="switchTab('quiz')">Recommandation matériau</button>
-  <button class="tab-btn" onclick="switchTab('estimateur')">Estimateur de prix</button>
+  <button class="tab-btn active" onclick="switchTab('quiz', this)">Recommandation matériau</button>
+  <button class="tab-btn" onclick="switchTab('estimateur', this)">Estimateur patio</button>
+  <button class="tab-btn" onclick="switchTab('rampe', this)">Estimateur rampe</button>
 </div>
 
 <!-- TAB : QUIZ -->
@@ -891,15 +892,89 @@ body {
   </div>
 </div><!-- /tab-estimateur -->
 
+<!-- TAB : ESTIMATEUR RAMPE -->
+<div class="tab-content" id="tab-rampe">
+  <div class="screen active" id="screen-rampe">
+    <div class="est-wrap">
+
+      <p class="intro-badge">Deck Goliath · Gatineau · Outaouais</p>
+      <div class="gold-line"></div>
+      <h2 class="est-title">Estimateur de rampe</h2>
+      <p class="est-sub">Entrez les détails de votre rampe. Obtenez une fourchette de prix indicative — avant taxes.</p>
+
+      <div class="est-form">
+        <div class="est-section-title">Dimensions</div>
+        <div class="est-fields-row">
+          <div class="est-field">
+            <label class="est-label">Pieds linéaires de rampe</label>
+            <input class="est-input" type="number" id="rampe-pl" value="20" min="0" max="500">
+          </div>
+          <div class="est-field">
+            <label class="est-label">Nombre de poteaux</label>
+            <div class="est-stepper">
+              <button class="est-step-btn" onclick="step('rampe-poteaux',-1)">−</button>
+              <span class="est-step-val" id="rampe-poteaux">4</span>
+              <button class="est-step-btn" onclick="step('rampe-poteaux',1)">+</button>
+            </div>
+          </div>
+          <div class="est-field">
+            <label class="est-label">Rampes d'escalier</label>
+            <div class="est-stepper">
+              <button class="est-step-btn" onclick="step('rampe-escal',-1)">−</button>
+              <span class="est-step-val" id="rampe-escal">0</span>
+              <button class="est-step-btn" onclick="step('rampe-escal',1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-start" style="margin-top:8px;" onclick="calculerRampe()">Calculer →</button>
+      </div>
+
+      <div class="est-results" id="rampe-results" style="display:none;">
+        <div class="gold-line" style="margin-top:40px;"></div>
+        <h3 class="est-results-title">Estimation rampe</h3>
+        <p class="est-results-note" id="rampe-results-note"></p>
+
+        <div class="est-cards-grid" style="max-width:520px; margin:0 auto 32px;">
+          <div class="est-card" style="border-color:var(--gold);">
+            <div class="est-card-brand">Regal / Aluminium</div>
+            <div class="est-card-name">Rampe complète</div>
+            <div class="est-card-type">Poteaux inclus · Installation comprise</div>
+            <div class="est-card-divider"></div>
+            <div class="est-card-price-label">Fourchette estimée</div>
+            <div class="est-card-price" id="rampe-price-range">—</div>
+            <div class="est-card-warranty" id="rampe-detail">—</div>
+          </div>
+          <div class="est-card" id="rampe-escal-card" style="display:none;">
+            <div class="est-card-brand">Regal / Aluminium</div>
+            <div class="est-card-name">Rampe d'escalier</div>
+            <div class="est-card-type">Par escalier</div>
+            <div class="est-card-divider"></div>
+            <div class="est-card-price-label">Fourchette estimée</div>
+            <div class="est-card-price" id="rampe-escal-price">—</div>
+          </div>
+        </div>
+
+        <p class="disclaimer">Ces estimations sont indicatives. Chaque projet est unique — une visite est nécessaire pour une soumission précise.</p>
+        <div class="result-actions" style="margin-top:16px;">
+          <button class="btn-restart" onclick="resetRampe()">← Modifier</button>
+          <button class="btn-quote" onclick="goToContact()">Demander une soumission →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /tab-rampe -->
+
 <script>
 // ══════════════════════════════════════════════════
 //  ONGLETS
 // ══════════════════════════════════════════════════
-function switchTab(tab) {
+function switchTab(tab, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 
 // ══════════════════════════════════════════════════
@@ -966,16 +1041,16 @@ const GAMMES = {
   ]
 };
 
-// Grille de prix au pi² (base de structure, main-d'oeuvre, etc.) de l'estimateur v3
+// Grille de prix au pi² (base de structure, main-d'oeuvre, etc.) — paliers ajustés -10%
 const PALIERS_EST = [
-  { max: 60,    prix: 155, min: 7500 },
-  { max: 140,   prix: 125, min: 15000 },
-  { max: 220,   prix: 105, min: 15000 },
-  { max: 99999, prix:  92, min: 15000 }
+  { max: 60,    prix: 140, min: 7500 },
+  { max: 140,   prix: 112, min: 13000 },
+  { max: 220,   prix:  95, min: 13000 },
+  { max: 99999, prix:  82, min: 13000 }
 ];
-const RAMPE_VENTE   = 125;  // $/pi lin
+const RAMPE_VENTE    = 100;  // $/pi lin (estimateur patio)
 const ESCALIER_VENTE = 1800; // $/escalier
-const PIEUX_VENTE   = 300;  // $/unité
+const PIEUX_VENTE    = 300;  // $/unité
 // Coût planches composite de référence (Summit = base 1.00)
 // prixPL $/pi lin → pi lin = surface / (5.5/12) * (1+0.10)
 function planchesCout(surface, prixPL) {
@@ -1067,6 +1142,49 @@ function calculerEst() {
 function resetEst() {
   document.getElementById('est-results').style.display = 'none';
   document.querySelector('.est-form').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ══════════════════════════════════════════════════
+//  ESTIMATEUR RAMPE
+// ══════════════════════════════════════════════════
+const RAMPE_VENTE_RAMPE    = 125;  // $/pi lin rampe seule
+const POTEAU_VENTE         = 75;   // $/unité (coût) → prix vente ~150$
+const RAMPE_ESCAL_VENTE    = 900;  // $/rampe d'escalier
+
+function calculerRampe() {
+  const pl      = parseFloat(document.getElementById('rampe-pl').value) || 0;
+  const poteaux = parseInt(document.getElementById('rampe-poteaux').textContent) || 0;
+  const escalRampes = parseInt(document.getElementById('rampe-escal').textContent) || 0;
+
+  // Prix rampe linéaire + poteaux
+  const totalRampe = (pl * RAMPE_VENTE_RAMPE) + (poteaux * 150);
+  const bas  = Math.round(totalRampe * 0.88 / 100) * 100;
+  const haut = Math.round(totalRampe * 1.12 / 100) * 100;
+
+  document.getElementById('rampe-results-note').textContent =
+    pl + ' pi lin · ' + poteaux + ' poteaux' + (escalRampes > 0 ? ' · ' + escalRampes + ' rampe(s) d\'escalier' : '') + ' — avant taxes — fourchette indicative ±12%';
+
+  document.getElementById('rampe-price-range').textContent = fmtPrix(bas) + '\u00a0–\u00a0' + fmtPrix(haut);
+  document.getElementById('rampe-detail').textContent = '⬡ ' + pl + ' pi lin × ' + RAMPE_VENTE_RAMPE + '$/pi lin + ' + poteaux + ' poteaux × 150$';
+
+  const escalCard = document.getElementById('rampe-escal-card');
+  if (escalRampes > 0) {
+    const totalEscal = escalRampes * RAMPE_ESCAL_VENTE;
+    const basE  = Math.round(totalEscal * 0.88 / 100) * 100;
+    const hautE = Math.round(totalEscal * 1.12 / 100) * 100;
+    document.getElementById('rampe-escal-price').textContent = fmtPrix(basE) + '\u00a0–\u00a0' + fmtPrix(hautE);
+    escalCard.style.display = 'block';
+  } else {
+    escalCard.style.display = 'none';
+  }
+
+  document.getElementById('rampe-results').style.display = 'block';
+  document.getElementById('rampe-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetRampe() {
+  document.getElementById('rampe-results').style.display = 'none';
+  document.querySelector('#tab-rampe .est-form').scrollIntoView({ behavior: 'smooth' });
 }
 
 </script>
