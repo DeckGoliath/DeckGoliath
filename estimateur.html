@@ -924,7 +924,7 @@ body {
         <p class="est-results-note">Patio <span id="est-res-dim"></span> · <span id="est-res-pieux"></span> pieux · <span id="est-res-rampe"></span> pi lin rampe · <span id="est-res-escal"></span> escalier(s) — avant taxes — fourchette indicative ±12%</p>
 
         <!-- Deckorators -->
-        <div class="est-brand-title">Deckorators <span>— Composite à base minérale · Technologie Surestone®</span></div>
+        <div class="est-brand-title">Deckorators <span>— À base minérale · Technologie Surestone® · Zéro fibre de bois</span></div>
         <div class="est-cards-grid" id="est-cards-deko"></div>
 
         <!-- TimberTech -->
@@ -1063,7 +1063,7 @@ const GAMMES = {
     {
       nom: 'Summit',
       brand: 'Deckorators',
-      type: 'Composite minéral · Surestone®',
+      type: 'À base minérale · Surestone®',
       facteur: 1.00,
       prixPL: 6,
       garantie: '25 ans structural / 25 ans taches',
@@ -1072,7 +1072,7 @@ const GAMMES = {
     {
       nom: 'Voyage',
       brand: 'Deckorators',
-      type: 'Composite minéral · Surestone®',
+      type: 'À base minérale · Surestone®',
       facteur: 1.00,
       prixPL: 9,
       garantie: '50 ans structural / 25 ans taches / 25 ans remplacement',
@@ -1254,37 +1254,124 @@ function resetRampe() {
 </script>
 <script>
 // ══════════════════════════════════════════════════
-//  DONNÉES PRIX (basées sur estimateur v3)
+//  DONNÉES PRODUITS
 // ══════════════════════════════════════════════════
-const PRIX = {
-  // $/pi² selon taille
-  paliers: [
-    { max: 60,  prix: 155, min: 7500 },
-    { max: 140, prix: 125, min: 15000 },
-    { max: 220, prix: 105, min: 15000 },
-    { max: 99999, prix: 92, min: 15000 }
-  ],
-  rampe: 125,        // $/pi lin
-  escalier: 1800,    // $/escalier
-  pieux: 300,        // $/unité
-  // Multiplicateurs matériaux (relatifs au composite de base)
-  materiaux: {
-    pvc:       { facteur: 1.28, nom: 'PVC TimberTech / AZEK',     serie: 'Série Platine' },
-    composite: { facteur: 1.00, nom: 'Composite Deckorators',     serie: 'Série Or' },
-    bois:      { facteur: 0.68, nom: 'Bois traité sous pression', serie: 'Série Argent' }
+const FAMILLES = {
+  deko: {
+    nom: 'Deckorators',
+    soustitre: 'À base minérale · Technologie Surestone® · Zéro fibre de bois',
+    gammes: {
+      summit: {
+        nom: 'Summit', serie: 'Deckorators Summit', prixPL: 6,
+        garantie: '25 ans structural · 25 ans anti-taches',
+        lifespan: '25–30+ ans en Outaouais',
+        bestFor: 'Excellent rapport qualité-prix. La technologie minérale Surestone® sans compromis sur la durabilité — idéal pour la majorité des projets.',
+        points: [
+          { texte: 'À base minérale — zéro fibre de bois', check: true },
+          { texte: 'Technologie Surestone® brevetée', check: true },
+          { texte: '35% plus léger que les produits traditionnels', check: true },
+          { texte: 'Aucun teinturage ni scellage requis', check: true },
+          { texte: '3 couleurs : Cliffside, Boulder, Glacier', check: true },
+          { texte: 'Garantie 25/25 ans', check: true }
+        ]
+      },
+      voyage: {
+        nom: 'Voyage', serie: 'Deckorators Voyage', prixPL: 9,
+        garantie: '50 ans structural · 25 ans anti-taches · 25 ans retrait/remplacement',
+        lifespan: '40–50+ ans en Outaouais',
+        bestFor: 'La gamme premium Deckorators. Garantie 50/25/25 ans, micro-gaufrage anti-chaleur, 34% plus de traction et 5 couleurs exclusives.',
+        points: [
+          { texte: 'À base minérale — zéro fibre de bois', check: true },
+          { texte: 'Garantie 50/25/25 ans — la meilleure du marché', check: true },
+          { texte: 'Micro-gaufrage réduit la rétention de chaleur', check: true },
+          { texte: '34% plus de traction en conditions humides', check: true },
+          { texte: '5 couleurs : Costa, Sierra, Khaya, Tundra, Sedona', check: true },
+          { texte: 'Investissement plus élevé que Summit', check: false }
+        ]
+      }
+    }
+  },
+  tt: {
+    nom: 'TimberTech',
+    soustitre: 'Advanced PVC/Polymer · 100% polymère · Zéro fibre de bois',
+    gammes: {
+      harvest: {
+        nom: 'Harvest', serie: 'TimberTech Harvest', prixPL: 8,
+        garantie: '50 ans anti-taches · Garantie à vie sur le produit',
+        lifespan: '40–50+ ans en Outaouais',
+        bestFor: 'Look bois traditionnel raffiné (Refined Cathedral Grain). Style classique et chaleureux avec zéro entretien et Cool Touch.',
+        points: [
+          { texte: '100% polymère — zéro fibre de bois', check: true },
+          { texte: 'Garantie à vie sur le produit', check: true },
+          { texte: 'Cool Touch — jusqu\'à 30° plus frais au toucher', check: true },
+          { texte: 'Résistant zones d\'incendie Classe A / WUI', check: true },
+          { texte: '3 couleurs : Slate Gray, Kona, Brownstone', check: true },
+          { texte: 'Moins de variété de couleurs que Harvest+', check: false }
+        ]
+      },
+      harvestplus: {
+        nom: 'Harvest+', serie: 'TimberTech Harvest+', prixPL: 9,
+        garantie: '50 ans anti-taches · Garantie à vie sur le produit',
+        lifespan: '40–50+ ans en Outaouais',
+        bestFor: 'Version améliorée du Harvest. Grain cathedral subtil, look bois patiné naturel vivant. Deux couleurs neutres et polyvalentes.',
+        points: [
+          { texte: '100% polymère — zéro fibre de bois', check: true },
+          { texte: 'Garantie à vie sur le produit', check: true },
+          { texte: 'Cool Touch — jusqu\'à 30° plus frais au toucher', check: true },
+          { texte: 'Patine naturelle vieillie — look authentique', check: true },
+          { texte: '2 couleurs : Toasted Wheat, Timber Gray', check: true },
+          { texte: 'Choix de couleurs limité', check: false }
+        ]
+      },
+      landmark: {
+        nom: 'Landmark', serie: 'TimberTech Landmark', prixPL: 10,
+        garantie: '50 ans anti-taches · Garantie à vie sur le produit',
+        lifespan: '40–50+ ans en Outaouais',
+        bestFor: 'Look bois dur recoupé audacieux (chêne blanc, noyer). Caractère fort et esthétique sophistiquée pour un projet distinctif.',
+        points: [
+          { texte: '100% polymère — zéro fibre de bois', check: true },
+          { texte: 'Garantie à vie sur le produit', check: true },
+          { texte: 'Cool Touch — jusqu\'à 30° plus frais au toucher', check: true },
+          { texte: 'Texture bois dur recoupé très réaliste', check: true },
+          { texte: '3 couleurs : French White Oak, American Walnut, Castle Gate', check: true },
+          { texte: 'Prix plus élevé que Harvest/Harvest+', check: false }
+        ]
+      },
+      vintage: {
+        nom: 'Vintage', serie: 'TimberTech Vintage', prixPL: 12.25,
+        garantie: '50 ans anti-taches · Garantie à vie sur le produit',
+        lifespan: '40–50+ ans en Outaouais',
+        bestFor: 'La gamme haut de gamme TimberTech. Reproduit l\'ipé, l\'acajou et le teck avec une précision remarquable. Pour les projets prestige.',
+        points: [
+          { texte: '100% polymère — zéro fibre de bois', check: true },
+          { texte: 'Garantie à vie sur le produit', check: true },
+          { texte: 'Cool Touch — jusqu\'à 30° plus frais au toucher', check: true },
+          { texte: 'Look bois exotique de luxe (ipé, acajou, teck)', check: true },
+          { texte: '3 couleurs : Weathered Teak, Coastline, English Walnut', check: true },
+          { texte: 'Investissement le plus élevé de la gamme', check: false }
+        ]
+      }
+    }
   }
 };
 
-// Surface de référence par défaut pour les estimations (12x14 = 168 pi²)
-function estimerPrix(facteur, surface = 168, pieux = 6, rampe = 20, escaliers = 1) {
-  const palier = PRIX.paliers.find(p => surface <= p.max);
-  const base = Math.max(surface * palier.prix * facteur, palier.min);
-  const extras = (pieux * PRIX.pieux) + (rampe * PRIX.rampe) + (escaliers * PRIX.escalier);
-  const total = base + extras;
-  // Fourchette ±15%
-  const bas = Math.round(total * 0.88 / 100) * 100;
-  const haut = Math.round(total * 1.12 / 100) * 100;
-  return { bas, haut, mensuel: Math.round(total / 60) };
+const PALIERS_QUIZ = [
+  { max: 60,    prix: 140, min: 7500  },
+  { max: 140,   prix: 112, min: 13000 },
+  { max: 220,   prix:  95, min: 13000 },
+  { max: 99999, prix:  82, min: 13000 }
+];
+
+function estimerPrixQuiz(prixPL, surface=168, pieux=6, rampe=20, escaliers=1) {
+  const palier = PALIERS_QUIZ.find(p => surface <= p.max);
+  const diffPlanches = ((surface / (5.5/12)) * 1.10) * (prixPL - 6);
+  const base = Math.max(surface * palier.prix, palier.min);
+  const extras = (pieux * 300) + (rampe * 100) + (escaliers * 1800);
+  const total = base + extras + diffPlanches;
+  return {
+    bas:  Math.round(total * 0.88 / 100) * 100,
+    haut: Math.round(total * 1.12 / 100) * 100
+  };
 }
 
 // ══════════════════════════════════════════════════
@@ -1292,82 +1379,101 @@ function estimerPrix(facteur, surface = 168, pieux = 6, rampe = 20, escaliers = 
 // ══════════════════════════════════════════════════
 const QUESTIONS = [
   {
-    titre: "Ce qui compte le plus pour vous?",
-    note: "Votre réponse oriente notre recommandation principale.",
+    titre: "Quelle est votre priorité principale?",
+    note: "Cela oriente notre recommandation entre Deckorators et TimberTech.",
     options: [
-      { texte: "Le prix le plus bas possible",                 scores: { bois: 3, composite: 1, pvc: 0 } },
-      { texte: "Le moins d'entretien possible",                scores: { bois: 0, composite: 2, pvc: 3 } },
-      { texte: "La meilleure performance à long terme",        scores: { bois: 0, composite: 2, pvc: 3 } },
-      { texte: "Je ne suis pas encore certain",               scores: { bois: 1, composite: 2, pvc: 1 } }
+      { texte: "Meilleur rapport qualité-prix",           scores: { deko: 3, tt: 1 } },
+      { texte: "Durabilité maximale — long terme",        scores: { deko: 2, tt: 3 } },
+      { texte: "Look bois le plus réaliste possible",     scores: { deko: 1, tt: 3 } },
+      { texte: "Je ne suis pas encore certain",           scores: { deko: 2, tt: 2 } }
     ]
   },
   {
-    titre: "Comment voyez-vous l'entretien de votre patio?",
-    note: "Le bois traité demande teinture / scellant aux 1 à 3 ans.",
+    titre: "Quel style vous attire le plus?",
+    note: "TimberTech offre une plus grande variété de looks, dont les bois exotiques.",
     options: [
-      { texte: "Je suis à l'aise de teindre / sceller aux 1–3 ans",       scores: { bois: 3, composite: 1, pvc: 0 } },
-      { texte: "Nettoyage annuel, mais pas de teinture",                   scores: { bois: 0, composite: 3, pvc: 2 } },
-      { texte: "Je veux le plus proche de zéro entretien",                scores: { bois: 0, composite: 1, pvc: 3 } },
-      { texte: "Pas encore certain",                                        scores: { bois: 1, composite: 2, pvc: 1 } }
-    ]
-  },
-  {
-    titre: "Combien de temps comptez-vous rester dans cette maison?",
-    note: "Un horizon court favorise l'investissement initial bas. Long terme? La durabilité paye.",
-    options: [
-      { texte: "0 à 5 ans",                  scores: { bois: 3, composite: 1, pvc: 0 } },
-      { texte: "5 à 10 ans",                 scores: { bois: 1, composite: 3, pvc: 2 } },
-      { texte: "10 ans et plus — long terme", scores: { bois: 0, composite: 2, pvc: 3 } },
-      { texte: "Difficile à dire",            scores: { bois: 1, composite: 2, pvc: 1 } }
-    ]
-  },
-  {
-    titre: "Quelle utilisation prévoyez-vous de votre patio?",
-    note: "Un usage intensif demande un matériau plus résistant à l'abrasion.",
-    options: [
-      { texte: "Léger — café, détente occasionnelle",                 scores: { bois: 2, composite: 2, pvc: 1 } },
-      { texte: "Familial — enfants, trafic régulier, BBQ",           scores: { bois: 1, composite: 3, pvc: 2 } },
-      { texte: "Intensif — animaux, réceptions, déplacements fréquents", scores: { bois: 0, composite: 2, pvc: 3 } },
-      { texte: "Je ne sais pas encore",                              scores: { bois: 1, composite: 2, pvc: 1 } }
-    ]
-  },
-  {
-    titre: "Ce qui compte le plus : l'apparence ou la fonction?",
-    note: "Le bois offre un look naturel authentique qui évolue avec le temps.",
-    options: [
-      { texte: "Look bois naturel classique — j'accepte le vieillissement",  scores: { bois: 3, composite: 1, pvc: 0 } },
-      { texte: "Couleur uniforme et apparence soignée",                      scores: { bois: 0, composite: 3, pvc: 2 } },
-      { texte: "Toujours impeccable, haute stabilité, fini premium",         scores: { bois: 0, composite: 1, pvc: 3 } },
-      { texte: "Les deux également",                                          scores: { bois: 1, composite: 3, pvc: 2 } }
+      { texte: "Look épuré, couleurs modernes et uniformes",     scores: { deko: 3, tt: 2 } },
+      { texte: "Look bois dur recoupé — chêne blanc, noyer",     scores: { deko: 1, tt: 3 } },
+      { texte: "Look bois exotique — ipé, acajou, teck",         scores: { deko: 0, tt: 3 } },
+      { texte: "Je veux voir des échantillons avant de décider", scores: { deko: 2, tt: 2 } }
     ]
   },
   {
     titre: "Votre patio sera-t-il exposé au soleil?",
-    note: "En Outaouais, l'exposition solaire accélère le vieillissement du bois non entretenu.",
+    note: "TimberTech Advanced Polymer reste jusqu'à 30° plus frais que les concurrents.",
     options: [
-      { texte: "À l'ombre ou partiellement couvert",  scores: { bois: 2, composite: 2, pvc: 1 } },
-      { texte: "Plein soleil la plupart du temps",    scores: { bois: 0, composite: 2, pvc: 3 } },
-      { texte: "Exposition mixte / je ne sais pas",   scores: { bois: 1, composite: 2, pvc: 2 } },
-      { texte: "Incertain",                            scores: { bois: 1, composite: 2, pvc: 1 } }
+      { texte: "Plein soleil la majorité du temps",  scores: { deko: 1, tt: 3 } },
+      { texte: "Mi-ombre, mi-soleil",               scores: { deko: 2, tt: 2 } },
+      { texte: "Surtout à l'ombre ou couvert",      scores: { deko: 3, tt: 2 } },
+      { texte: "Je ne sais pas encore",             scores: { deko: 2, tt: 2 } }
+    ]
+  },
+  {
+    titre: "Quelle utilisation prévoyez-vous?",
+    note: "Les deux familles sont robustes — certaines gammes offrent plus de traction.",
+    options: [
+      { texte: "Détente légère — café, lecture",                         scores: { deko: 3, tt: 2 } },
+      { texte: "Familial — enfants, BBQ, trafic régulier",               scores: { deko: 2, tt: 3 } },
+      { texte: "Intensif — animaux, réceptions, déplacements fréquents", scores: { deko: 3, tt: 2 } },
+      { texte: "Pas encore certain",                                      scores: { deko: 2, tt: 2 } }
+    ]
+  },
+  {
+    titre: "Combien de temps comptez-vous garder votre maison?",
+    note: "La garantie Voyage 50/25/25 ans et la garantie à vie TimberTech valent l'investissement à long terme.",
+    options: [
+      { texte: "Moins de 5 ans",                scores: { deko: 3, tt: 1 } },
+      { texte: "5 à 10 ans",                    scores: { deko: 2, tt: 2 } },
+      { texte: "10 ans et plus",                scores: { deko: 2, tt: 3 } },
+      { texte: "C'est ma résidence permanente", scores: { deko: 2, tt: 3 } }
+    ]
+  },
+  {
+    titre: "Quel est votre budget approximatif pour le matériau?",
+    note: "Les deux familles offrent des gammes d'entrée et premium.",
+    options: [
+      { texte: "Je cherche le meilleur prix possible",         scores: { deko: 3, tt: 1 } },
+      { texte: "Prêt à investir pour une meilleure qualité",   scores: { deko: 2, tt: 3 } },
+      { texte: "Je veux le haut de gamme — projet prestige",   scores: { deko: 1, tt: 3 } },
+      { texte: "Le budget n'est pas le facteur principal",     scores: { deko: 2, tt: 3 } }
     ]
   }
 ];
 
 // ══════════════════════════════════════════════════
+//  LOGIQUE GAMME RECOMMANDÉE
+// ══════════════════════════════════════════════════
+function recommanderGamme(famille, reponses) {
+  let premiumScore = 0;
+  if (reponses[4] >= 2) premiumScore += 2; // long terme / permanent
+  if (reponses[5] >= 1) premiumScore += 2; // budget élevé
+  const lookIdx = reponses[1];             // 0=moderne 1=bois dur 2=exotique 3=neutre
+
+  if (famille === 'deko') {
+    return (premiumScore >= 3) ? 'voyage' : 'summit';
+  } else {
+    if (lookIdx === 2) return 'vintage';
+    if (lookIdx === 1) return 'landmark';
+    if (premiumScore >= 3) return 'harvestplus';
+    return 'harvest';
+  }
+}
+
+// ══════════════════════════════════════════════════
 //  ÉTAT
 // ══════════════════════════════════════════════════
 let current = 0;
-let scores = { bois: 0, composite: 0, pvc: 0 };
+let scores = { deko: 0, tt: 0 };
+let reponses = [];
 
 function startQuiz() {
-  current = 0;
-  scores = { bois: 0, composite: 0, pvc: 0 };
+  current = 0; scores = { deko: 0, tt: 0 }; reponses = [];
   showScreen('screen-q');
   renderQuestion();
 }
 
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('#tab-quiz .screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
@@ -1378,33 +1484,26 @@ function renderQuestion() {
   document.getElementById('q-progress-bar').style.width = pct + '%';
   document.getElementById('q-title').textContent = q.titre;
   document.getElementById('q-note').textContent = q.note || '';
-
   const container = document.getElementById('q-options');
   container.innerHTML = '';
-  q.options.forEach((opt, i) => {
+  q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.className = 'q-option';
     btn.innerHTML = `<span class="q-option-icon"></span>${opt.texte}`;
-    btn.onclick = () => selectOption(opt.scores, btn);
+    btn.onclick = () => selectOption(opt.scores, btn, idx);
     container.appendChild(btn);
   });
 }
 
-function selectOption(optScores, btn) {
-  // Visual feedback
+function selectOption(optScores, btn, idx) {
   document.querySelectorAll('.q-option').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   btn.querySelector('.q-option-icon').textContent = '✓';
-
-  // Score
   setTimeout(() => {
     Object.keys(optScores).forEach(k => scores[k] += optScores[k]);
+    reponses.push(idx);
     current++;
-    if (current >= QUESTIONS.length) {
-      showResult();
-    } else {
-      renderQuestion();
-    }
+    if (current >= QUESTIONS.length) showResult(); else renderQuestion();
   }, 300);
 }
 
@@ -1413,147 +1512,95 @@ function selectOption(optScores, btn) {
 // ══════════════════════════════════════════════════
 function showResult() {
   showScreen('screen-result');
-
-  const total = scores.bois + scores.composite + scores.pvc || 1;
+  const totalScore = scores.deko + scores.tt || 1;
   const pcts = {
-    bois:      Math.round((scores.bois / total) * 100),
-    composite: Math.round((scores.composite / total) * 100),
-    pvc:       Math.round((scores.pvc / total) * 100)
+    deko: Math.round((scores.deko / totalScore) * 100),
+    tt:   Math.round((scores.tt   / totalScore) * 100)
   };
-
-  // Trouver le meilleur match
-  const best = Object.keys(pcts).reduce((a, b) => pcts[a] >= pcts[b] ? a : b);
-
-  // Ordre : recommended first
-  const ordre = [best, ...['bois', 'composite', 'pvc'].filter(k => k !== best)];
-
-  const DETAILS = {
-    pvc: {
-      bestFor: "Propriétaires long terme qui veulent la durabilité maximale et zéro entretien.",
-      pourquoi: ["Résistance totale à l'humidité", "Aucun teinturage ni scellage requis", "Stabilité thermique optimale en Outaouais"],
-      points: [
-        { texte: "Imperméable — zéro fibre de bois", check: true },
-        { texte: "Options fraîches au toucher disponibles", check: true },
-        { texte: "Quasi aucun mouvement thermique", check: true },
-        { texte: "Investissement initial plus élevé", check: false }
-      ],
-      lifespan: "40–50+ ans",
-      series: "Série Platine"
-    },
-    composite: {
-      bestFor: "Propriétaires qui veulent durabilité et entretien réduit sans payer le prix maximal.",
-      pourquoi: ["Excellent rapport durabilité/coût", "Très faible entretien", "Look bois sans les contraintes"],
-      points: [
-        { texte: "Aucun teinturage ni scellage", check: true },
-        { texte: "Couleur uniforme garantie", check: true },
-        { texte: "Bonne valeur de revente", check: true },
-        { texte: "Contient des fibres de bois", check: false }
-      ],
-      lifespan: "25–30+ ans",
-      series: "Série Or"
-    },
-    bois: {
-      bestFor: "Projets à horizon court ou budgets serrés. Demande un engagement d'entretien régulier.",
-      pourquoi: ["Coût initial le plus bas", "Look bois naturel authentique", "Solution économique à court terme"],
-      points: [
-        { texte: "Coût initial le plus bas", check: true },
-        { texte: "Apparence bois naturelle", check: true },
-        { texte: "Teinture / scellant aux 1–3 ans requis", check: false },
-        { texte: "Durée de vie plus courte en climat nordique", check: false }
-      ],
-      lifespan: "10–15 ans avec entretien",
-      series: "Série Argent"
-    }
-  };
-
-  // Prix estimés
-  const PRIX_EST = {
-    bois:      estimerPrix(PRIX.materiaux.bois.facteur),
-    composite: estimerPrix(PRIX.materiaux.composite.facteur),
-    pvc:       estimerPrix(PRIX.materiaux.pvc.facteur)
+  const bestFamille = scores.deko >= scores.tt ? 'deko' : 'tt';
+  const ordre = bestFamille === 'deko' ? ['deko','tt'] : ['tt','deko'];
+  const gammeReco = {
+    deko: recommanderGamme('deko', reponses),
+    tt:   recommanderGamme('tt',   reponses)
   };
 
   const grid = document.getElementById('result-grid');
   grid.innerHTML = '';
-  ordre.forEach(key => {
-    const d = DETAILS[key];
-    const p = PRIX_EST[key];
-    const isReco = key === best;
+  ordre.forEach(fKey => {
+    const f = FAMILLES[fKey];
+    const g = f.gammes[gammeReco[fKey]];
+    const isReco = fKey === bestFamille;
+    const p = estimerPrixQuiz(g.prixPL);
     const card = document.createElement('div');
     card.className = 'result-card' + (isReco ? ' recommended' : '');
     card.innerHTML = `
-      <div class="card-series">${d.series}</div>
-      <div class="card-name">${PRIX.materiaux[key].nom}</div>
-
-      <div class="card-score-label">Score de compatibilité</div>
+      <div class="card-series">${f.nom}</div>
+      <div class="card-name">${g.serie}</div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:16px;">${f.soustitre}</div>
+      <div class="card-score-label">Compatibilité avec votre profil</div>
       <div class="card-score-bar-wrap">
-        <div class="card-score-bar" style="width:0%" data-target="${pcts[key]}%"></div>
+        <div class="card-score-bar" style="width:0%" data-target="${pcts[fKey]}%"></div>
       </div>
-      <div class="card-score-pct">${pcts[key]}%</div>
-
-      <div class="card-section-title">Idéal pour</div>
-      <div class="card-best-for">${d.bestFor}</div>
-
+      <div class="card-score-pct">${pcts[fKey]}%</div>
+      <div class="card-section-title">Gamme recommandée</div>
+      <div class="card-best-for">${g.bestFor}</div>
       <div class="card-section-title">Points clés</div>
       <ul class="card-points">
-        ${d.points.map(pt => `<li class="${pt.check ? 'check' : 'cross'}">${pt.texte}</li>`).join('')}
+        ${g.points.map(pt => `<li class="${pt.check?'check':'cross'}">${pt.texte}</li>`).join('')}
       </ul>
-
       <div class="card-divider"></div>
       <div class="card-lifespan">Durée de vie typique en Outaouais</div>
-      <div class="card-lifespan-val">${d.lifespan}</div>
-
+      <div class="card-lifespan-val">${g.lifespan}</div>
+      <div class="card-section-title">Garantie</div>
+      <div class="card-lifespan-val" style="font-size:13px;">${g.garantie}</div>
       <div class="card-section-title">Estimation de prix *</div>
       <div class="card-price-range">${fmt(p.bas)}&nbsp;–&nbsp;${fmt(p.haut)}</div>
       <div class="card-price-note">* Patio 12×14 pi², 6 pieux, 20 pi lin rampe, 1 escalier — avant taxes — fourchette indicative</div>
-
       <button class="btn-contact" onclick="goToContact()">Demander une soumission →</button>
     `;
     grid.appendChild(card);
   });
 
-  // Animer les barres
   setTimeout(() => {
-    document.querySelectorAll('.card-score-bar').forEach(bar => {
-      bar.style.width = bar.dataset.target;
-    });
+    document.querySelectorAll('.card-score-bar').forEach(bar => { bar.style.width = bar.dataset.target; });
   }, 100);
 
-  // Comparaison
+  // Tableau comparatif 6 gammes
   const mgrid = document.getElementById('materials-grid');
   mgrid.innerHTML = '';
-  ['composite', 'pvc', 'bois'].forEach(key => {
-    const isHL = key === best;
+  mgrid.style.gridTemplateColumns = 'repeat(3,1fr)';
+  const recoKeys = [`deko-${gammeReco.deko}`, `tt-${gammeReco.tt}`];
+  [
+    { key:'deko-summit',    famille:'Deckorators', nom:'Summit',   entretien:'Minimal', cout:'6$/pi lin',    durab:'Haute',       garantie:'25/25 ans' },
+    { key:'deko-voyage',    famille:'Deckorators', nom:'Voyage',   entretien:'Minimal', cout:'9$/pi lin',    durab:'Très haute',  garantie:'50/25/25 ans' },
+    { key:'tt-harvest',     famille:'TimberTech',  nom:'Harvest',  entretien:'Minimal', cout:'8$/pi lin',    durab:'Très haute',  garantie:'À vie' },
+    { key:'tt-harvestplus', famille:'TimberTech',  nom:'Harvest+', entretien:'Minimal', cout:'9$/pi lin',    durab:'Très haute',  garantie:'À vie' },
+    { key:'tt-landmark',    famille:'TimberTech',  nom:'Landmark', entretien:'Minimal', cout:'10$/pi lin',   durab:'Très haute',  garantie:'À vie' },
+    { key:'tt-vintage',     famille:'TimberTech',  nom:'Vintage',  entretien:'Minimal', cout:'12,25$/pi lin',durab:'Très haute',  garantie:'À vie' },
+  ].forEach(g => {
+    const isHL = recoKeys.includes(g.key);
     mgrid.innerHTML += `
-      <div class="mat-card ${isHL ? 'highlight' : ''}">
-        <div class="mat-name">${PRIX.materiaux[key].nom}</div>
-        <div class="mat-row"><span class="mat-label">Entretien</span><span class="mat-val ${key==='bois'?'bad':'good'}">${key==='pvc'?'Minimal':key==='composite'?'Faible':'Élevé'}</span></div>
-        <div class="mat-row"><span class="mat-label">Coût initial</span><span class="mat-val ${key==='pvc'?'bad':key==='bois'?'good':''}">${key==='pvc'?'Élevé':key==='composite'?'Moyen':'Bas'}</span></div>
-        <div class="mat-row"><span class="mat-label">Durabilité</span><span class="mat-val ${key==='bois'?'bad':'good'}">${key==='pvc'?'Très haute':key==='composite'?'Haute':'Moyenne'}</span></div>
-        <div class="mat-row"><span class="mat-label">Fibres de bois</span><span class="mat-val ${key==='pvc'?'good':'bad'}">${key==='pvc'?'Aucune':key==='composite'?'Partielles':'100% bois'}</span></div>
-        <div class="mat-row"><span class="mat-label">Teinturage requis</span><span class="mat-val ${key==='bois'?'bad':'good'}">${key==='bois'?'Oui':'Non'}</span></div>
-      </div>
-    `;
+      <div class="mat-card ${isHL?'highlight':''}">
+        <div class="mat-name" style="font-size:12px;">${g.famille}<br><span style="color:var(--gold-light);font-size:15px;">${g.nom}</span></div>
+        <div class="mat-row"><span class="mat-label">Entretien</span><span class="mat-val good">${g.entretien}</span></div>
+        <div class="mat-row"><span class="mat-label">Prix matériau</span><span class="mat-val">${g.cout}</span></div>
+        <div class="mat-row"><span class="mat-label">Durabilité</span><span class="mat-val good">${g.durab}</span></div>
+        <div class="mat-row"><span class="mat-label">Fibres de bois</span><span class="mat-val good">Aucune</span></div>
+        <div class="mat-row"><span class="mat-label">Garantie</span><span class="mat-val good">${g.garantie}</span></div>
+      </div>`;
   });
 }
 
-function fmt(n) {
-  return '$\u00a0' + n.toLocaleString('fr-CA');
-}
+function fmt(n) { return '$\u00a0' + n.toLocaleString('fr-CA'); }
 
 function restart() {
-  current = 0;
-  scores = { bois: 0, composite: 0, pvc: 0 };
+  current = 0; scores = { deko: 0, tt: 0 }; reponses = [];
   showScreen('screen-intro');
 }
 
 function goToContact() {
-  // Si intégré dans le site principal, ouvrir le formulaire
-  if (window.ouvrirFormulaire) {
-    window.ouvrirFormulaire();
-  } else {
-    window.location.href = 'index.html#contact';
-  }
+  if (window.ouvrirFormulaire) window.ouvrirFormulaire();
+  else window.location.href = 'index.html#contact';
 }
 </script>
 </body>
