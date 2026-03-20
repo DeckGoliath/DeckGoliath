@@ -743,6 +743,56 @@ body {
   .tab-btn { font-size: 9px; letter-spacing: 1px; padding: 14px 8px; }
   .est-form { padding: 20px; }
 }
+
+/* ── FACTEURS D'INFLUENCE ── */
+.factors-box {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  padding: 28px 32px;
+  margin-top: 32px;
+}
+.factors-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.factors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.factor-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.factor-icon {
+  color: var(--gold);
+  font-size: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.factor-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.factor-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--dim);
+  line-height: 1.5;
+}
+@media (max-width: 700px) {
+  .factors-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -882,7 +932,50 @@ body {
         <div class="est-cards-grid" id="est-cards-tt"></div>
 
         <p class="disclaimer" style="margin-top:32px;">Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise.</p>
-        <div class="result-actions" style="margin-top:16px;">
+
+        <!-- Facteurs d'influence -->
+        <div class="factors-box">
+          <div class="factors-title">Ce qui peut influencer le prix final</div>
+          <div class="factors-grid">
+            <div class="factor-item">
+              <span class="factor-icon">⬡</span>
+              <div>
+                <div class="factor-name">Démolition d'un patio existant</div>
+                <div class="factor-desc">Retrait et mise au rebut de l'ancien patio selon la taille et les matériaux.</div>
+              </div>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">⬡</span>
+              <div>
+                <div class="factor-name">Hauteur du patio</div>
+                <div class="factor-desc">Plus le patio est élevé du sol, plus la structure et les pieux sont complexes.</div>
+              </div>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">⬡</span>
+              <div>
+                <div class="factor-name">Nombre de marches dans l'escalier</div>
+                <div class="factor-desc">Un escalier standard est calculé à prix fixe — un escalier avec plusieurs paliers ou marches supplémentaires peut varier.</div>
+              </div>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">⬡</span>
+              <div>
+                <div class="factor-name">Fermeture du dessous</div>
+                <div class="factor-desc">Possibilité de fermer le dessous avec le même produit que le plancher ou un autre matériau — coût additionnel selon les pieds linéaires.</div>
+              </div>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">⬡</span>
+              <div>
+                <div class="factor-name">Sens du plancher</div>
+                <div class="factor-desc">Un plancher en diagonale ou en chevron demande plus de matériau et de temps de pose.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-actions" style="margin-top:24px;">
           <button class="btn-restart" onclick="resetEst()">← Modifier</button>
           <button class="btn-quote" onclick="goToContact()">Demander une soumission →</button>
         </div>
@@ -904,7 +997,7 @@ body {
 
       <div class="est-form">
         <div class="est-section-title">Dimensions</div>
-        <div class="est-fields-row">
+        <div class="est-fields-row" style="grid-template-columns:1fr 1fr;">
           <div class="est-field">
             <label class="est-label">Pieds linéaires de rampe</label>
             <input class="est-input" type="number" id="rampe-pl" value="20" min="0" max="500">
@@ -917,15 +1010,8 @@ body {
               <button class="est-step-btn" onclick="step('rampe-poteaux',1)">+</button>
             </div>
           </div>
-          <div class="est-field">
-            <label class="est-label">Rampes d'escalier</label>
-            <div class="est-stepper">
-              <button class="est-step-btn" onclick="step('rampe-escal',-1)">−</button>
-              <span class="est-step-val" id="rampe-escal">0</span>
-              <button class="est-step-btn" onclick="step('rampe-escal',1)">+</button>
-            </div>
-          </div>
         </div>
+        <p class="q-note" style="margin-bottom:20px;">⚠ N'oubliez pas d'inclure les rampes d'escalier dans votre calcul de longueur totale.</p>
 
         <button class="btn-start" style="margin-top:8px;" onclick="calculerRampe()">Calculer →</button>
       </div>
@@ -935,7 +1021,7 @@ body {
         <h3 class="est-results-title">Estimation rampe</h3>
         <p class="est-results-note" id="rampe-results-note"></p>
 
-        <div class="est-cards-grid" style="max-width:520px; margin:0 auto 32px;">
+        <div class="est-cards-grid" style="max-width:400px; margin:0 auto 32px;">
           <div class="est-card" style="border-color:var(--gold);">
             <div class="est-card-brand">Regal / Aluminium</div>
             <div class="est-card-name">Rampe complète</div>
@@ -944,14 +1030,6 @@ body {
             <div class="est-card-price-label">Fourchette estimée</div>
             <div class="est-card-price" id="rampe-price-range">—</div>
             <div class="est-card-warranty" id="rampe-detail">—</div>
-          </div>
-          <div class="est-card" id="rampe-escal-card" style="display:none;">
-            <div class="est-card-brand">Regal / Aluminium</div>
-            <div class="est-card-name">Rampe d'escalier</div>
-            <div class="est-card-type">Par escalier</div>
-            <div class="est-card-divider"></div>
-            <div class="est-card-price-label">Fourchette estimée</div>
-            <div class="est-card-price" id="rampe-escal-price">—</div>
           </div>
         </div>
 
@@ -1154,29 +1232,15 @@ const RAMPE_ESCAL_VENTE    = 900;  // $/rampe d'escalier
 function calculerRampe() {
   const pl      = parseFloat(document.getElementById('rampe-pl').value) || 0;
   const poteaux = parseInt(document.getElementById('rampe-poteaux').textContent) || 0;
-  const escalRampes = parseInt(document.getElementById('rampe-escal').textContent) || 0;
 
-  // Prix rampe linéaire + poteaux
   const totalRampe = (pl * RAMPE_VENTE_RAMPE) + (poteaux * 150);
   const bas  = Math.round(totalRampe * 0.88 / 100) * 100;
   const haut = Math.round(totalRampe * 1.12 / 100) * 100;
 
   document.getElementById('rampe-results-note').textContent =
-    pl + ' pi lin · ' + poteaux + ' poteaux' + (escalRampes > 0 ? ' · ' + escalRampes + ' rampe(s) d\'escalier' : '') + ' — avant taxes — fourchette indicative ±12%';
-
+    pl + ' pi lin · ' + poteaux + ' poteaux — avant taxes — fourchette indicative ±12%';
   document.getElementById('rampe-price-range').textContent = fmtPrix(bas) + '\u00a0–\u00a0' + fmtPrix(haut);
   document.getElementById('rampe-detail').textContent = '⬡ ' + pl + ' pi lin × ' + RAMPE_VENTE_RAMPE + '$/pi lin + ' + poteaux + ' poteaux × 150$';
-
-  const escalCard = document.getElementById('rampe-escal-card');
-  if (escalRampes > 0) {
-    const totalEscal = escalRampes * RAMPE_ESCAL_VENTE;
-    const basE  = Math.round(totalEscal * 0.88 / 100) * 100;
-    const hautE = Math.round(totalEscal * 1.12 / 100) * 100;
-    document.getElementById('rampe-escal-price').textContent = fmtPrix(basE) + '\u00a0–\u00a0' + fmtPrix(hautE);
-    escalCard.style.display = 'block';
-  } else {
-    escalCard.style.display = 'none';
-  }
 
   document.getElementById('rampe-results').style.display = 'block';
   document.getElementById('rampe-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
