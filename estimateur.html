@@ -445,10 +445,11 @@ body {
 .mat-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 6px 0;
   border-bottom: 1px solid rgba(201,150,42,0.08);
   font-size: 11px;
+  gap: 12px;
 }
 .mat-row:last-child { border-bottom: none; }
 .mat-label {
@@ -456,11 +457,13 @@ body {
   letter-spacing: 1px;
   color: var(--dim);
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 .mat-val {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   color: var(--muted);
+  text-align: right;
 }
 .mat-val.good { color: #6EC97A; }
 .mat-val.bad { color: #C96E6E; font-style: italic; }
