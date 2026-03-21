@@ -744,6 +744,24 @@ body {
   .est-form { padding: 20px; }
 }
 
+/* ── NOTE GÉOTEXTILE ── */
+.geo-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(201,150,42,0.06);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 14px 16px;
+  margin-top: 20px;
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.geo-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
 /* ── FACTEURS D'INFLUENCE ── */
 .factors-box {
   background: var(--dark-2);
@@ -873,6 +891,9 @@ body {
       <h2 class="est-title">Estimateur de prix par gamme</h2>
       <p class="est-sub">Entrez les caractéristiques de votre projet. Nous calculons une fourchette indicative pour chaque gamme de matériau — avant taxes.</p>
 
+      <!-- Note 5 : Disclaimer en haut -->
+      <p class="disclaimer" style="margin-bottom:28px;">Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise.</p>
+
       <div class="est-form">
 
         <div class="est-section-title">Dimensions du patio</div>
@@ -915,7 +936,13 @@ body {
           </div>
         </div>
 
-        <button class="btn-start" style="margin-top:8px;" onclick="calculerEst()">Calculer les prix →</button>
+        <!-- Note 6 : Géotextile incluse -->
+        <div class="geo-note">
+          <span class="geo-icon">⬡</span>
+          <span>Inclus pour tout projet — géotextile avec roche 3/4 net installée sous chaque patio avant la construction.</span>
+        </div>
+
+        <button class="btn-start" style="margin-top:20px;" onclick="calculerEst()">Calculer les prix →</button>
       </div>
 
       <div class="est-results" id="est-results" style="display:none;">
@@ -923,17 +950,18 @@ body {
         <h3 class="est-results-title">Fourchette estimée par gamme</h3>
         <p class="est-results-note">Patio <span id="est-res-dim"></span> · <span id="est-res-pieux"></span> pieux · <span id="est-res-rampe"></span> pi lin rampe · <span id="est-res-escal"></span> escalier(s) — avant taxes — fourchette indicative ±12%</p>
 
-        <!-- Deckorators -->
-        <div class="est-brand-title">Deckorators <span>— À base minérale · Technologie Surestone® · Zéro fibre de bois</span></div>
+        <!-- Deckorators - Note 1: retiré "Zéro fibre de bois" -->
+        <div class="est-brand-title">Deckorators <span>— À base minérale · Technologie Surestone®</span></div>
         <div class="est-cards-grid" id="est-cards-deko"></div>
 
-        <!-- TimberTech -->
-        <div class="est-brand-title" style="margin-top:32px;">TimberTech Advanced PVC/Polymer <span>— 100% polymère · Zéro fibre de bois</span></div>
+        <!-- TimberTech - Note 1: retiré "Zéro fibre de bois" -->
+        <div class="est-brand-title" style="margin-top:32px;">TimberTech Advanced PVC/Polymer <span>— 100% polymère</span></div>
         <div class="est-cards-grid" id="est-cards-tt"></div>
 
+        <!-- Note 5 : Disclaimer aussi en bas -->
         <p class="disclaimer" style="margin-top:32px;">Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise.</p>
 
-        <!-- Facteurs d'influence -->
+        <!-- Facteurs d'influence — Note 4 : dégâts ajouté -->
         <div class="factors-box">
           <div class="factors-title">Ce qui peut influencer le prix final</div>
           <div class="factors-grid">
@@ -970,6 +998,13 @@ body {
               <div>
                 <div class="factor-name">Sens du plancher</div>
                 <div class="factor-desc">Un plancher en diagonale ou en chevron demande plus de matériau et de temps de pose.</div>
+              </div>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">⬡</span>
+              <div>
+                <div class="factor-name">Surprise de dégâts — mauvaise installation</div>
+                <div class="factor-desc">Une installation déficiente peut entraîner des infiltrations d'eau, pourrissement de structure ou autres dommages cachés découverts en cours de travaux.</div>
               </div>
             </div>
           </div>
@@ -1190,8 +1225,12 @@ function renderCards(containerId, gammes, surface, pieux, rampe, escaliers) {
       <div class="est-card-divider"></div>
       <div class="est-card-price-label">Fourchette estimée</div>
       <div class="est-card-price">${fmtPrix(p.bas)}&nbsp;–&nbsp;${fmtPrix(p.haut)}</div>
-      <div class="est-card-warranty">⬡ ${g.garantie}</div>
-      <div class="est-card-colors">${g.couleurs.map(c => `<span class="est-color-chip">${c}</span>`).join('')}</div>
+      <div class="est-card-divider"></div>
+      <div class="mat-row"><span class="mat-label">Entretien</span><span class="mat-val good">Minimal</span></div>
+      <div class="mat-row"><span class="mat-label">Durabilité</span><span class="mat-val good">${g.brand === 'Deckorators' && g.nom === 'Summit' ? 'Haute' : 'Très haute'}</span></div>
+      <div class="mat-row"><span class="mat-label">Garantie</span><span class="mat-val good">${g.garantie}</span></div>
+      <div class="mat-row"><span class="mat-label">Prix matériau</span><span class="mat-val">${g.prixPL}$/pi lin</span></div>
+      <div class="est-card-colors" style="margin-top:12px;">${g.couleurs.map(c => `<span class="est-color-chip">${c}</span>`).join('')}</div>
     `;
     container.appendChild(card);
   });
