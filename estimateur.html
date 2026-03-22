@@ -1282,7 +1282,6 @@ const GAMMES = {
       garantieUrl2: 'https://assets.timbertech.com/content/dam/wp-content/TimberTech-advanced-PVC-limited-warranty-frCA-10.01.23.pdf',
       couleurs: [
         { nom: 'Slate Gray',  img: 'assets/timbertech/slategray.jpg' },
-        { nom: 'Kona',        img: 'assets/timbertech/kona.jpg' },
         { nom: 'Brownstone',  img: 'assets/timbertech/brownstone.jpg' }
       ]
     },
@@ -1330,7 +1329,6 @@ const GAMMES = {
       garantieUrl2: 'https://assets.timbertech.com/content/dam/wp-content/TimberTech-advanced-PVC-limited-warranty-frCA-10.01.23.pdf',
       couleurs: [
         { nom: 'Weathered Teak',  img: 'assets/timbertech/weatheredteak.jpg' },
-        { nom: 'Cypress',         img: 'assets/timbertech/cypress.jpg' },
         { nom: 'Coastline',       img: 'assets/timbertech/coastline.jpeg' },
         { nom: 'Mahogany',        img: 'assets/timbertech/mahogany.jpg' },
         { nom: 'English Walnut',  img: 'assets/timbertech/englishwalnut.jpg' },
@@ -1569,7 +1567,7 @@ const FAMILLES = {
           { texte: 'Garantie à vie sur le produit', check: true },
           { texte: 'Cool Touch — jusqu\'à 30° plus frais au toucher', check: true },
           { texte: 'Résistant zones d\'incendie Classe A / WUI', check: true },
-          { texte: '3 couleurs : Slate Gray, Kona, Brownstone', check: true },
+          { texte: '2 couleurs : Slate Gray, Brownstone', check: true },
           { texte: 'Moins de variété de couleurs que Harvest+', check: false }
         ]
       },
@@ -2045,15 +2043,6 @@ document.addEventListener('keydown', e => {
     (e.ctrlKey && ['u','U','s','S'].includes(e.key))
   ) { e.preventDefault(); return false; }
 });
-// Fermer DevTools si ouvertes (détection par timing)
-(function devtoolsBlock() {
-  const threshold = 160;
-  setInterval(() => {
-    if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0A0806;color:#C9962A;font-family:serif;font-size:24px;">Accès non autorisé.</div>';
-    }
-  }, 1000);
-})();
 </script>
 
 </body>
