@@ -967,8 +967,8 @@ line-height: 1.5;
 
 <div class="tab-nav">
   <!-- <button class="tab-btn" onclick="switchTab('quiz', this)">Recommandation matériau</button> -->
-  <button class="tab-btn active" onclick="switchTab('estimateur', this)">data-fr="Estimateur patio" data-en="Deck Estimator">Estimateur patio</button>
-  <button class="tab-btn" onclick="switchTab('rampe', this)">data-fr="Estimateur rampe" data-en="Railing Estimator">Estimateur rampe</button>
+  <button class="tab-btn active" onclick="switchTab('estimateur', this)">Estimateur patio</button>
+  <button class="tab-btn" onclick="switchTab('rampe', this)">Estimateur rampe</button>
 </div>
 
 <!-- TAB : QUIZ (caché temporairement) -->
@@ -1022,7 +1022,7 @@ line-height: 1.5;
 
 <div class="result-actions">
   <button class="btn-restart" onclick="restart()">← Recommencer</button>
-  <button class="btn-quote" class="btn-quote lang-soumission" data-fr="Demander une soumission →" data-en="Request a Quote →" onclick="goToContact()">Demander une soumission →</button>
+  <button class="btn-quote" class="btn-quote lang-soumission" onclick="goToContact()">Demander une soumission →</button>
 </div>
 ```
 
@@ -1040,34 +1040,34 @@ line-height: 1.5;
 ```
   <p class="intro-badge">Deck Goliath · Gatineau · Outaouais</p>
   <div class="gold-line"></div>
-  <h2 class="est-title">id="est-title" data-fr="Estimateur de prix par gamme" data-en="Price Estimator by Product Line">Estimateur de prix par gamme</h2>
-  <p class="est-sub">id="est-sub" data-fr="Entrez les caractéristiques de votre projet. Nous calculons une fourchette indicative pour chaque gamme de matériau — avant taxes." data-en="Enter your project details. We calculate an indicative price range for each product line — before taxes.">Entrez les caractéristiques de votre projet. Nous calculons une fourchette indicative pour chaque gamme de matériau — avant taxes.</p>
+  <h2 id="est-title" class="est-title">Estimateur de prix par gamme</h2>
+  <p id="est-sub" class="est-sub">Entrez les caractéristiques de votre projet. Nous calculons une fourchette indicative pour chaque gamme de matériau — avant taxes.</p>
 
   <!-- Note 5 : Disclaimer en haut -->
-  <p class="disclaimer" style="margin-bottom:28px;">id="est-disclaimer-top" data-fr="Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise." data-en="These estimates are based on typical projects in the Outaouais region. Each project is unique — a site visit is required for an accurate quote.">Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise.</p>
+  <p id="est-disclaimer-top" class="disclaimer" style="margin-bottom:28px;">Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise.</p>
 
   <div class="est-form">
 
-    <div class="est-section-title">id="lbl-dim" data-fr="Dimensions du patio" data-en="Deck Dimensions">Dimensions du patio</div>
+    <div id="lbl-dim" class="est-section-title">Dimensions du patio</div>
     <div class="est-fields-row">
       <div class="est-field">
-        <label class="est-label" id="lbl-long" data-fr="Longueur (pi)" data-en="Length (ft)">Longueur (pi)</label>
+        <label class="est-label" id="lbl-long">Longueur (pi)</label>
         <input class="est-input" type="number" id="est-long" value="12" min="4" max="100" oninput="updateSurface()">
       </div>
       <div class="est-field">
-        <label class="est-label" id="lbl-larg" data-fr="Largeur (pi)" data-en="Width (ft)">Largeur (pi)</label>
+        <label class="est-label" id="lbl-larg">Largeur (pi)</label>
         <input class="est-input" type="number" id="est-larg" value="12" min="4" max="100" oninput="updateSurface()">
       </div>
       <div class="est-field est-field-calc">
-        <label class="est-label" id="lbl-surf" data-fr="Surface" data-en="Area">Surface</label>
+        <label class="est-label" id="lbl-surf">Surface</label>
         <div class="est-calc-val" id="est-surface">144 pi²</div>
       </div>
     </div>
 
-    <div class="est-section-title">id="lbl-extras" data-fr="Extras" data-en="Add-ons">Extras</div>
+    <div id="lbl-extras" class="est-section-title">Extras</div>
     <div class="est-fields-row">
       <div class="est-field">
-        <label class="est-label" id="lbl-pieux" data-fr="Pieux vissés" data-en="Helical Piles">Pieux vissés</label>
+        <label class="est-label" id="lbl-pieux">Pieux vissés</label>
         <div class="est-stepper">
           <button class="est-step-btn" onclick="step('est-pieux',-1)">−</button>
           <span class="est-step-val" id="est-pieux">3</span>
@@ -1075,11 +1075,11 @@ line-height: 1.5;
         </div>
       </div>
       <div class="est-field">
-        <label class="est-label" id="lbl-rampe" data-fr="Rampe (pi lin)" data-en="Railing (lin ft)">Rampe (pi lin)</label>
+        <label class="est-label" id="lbl-rampe">Rampe (pi lin)</label>
         <input class="est-input" type="number" id="est-rampe" value="40" min="0" max="200">
       </div>
       <div class="est-field">
-        <label class="est-label" id="lbl-escal" data-fr="Escaliers" data-en="Stairs">Escaliers</label>
+        <label class="est-label" id="lbl-escal">Escaliers</label>
         <div class="est-stepper">
           <button class="est-step-btn" onclick="step('est-escal',-1)">−</button>
           <span class="est-step-val" id="est-escal">1</span>
@@ -1091,31 +1091,31 @@ line-height: 1.5;
     <!-- Note géotextile + Joist Guard -->
     <div class="geo-note">
       <span class="geo-icon">⬡</span>
-      <span>id="geo-text" data-fr="Inclus pour tout projet — géotextile avec roche 3/4 net installée sous chaque patio, et protecteur imperméable Joist Guard appliqué sur chaque solive avant la construction." data-en="Included with every project — geotextile with 3/4 clean stone under every deck, and waterproof Joist Guard protector applied to each joist before construction.">Inclus pour tout projet — géotextile avec roche 3/4 net installée sous chaque patio, et protecteur imperméable <strong>Joist Guard</strong> appliqué sur chaque solive avant la construction.</span>
+      <span id="geo-text">Inclus pour tout projet — géotextile avec roche 3/4 net installée sous chaque patio, et protecteur imperméable <strong>Joist Guard</strong> appliqué sur chaque solive avant la construction.</span>
     </div>
 
-    <button class="btn-start" style="margin-top:20px;" id="btn-calc" data-fr="Calculer les prix →" data-en="Calculate Prices →" onclick="calculerEst()">Calculer les prix →</button>
+    <button id="btn-calc" class="btn-start" style="margin-top:20px;" onclick="calculerEst()">Calculer les prix →</button>
   </div>
 
   <div class="est-results" id="est-results" style="display:none;">
     <div class="gold-line" style="margin-top:40px;"></div>
-    <h3 class="est-results-title">id="res-title" data-fr="Fourchette estimée par gamme" data-en="Estimated Price Range by Product Line">Fourchette estimée par gamme</h3>
+    <h3 id="res-title" class="est-results-title">Fourchette estimée par gamme</h3>
     <p class="est-results-note" id="est-results-note-el">Patio <span id="est-res-dim"></span> · <span id="est-res-pieux"></span> <span class="t-pieux">pieux</span> · <span id="est-res-rampe"></span> <span class="t-pilin">pi lin rampe</span> · <span id="est-res-escal"></span> <span class="t-escal">escalier(s)</span> — <span class="t-avanttax">avant taxes</span> — fourchette indicative ±12%</p>
 
     <!-- Deckorators - Note 1: retiré "Zéro fibre de bois" -->
-    <div class="est-brand-title">id="brand-deko" data-fr="Deckorators — À base minérale · Technologie Surestone®" data-en="Deckorators — Mineral-Based · Surestone® Technology">Deckorators <span>— À base minérale · Technologie Surestone®</span></div>
+    <div id="brand-deko" class="est-brand-title">Deckorators <span>— À base minérale · Technologie Surestone®</span></div>
     <div class="est-cards-grid" id="est-cards-deko"></div>
 
     <!-- TimberTech - Note 1: retiré "Zéro fibre de bois" -->
-    <div class="est-brand-title" style="margin-top:32px;">id="brand-tt" data-fr="TimberTech Advanced PVC/Polymer — 100% polymère" data-en="TimberTech Advanced PVC/Polymer — 100% polymer">TimberTech Advanced PVC/Polymer <span>— 100% polymère</span></div>
+    <div id="brand-tt" class="est-brand-title" style="margin-top:32px;">TimberTech Advanced PVC/Polymer <span>— 100% polymère</span></div>
     <div class="est-cards-grid" id="est-cards-tt"></div>
 
     <!-- Note 5 : Disclaimer aussi en bas -->
-    <p class="disclaimer" style="margin-top:32px;">id="est-disclaimer-bot" data-fr="Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise." data-en="These estimates are based on typical projects in the Outaouais region. Each project is unique — a site visit is required for an accurate quote.">Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise.</p>
+    <p id="est-disclaimer-bot" class="disclaimer" style="margin-top:32px;">Ces estimations sont basées sur des projets typiques en Outaouais. Chaque projet est unique — une visite de chantier est nécessaire pour une soumission précise.</p>
 
     <!-- Facteurs d'influence — Note 4 : dégâts ajouté -->
     <div class="factors-box">
-      <div class="factors-title">id="factors-title" data-fr="Ce qui peut influencer le prix final" data-en="What Can Influence the Final Price">Ce qui peut influencer le prix final</div>
+      <div id="factors-title" class="factors-title">Ce qui peut influencer le prix final</div>
       <div class="factors-grid">
         <div class="factor-item">
           <span class="factor-icon">⬡</span>
@@ -1163,8 +1163,8 @@ line-height: 1.5;
     </div>
 
     <div class="result-actions" style="margin-top:24px;">
-      <button class="btn-restart" id="btn-modify" data-fr="← Modifier" data-en="← Modify" onclick="resetEst()">← Modifier</button>
-      <button class="btn-quote" class="btn-quote lang-soumission" data-fr="Demander une soumission →" data-en="Request a Quote →" onclick="goToContact()">Demander une soumission →</button>
+      <button id="btn-modify" class="btn-restart" onclick="resetEst()">← Modifier</button>
+      <button class="btn-quote" class="btn-quote lang-soumission" onclick="goToContact()">Demander une soumission →</button>
     </div>
   </div>
 
@@ -1183,18 +1183,18 @@ line-height: 1.5;
 ```
   <p class="intro-badge">Deck Goliath · Gatineau · Outaouais</p>
   <div class="gold-line"></div>
-  <h2 class="est-title">id="rampe-title" data-fr="Estimateur de rampe" data-en="Railing Estimator">Estimateur de rampe</h2>
-  <p class="est-sub">id="rampe-sub" data-fr="Entrez les détails de votre rampe. Obtenez une fourchette de prix indicative — avant taxes." data-en="Enter your railing details. Get an indicative price range — before taxes.">Entrez les détails de votre rampe. Obtenez une fourchette de prix indicative — avant taxes.</p>
+  <h2 id="rampe-title" class="est-title">Estimateur de rampe</h2>
+  <p id="rampe-sub" class="est-sub">Entrez les détails de votre rampe. Obtenez une fourchette de prix indicative — avant taxes.</p>
 
   <div class="est-form">
-    <div class="est-section-title">id="lbl-dim-rampe" data-fr="Dimensions" data-en="Dimensions">Dimensions</div>
+    <div id="lbl-dim-rampe" class="est-section-title">Dimensions</div>
     <div class="est-fields-row" style="grid-template-columns:1fr 1fr;">
       <div class="est-field">
-        <label class="est-label" id="lbl-pl" data-fr="Pieds linéaires de rampe" data-en="Linear feet of railing">Pieds linéaires de rampe</label>
+        <label class="est-label" id="lbl-pl">Pieds linéaires de rampe</label>
         <input class="est-input" type="number" id="rampe-pl" value="20" min="0" max="500">
       </div>
       <div class="est-field">
-        <label class="est-label" id="lbl-poteaux" data-fr="Nombre de poteaux" data-en="Number of posts">Nombre de poteaux</label>
+        <label class="est-label" id="lbl-poteaux">Nombre de poteaux</label>
         <div class="est-stepper">
           <button class="est-step-btn" onclick="step('rampe-poteaux',-1)">−</button>
           <span class="est-step-val" id="rampe-poteaux">4</span>
@@ -1202,21 +1202,21 @@ line-height: 1.5;
         </div>
       </div>
     </div>
-    <p class="q-note" style="margin-bottom:20px;">id="rampe-note" data-fr="⚠ N'oubliez pas d'inclure les rampes d'escalier dans votre calcul de longueur totale." data-en="⚠ Don't forget to include stair railings in your total length calculation.">⚠ N'oubliez pas d'inclure les rampes d'escalier dans votre calcul de longueur totale.</p>
+    <p id="rampe-note" class="q-note" style="margin-bottom:20px;">⚠ N'oubliez pas d'inclure les rampes d'escalier dans votre calcul de longueur totale.</p>
 
-    <button class="btn-start" style="margin-top:8px;" id="btn-calc-rampe" data-fr="Calculer →" data-en="Calculate →" onclick="calculerRampe()">Calculer →</button>
+    <button id="btn-calc-rampe" class="btn-start" style="margin-top:8px;" onclick="calculerRampe()">Calculer →</button>
   </div>
 
   <div class="est-results" id="rampe-results" style="display:none;">
     <div class="gold-line" style="margin-top:40px;"></div>
-    <h3 class="est-results-title">id="rampe-res-title" data-fr="Estimation rampe" data-en="Railing Estimate">Estimation rampe</h3>
+    <h3 id="rampe-res-title" class="est-results-title">Estimation rampe</h3>
     <p class="est-results-note" id="rampe-results-note"></p>
 
     <div class="est-cards-grid" style="max-width:400px; margin:0 auto 32px;">
       <div class="est-card" style="border-color:var(--gold);">
         <div class="est-card-brand">Regal / Aluminium</div>
-        <div class="est-card-name">id="rampe-card-name" data-fr="Rampe complète" data-en="Complete Railing">Rampe complète</div>
-        <div class="est-card-type">id="rampe-card-type" data-fr="Poteaux inclus · Installation comprise" data-en="Posts included · Installation included">Poteaux inclus · Installation comprise</div>
+        <div id="rampe-card-name" class="est-card-name">Rampe complète</div>
+        <div id="rampe-card-type" class="est-card-type">Poteaux inclus · Installation comprise</div>
         <div class="est-card-divider"></div>
         <div class="est-card-price-label">Fourchette estimée ±12%</div>
         <div class="est-card-price" id="rampe-price-range">—</div>
@@ -1224,10 +1224,10 @@ line-height: 1.5;
       </div>
     </div>
 
-    <p class="disclaimer">id="rampe-disclaimer" data-fr="Ces estimations sont indicatives. Chaque projet est unique — une visite est nécessaire pour une soumission précise." data-en="These estimates are indicative. Each project is unique — a site visit is required for an accurate quote.">Ces estimations sont indicatives. Chaque projet est unique — une visite est nécessaire pour une soumission précise.</p>
+    <p id="rampe-disclaimer" class="disclaimer">Ces estimations sont indicatives. Chaque projet est unique — une visite est nécessaire pour une soumission précise.</p>
     <div class="result-actions" style="margin-top:16px;">
-      <button class="btn-restart" id="btn-modify-rampe" data-fr="← Modifier" data-en="← Modify" onclick="resetRampe()">← Modifier</button>
-      <button class="btn-quote" class="btn-quote lang-soumission" data-fr="Demander une soumission →" data-en="Request a Quote →" onclick="goToContact()">Demander une soumission →</button>
+      <button id="btn-modify-rampe" class="btn-restart" onclick="resetRampe()">← Modifier</button>
+      <button class="btn-quote" class="btn-quote lang-soumission" onclick="goToContact()">Demander une soumission →</button>
     </div>
   </div>
 
@@ -1840,7 +1840,7 @@ function showResult() {
       <div class="card-section-title">Estimation de prix *</div>
       <div class="card-price-range">${fmt(p.bas)}&nbsp;–&nbsp;${fmt(p.haut)}</div>
       <div class="card-price-note">* Patio 12×14 pi², 6 pieux, 20 pi lin rampe, 1 escalier — avant taxes — fourchette indicative</div>
-      <button class="btn-contact" class="btn-quote lang-soumission" data-fr="Demander une soumission →" data-en="Request a Quote →" onclick="goToContact()">Demander une soumission →</button>
+      <button class="btn-contact" class="btn-quote lang-soumission" onclick="goToContact()">Demander une soumission →</button>
     `;
     grid.appendChild(card);
   });
