@@ -2750,7 +2750,7 @@ function applyLang(){
         </div>
 
         <div class="form-group">
-          <label><span id="t-form-secteur">Secteur</span> <span style="color:#999;font-size:13px;" id="t-form-secteur-hint">(date d'ouverture de prise de rendez-vous selon le secteur)</span></label>
+          <label id="t-form-secteur">Secteur <span style="color:#999;font-size:13px;" id="t-form-secteur-hint">(date d'ouverture de prise de rendez-vous selon le secteur)</span></label>
           <select name="secteur" id="select-secteur" onchange="verifierSecteur(this.value)" required>
             <option value="">SVP - Faire un choix</option>
             <option value="gatineau">Secteur de Gatineau</option>
@@ -2761,6 +2761,26 @@ function applyLang(){
             <option value="chelsea">Chelsea Secteur</option>
             <option value="cantley">Cantley</option>
           </select>
+        </div>
+
+        <div class="form-group">
+          <label>Matériau d'intérêt <span style="color:#C9962A;">*</span></label>
+          <select name="materiau" id="select-materiau" required>
+            <option value="">SVP - Faire un choix</option>
+            <option value="Deckorators Summit">Deckorators Summit</option>
+            <option value="Deckorators Voyage">Deckorators Voyage</option>
+            <option value="TimberTech Harvest">TimberTech Harvest</option>
+            <option value="TimberTech Harvest+">TimberTech Harvest+</option>
+            <option value="TimberTech Landmark">TimberTech Landmark</option>
+            <option value="TimberTech Vintage">TimberTech Vintage</option>
+            <option value="Je ne suis pas certain encore">Je ne suis pas certain encore</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="groupe-details-estimateur" style="display:none;">
+          <label>Détails de votre projet estimé</label>
+          <input type="text" name="details_estimateur" id="input-details-estimateur" readonly
+            style="background:rgba(201,150,42,0.06);border-color:rgba(201,150,42,0.3);color:rgba(240,234,214,0.7);font-size:13px;">
         </div>
 
         <div class="form-group">
@@ -2829,14 +2849,54 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-function ouvrirFormulaire() {
-  var popup = document.getElementById('popup-formulaire');
-  popup.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  if (FORMULAIRE_ACTIF) {
+// Ouvrir formulaire automatiquement si on revient de estimateur.html
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.search.includes('formulaire=1')) {
+    // Nettoyer l'URL
+    var params = new URLSearchParams(window.location.search);
+    history.replaceState({}, '', window.location.pathname);
+
+    // Ouvrir le popup formulaire directement
+    var popup = document.getElementById('popup-formulaire');
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
     document.getElementById('mode-hiver').style.display = 'none';
     document.getElementById('mode-formulaire').style.display = 'block';
+
+    // Pré-remplir le matériau si passé en paramètre
+    var materiau = params.get('materiau');
+    var details  = params.get('details');
+    if (materiau) {
+      var sel = document.getElementById('select-materiau');
+      if (sel) {
+        // Trouver l'option correspondante
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].value === materiau) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    }
+    if (details) {
+      var grp = document.getElementById('groupe-details-estimateur');
+      var inp = document.getElementById('input-details-estimateur');
+      if (grp && inp) {
+        inp.value = decodeURIComponent(details);
+        grp.style.display = 'block';
+      }
+    }
+  }
+});
+
+function ouvrirFormulaire() {
+  if (FORMULAIRE_ACTIF) {
+    // Rediriger vers l'estimateur — le client voit les prix avant de soumettre
+    window.location.href = 'estimateur.html';
   } else {
+    var popup = document.getElementById('popup-formulaire');
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
     document.getElementById('mode-hiver').style.display = 'block';
     document.getElementById('mode-formulaire').style.display = 'none';
   }
