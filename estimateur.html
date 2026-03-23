@@ -885,48 +885,45 @@ body {
 /* ── CHARTE PIEUX ── */
 .pieux-guide {
   margin-top: 16px;
-  background: rgba(201,150,42,0.04);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--gold);
-  padding: 14px 18px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(201,150,42,0.1);
 }
 .pieux-guide-title {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--gold);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--dim);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .pieux-guide-grid {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 16px;
+  margin-bottom: 8px;
   flex-wrap: wrap;
 }
 .pieux-col { text-align: center; }
 .pieux-range {
   font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size: 9px;
+  letter-spacing: 0.5px;
   color: var(--dim);
-  text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .pieux-nb {
-  font-family: 'Cinzel', serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(240,234,214,0.4);
 }
 .pieux-sep {
-  color: var(--border-strong);
-  font-size: 20px;
+  color: rgba(201,150,42,0.2);
+  font-size: 14px;
 }
 .pieux-note {
   font-family: 'EB Garamond', serif;
-  font-size: 13px;
+  font-size: 12px;
   font-style: italic;
   color: var(--dim);
 }
@@ -1126,24 +1123,29 @@ body {
 
         <!-- Charte pieux -->
         <div class="pieux-guide">
-          <div class="pieux-guide-title">⬡ Guide — Nombre de pieux selon la longueur</div>
+          <div class="pieux-guide-title">Guide indicatif — pieux selon la longueur</div>
           <div class="pieux-guide-grid">
             <div class="pieux-col">
               <div class="pieux-range">≤ 10 pi</div>
-              <div class="pieux-nb">2 pieux</div>
+              <div class="pieux-nb">2</div>
             </div>
             <div class="pieux-sep">·</div>
             <div class="pieux-col">
               <div class="pieux-range">11 – 16 pi</div>
-              <div class="pieux-nb">3 pieux</div>
+              <div class="pieux-nb">3</div>
             </div>
             <div class="pieux-sep">·</div>
             <div class="pieux-col">
-              <div class="pieux-range">17 pi et +</div>
-              <div class="pieux-nb">4 pieux</div>
+              <div class="pieux-range">17 – 22 pi</div>
+              <div class="pieux-nb">4</div>
+            </div>
+            <div class="pieux-sep">·</div>
+            <div class="pieux-col">
+              <div class="pieux-range">23 pi et +</div>
+              <div class="pieux-nb">4+</div>
             </div>
           </div>
-          <div class="pieux-note">* Peut varier selon le type de sol</div>
+          <div class="pieux-note">* Indicatif seulement — peut varier selon le type de sol et la configuration du projet</div>
         </div>
 
         <!-- Note géotextile + Joist Guard -->
