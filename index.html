@@ -3042,6 +3042,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var params = new URLSearchParams(window.location.search);
     history.replaceState({}, '', window.location.pathname);
 
+    // Appliquer la langue si passée en paramètre
+    if (params.get('lang') === 'en' && typeof LANG !== 'undefined') {
+      LANG = 'en';
+      var btnLang = document.getElementById('btn-lang');
+      if (btnLang) btnLang.textContent = 'FR';
+      applyLang();
+    }
+
     // Ouvrir le popup formulaire directement
     var popup = document.getElementById('popup-formulaire');
     popup.style.display = 'flex';
