@@ -1188,7 +1188,7 @@ body {
         </div>
 
         <button id="btn-calc" class="btn-start" style="margin-top:20px;" onclick="calculerEst()">Calculer les prix →</button>
-        <button class="btn-start btn-nonstandard" style="margin-top:10px;" onclick="goToContact('Projet non standard')">Projet non standard →<span>(remplacement escalier, accès 2e étage, forme non standard, etc.)</span></button>
+        <button class="btn-start btn-nonstandard" style="margin-top:10px;" onclick="goToContact('Projet non standard')" id="btn-nonstandard">Projet non standard →<span id="btn-nonstandard-sub">(remplacement escalier, accès 2e étage, forme non standard, etc.)</span></button>
       </div>
 
       <div class="est-results" id="est-results" style="display:none;">
@@ -2047,6 +2047,8 @@ const TRANSLATIONS = {
   'lbl-escal':          { fr: 'Escaliers',                               en: 'Stairs' },
   'geo-text':           { fr: 'Inclus pour tout projet — géotextile avec roche 3/4 net installée sous chaque patio, et protecteur imperméable Joist Guard appliqué sur chaque solive avant la construction.', en: 'Included with every project — geotextile with 3/4 clean stone under every deck, and waterproof Joist Guard protector applied to each joist before construction.' },
   'btn-calc':           { fr: 'Calculer les prix →',                     en: 'Calculate Prices →' },
+  'btn-nonstandard':    { fr: 'Projet non standard →',                   en: 'Non-Standard Project →' },
+  'btn-nonstandard-sub':{ fr: '(remplacement escalier, accès 2e étage, forme non standard, etc.)', en: '(stair replacement, 2nd floor access, non-standard shape, etc.)' },
   'res-title':          { fr: 'Fourchette estimée par gamme',            en: 'Estimated Price Range by Product Line' },
   'brand-deko':         { fr: 'Deckorators — À base minérale · Technologie Surestone®', en: 'Deckorators — Mineral-Based · Surestone® Technology' },
   'brand-tt':           { fr: 'TimberTech Advanced PVC/Polymer — 100% polymère', en: 'TimberTech Advanced PVC/Polymer — 100% polymer' },
@@ -2178,6 +2180,11 @@ function applyLang() {
   document.querySelectorAll('.t-pilin').forEach(el => el.textContent = L==='fr' ? 'pi lin rampe' : 'lin ft railing');
   document.querySelectorAll('.t-escal').forEach(el => el.textContent = L==='fr' ? 'escalier(s)' : 'stair(s)');
   document.querySelectorAll('.t-avanttax').forEach(el => el.textContent = L==='fr' ? 'avant taxes' : 'before taxes');
+  // Bouton non standard
+  const btnNs = document.getElementById('btn-nonstandard');
+  const btnNsSub = document.getElementById('btn-nonstandard-sub');
+  if (btnNs) btnNs.childNodes[0].textContent = TRANSLATIONS['btn-nonstandard'][L] + ' ';
+  if (btnNsSub) btnNsSub.textContent = TRANSLATIONS['btn-nonstandard-sub'][L];
 }
 
 // ══════════════════════════════════════════════════
