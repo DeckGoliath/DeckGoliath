@@ -2021,7 +2021,15 @@ function goToContact(gamme) {
 // ══════════════════════════════════════════════════
 //  LANGUE FR/EN
 // ══════════════════════════════════════════════════
-let currentLang = 'fr';
+let currentLang = localStorage.getItem('site_lang') || 'fr';
+
+// Appliquer la langue sauvegardée au chargement
+document.addEventListener('DOMContentLoaded', () => {
+  if (currentLang === 'en') {
+    document.getElementById('lang-btn').textContent = 'FR';
+    applyLang();
+  }
+});
 
 const TRANSLATIONS = {
   'header-title':       { fr: 'Outils de patio — Deck Goliath',         en: 'Deck Tools — Deck Goliath' },
@@ -2102,6 +2110,7 @@ const TAB_TRANS = {
 
 function toggleLang() {
   currentLang = currentLang === 'fr' ? 'en' : 'fr';
+  localStorage.setItem('site_lang', currentLang);
   document.getElementById('lang-btn').textContent = currentLang === 'fr' ? 'EN' : 'FR';
   applyLang();
   // Re-render cards if results are visible
