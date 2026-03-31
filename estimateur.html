@@ -2296,11 +2296,11 @@ function applyLang() {
   if (btnNs) btnNs.childNodes[0].textContent = TRANSLATIONS['btn-nonstandard'][L] + ' ';
   if (btnNsSub) btnNsSub.textContent = TRANSLATIONS['btn-nonstandard-sub'][L];
   // Formulaire intégré
-  const ft = {
+  const formTrans = {
     fr: { title:'Demande de soumission', sub:'Par souci de qualité et de durabilité, nous ne réalisons plus de patios avec finition en bois traité.', nom:'Nom *', tel:'Téléphone *', email:'E-mail *', secteur:'Secteur *', materiau:'Matériau d\'intérêt *', details:'Détails du projet estimé', projet:'Description du projet', send:'ENVOYER', annuler:'← Annuler', confirmTitle:'Message envoyé!', confirmText:'Nous vous contacterons dans les meilleurs délais.' },
     en: { title:'Quote Request', sub:'In the interest of quality and durability, we no longer build patios with pressure-treated wood finishes.', nom:'Full name *', tel:'Phone *', email:'Email *', secteur:'Area *', materiau:'Material of interest *', details:'Estimated project details', projet:'Project description', send:'SUBMIT', annuler:'← Cancel', confirmTitle:'Message sent!', confirmText:'We will contact you as soon as possible.' }
   };
-  const ft2 = ft[L];
+  const ft2 = formTrans[L];
   ['form-contact-title','form-contact-sub','lbl-form-nom','lbl-form-tel','lbl-form-email','lbl-form-secteur','lbl-form-materiau','lbl-form-details','lbl-form-projet'].forEach((id, i) => {
     const el = document.getElementById(id);
     if (el) el.textContent = Object.values(ft2)[i];
