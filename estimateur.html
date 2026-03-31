@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quel matériau pour votre patio? — Deck Goliath</title>
+<title>Deck Goliath | Construction de patios et terrasses haut de gamme à Gatineau</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -610,6 +610,15 @@ body {
 .est-input::-webkit-outer-spin-button,
 .est-input::-webkit-inner-spin-button { -webkit-appearance: none; }
 .est-input:focus { outline: none; border-color: var(--gold); }
+select.est-input {
+  background: var(--dark-2);
+  color: var(--cream);
+  cursor: pointer;
+}
+select.est-input option {
+  background: var(--dark-3);
+  color: var(--cream);
+}
 .est-calc-val {
   font-family: 'Cinzel', serif;
   font-size: 20px;
@@ -1301,28 +1310,28 @@ body {
               <label class="est-label" id="lbl-form-secteur">Secteur *</label>
               <select class="est-input" name="secteur" required style="cursor:pointer;">
                 <option value="" id="form-select-placeholder">SVP - Faire un choix</option>
-                <option value="Gatineau">Secteur de Gatineau</option>
-                <option value="Masson-Angers">Secteur de Masson-Angers</option>
-                <option value="Buckingham">Secteur de Buckingham</option>
-                <option value="Hull">Secteur de Hull</option>
-                <option value="Aylmer">Secteur Aylmer</option>
-                <option value="Chelsea">Chelsea</option>
-                <option value="Cantley">Cantley</option>
+                <option value="Gatineau" id="opt-gatineau">Secteur de Gatineau</option>
+                <option value="Masson-Angers" id="opt-masson">Secteur de Masson-Angers</option>
+                <option value="Buckingham" id="opt-buckingham">Secteur de Buckingham</option>
+                <option value="Hull" id="opt-hull">Secteur de Hull</option>
+                <option value="Aylmer" id="opt-aylmer">Secteur Aylmer</option>
+                <option value="Chelsea" id="opt-chelsea">Chelsea</option>
+                <option value="Cantley" id="opt-cantley">Cantley</option>
               </select>
             </div>
 
             <div class="est-field">
               <label class="est-label" id="lbl-form-materiau">Matériau d'intérêt *</label>
               <select class="est-input" name="materiau" id="est-select-materiau" required style="cursor:pointer;">
-                <option value="">SVP - Faire un choix</option>
+                <option value="" id="opt-mat-placeholder">SVP - Faire un choix</option>
                 <option value="Deckorators Summit">Deckorators Summit</option>
                 <option value="Deckorators Voyage">Deckorators Voyage</option>
                 <option value="TimberTech Harvest">TimberTech Harvest</option>
                 <option value="TimberTech Harvest+">TimberTech Harvest+</option>
                 <option value="TimberTech Landmark">TimberTech Landmark</option>
                 <option value="TimberTech Vintage">TimberTech Vintage</option>
-                <option value="Projet non standard">Projet non standard</option>
-                <option value="Je ne suis pas certain encore">Je ne suis pas certain encore</option>
+                <option value="Projet non standard" id="opt-nonstandard">Projet non standard</option>
+                <option value="Je ne suis pas certain encore" id="opt-uncertain">Je ne suis pas certain encore</option>
               </select>
             </div>
 
@@ -2313,6 +2322,14 @@ function applyLang() {
   const confTxt = document.getElementById('form-confirm-text');
   if (confT) confT.textContent = ft2.confirmTitle;
   if (confTxt) confTxt.textContent = ft2.confirmText;
+  // Options selects
+  const optTrans = {
+    fr: { placeholder: 'SVP - Faire un choix', gatineau: 'Secteur de Gatineau', masson: 'Secteur de Masson-Angers', buckingham: 'Secteur de Buckingham', hull: 'Secteur de Hull', aylmer: 'Secteur Aylmer', chelsea: 'Chelsea', cantley: 'Cantley', nonstandard: 'Projet non standard', uncertain: 'Je ne suis pas certain encore' },
+    en: { placeholder: 'Please select', gatineau: 'Gatineau Area', masson: 'Masson-Angers Area', buckingham: 'Buckingham Area', hull: 'Hull Area', aylmer: 'Aylmer Area', chelsea: 'Chelsea', cantley: 'Cantley', nonstandard: 'Non-Standard Project', uncertain: 'I\'m not sure yet' }
+  };
+  const ot = optTrans[L];
+  const optMap = { 'form-select-placeholder': ot.placeholder, 'opt-mat-placeholder': ot.placeholder, 'opt-gatineau': ot.gatineau, 'opt-masson': ot.masson, 'opt-buckingham': ot.buckingham, 'opt-hull': ot.hull, 'opt-aylmer': ot.aylmer, 'opt-chelsea': ot.chelsea, 'opt-cantley': ot.cantley, 'opt-nonstandard': ot.nonstandard, 'opt-uncertain': ot.uncertain };
+  Object.entries(optMap).forEach(([id, txt]) => { const el = document.getElementById(id); if (el) el.textContent = txt; });
 }
 
 // ══════════════════════════════════════════════════
