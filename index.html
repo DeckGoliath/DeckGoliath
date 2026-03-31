@@ -2223,7 +2223,14 @@
   }
 </style>
 <script>
-var LANG='fr';
+var LANG = localStorage.getItem('site_lang') || 'fr';
+document.addEventListener('DOMContentLoaded', function() {
+  if (LANG === 'en') {
+    var btn = document.getElementById('btn-lang');
+    if (btn) btn.textContent = 'FR';
+    applyLang();
+  }
+});
 var T={
 'btn-soumission':{fr:'Demander une soumission',en:'Request a quote'},
 'slogan':{fr:'Vos besoins, vos r\u00eaves, notre sp\u00e9cialit\u00e9!',en:'Your needs, your dreams, our specialty!'},
@@ -2334,6 +2341,7 @@ var T={
 };
 function toggleLang(){
   LANG=LANG==='fr'?'en':'fr';
+  localStorage.setItem('site_lang', LANG);
   var btn=document.getElementById('btn-lang');
   if(btn)btn.textContent=LANG==='fr'?'EN':'FR';
   applyLang();
@@ -2358,6 +2366,17 @@ function applyLang(){
   if(sel){var sk=['form-select','sect-gatineau','sect-masson','sect-buckingham','sect-hull','sect-aylmer','sect-chelsea','sect-cantley'];sk.forEach(function(k,i){if(sel.options[i])sel.options[i].text=T[k][l];});}
   var disc=document.getElementById('t-footer-disclaimer');
   if(disc)disc.style.display=l==='en'?'block':'none';
+  // Bannière cookies
+  var ct = document.getElementById('cookie-title');
+  var ctxt = document.getElementById('cookie-text');
+  var cbr = document.getElementById('cookie-btn-refuser');
+  var cba = document.getElementById('cookie-btn-accepter');
+  if(ct) ct.textContent = l==='en' ? 'Cookies' : 'Témoins (cookies)';
+  if(ctxt) ctxt.textContent = l==='en'
+    ? 'We use Google Analytics to analyze our site traffic. This data helps us improve your experience. You may accept or decline these cookies.'
+    : 'Nous utilisons Google Analytics pour analyser le trafic de notre site. Ces données nous aident à améliorer votre expérience. Vous pouvez accepter ou refuser ces témoins.';
+  if(cbr) cbr.textContent = l==='en' ? 'DECLINE' : 'REFUSER';
+  if(cba) cba.textContent = l==='en' ? 'ACCEPT' : 'ACCEPTER';
 }
 </script>
 <!-- Google Analytics GA4 — chargé seulement après consentement -->
@@ -2388,15 +2407,15 @@ function applyLang(){
 <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:rgba(10,8,6,0.98); border-top:1px solid rgba(201,150,42,0.25); padding:18px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
   <div style="flex:1; min-width:260px;">
     <p style="font-family:'Montserrat',sans-serif; font-size:12px; color:rgba(240,234,214,0.75); line-height:1.7; margin:0;">
-      <strong style="color:rgba(240,234,214,0.95); font-size:13px;">Témoins (cookies)</strong><br>
-      Nous utilisons Google Analytics pour analyser le trafic de notre site. Ces données nous aident à améliorer votre expérience. Vous pouvez accepter ou refuser ces témoins.
+      <strong style="color:rgba(240,234,214,0.95); font-size:13px;" id="cookie-title">Témoins (cookies)</strong><br>
+      <span id="cookie-text">Nous utilisons Google Analytics pour analyser le trafic de notre site. Ces données nous aident à améliorer votre expérience. Vous pouvez accepter ou refuser ces témoins.</span>
     </p>
   </div>
   <div style="display:flex; gap:10px; flex-shrink:0;">
-    <button onclick="cookieRefuser()" style="background:transparent; border:1px solid rgba(201,150,42,0.3); color:rgba(240,234,214,0.5); font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:1px; padding:10px 20px; cursor:pointer; transition:all 0.2s;">
+    <button onclick="cookieRefuser()" id="cookie-btn-refuser" style="background:transparent; border:1px solid rgba(201,150,42,0.3); color:rgba(240,234,214,0.5); font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:1px; padding:10px 20px; cursor:pointer; transition:all 0.2s;">
       REFUSER
     </button>
-    <button onclick="cookieAccepter()" style="background:linear-gradient(135deg,#C9962A,#9A6B10); border:none; color:#0A0806; font-family:'Cinzel',serif; font-size:11px; font-weight:700; letter-spacing:1.5px; padding:10px 24px; cursor:pointer; transition:all 0.2s;">
+    <button onclick="cookieAccepter()" id="cookie-btn-accepter" style="background:linear-gradient(135deg,#C9962A,#9A6B10); border:none; color:#0A0806; font-family:'Cinzel',serif; font-size:11px; font-weight:700; letter-spacing:1.5px; padding:10px 24px; cursor:pointer; transition:all 0.2s;">
       ACCEPTER
     </button>
   </div>
