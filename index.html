@@ -2913,23 +2913,17 @@ function applyLang(){
   <div id="popup-inner" style="background:#13100A; border:1px solid rgba(201,150,42,0.3); max-width:640px; width:100%; max-height:90vh; overflow-y:auto; padding:48px 40px; position:relative;">
     <button onclick="fermerFormulaire()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#E8B84B;font-size:32px;cursor:pointer;line-height:1;">&#215;</button>
 
-    <!-- ══ MODE HIVER (actif quand FORMULAIRE_ACTIF = false) ══ -->
-    <div id="mode-hiver">
-      <div class="gold-line" style="margin:0 0 20px;"></div>
-      <h2 style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#E8B84B;margin-bottom:20px;text-align:center;">❄️ Demandes de soumission présentement fermées</h2>
-      <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:16px;">En raison de la saison hivernale, les demandes de soumission sont présentement <strong style="color:#E8B84B;">fermées</strong> jusqu'à la fin de la fonte des neiges, soit <strong style="color:#E8B84B;">fin mars / début avril</strong>.</p>
-      <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:16px;">Le formulaire de demande de rendez-vous pour soumission sera réactivé dès que les conditions le permettront.</p>
-      <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:24px;">Merci et au plaisir de planifier votre projet très bientôt!</p>
-      <div style="background:rgba(201,150,42,0.06);border:1px solid rgba(201,150,42,0.2);padding:20px 24px;margin-bottom:20px;">
-        <p style="font-family:'EB Garamond',serif;font-size:16px;color:rgba(240,234,214,0.75);line-height:1.8;">Veuillez noter qu'en raison de la qualité moindre du bois traité disponible aujourd'hui, nous construisons exclusivement nos patios avec des <strong style="color:#E8B84B;">matériaux à faible entretien</strong> — produits minéraux Deckorators ou PVC TimberTech (Azek) — accompagnés de rampes en aluminium.</p>
-      </div>
-      <p style="font-family:'Cinzel',serif;font-size:13px;color:#E8B84B;margin-bottom:12px;letter-spacing:1px;">📅 Prises de rendez-vous 2026 :</p>
-      <ul style="font-family:'EB Garamond',serif;font-size:16px;color:rgba(240,234,214,0.75);line-height:1.9;padding-left:20px;margin-bottom:20px;">
-        <li><strong style="color:rgba(240,234,214,0.9);">Gatineau à Buckingham</strong> — à partir du <strong style="color:#E8B84B;">1er avril 2026</strong>, pour des travaux prévus entre mai et octobre 2026.</li>
-        <li style="margin-top:8px;"><strong style="color:rgba(240,234,214,0.9);">Hull · Aylmer · Chelsea · Cantley</strong> — juillet et août 2026 seulement. Prises de rendez-vous dès la fin mars 2026, selon les disponibilités restantes.</li>
-      </ul>
-      <button onclick="fermerFormulaire()" style="width:100%;background:linear-gradient(135deg,#E8B84B,#C9962A);color:#0A0806;border:none;padding:14px;font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;cursor:pointer;">FERMER</button>
-    </div>
+<!-- ══ MODE HIVER (actif quand FORMULAIRE_ACTIF = false) ══ -->
+<div id="mode-hiver">
+  <div class="gold-line" style="margin:0 0 20px;"></div>
+  <h2 style="font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:#E8B84B;margin-bottom:20px;text-align:center;">🌿 Soumissions 2026 complètes</h2>
+  <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:16px;">Notre calendrier pour la saison <strong style="color:#E8B84B;">2026</strong> est maintenant <strong style="color:#E8B84B;">complet</strong>. Nous n'acceptons plus de nouvelles demandes de soumission pour cette année.</p>
+  <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin-bottom:24px;">Les demandes pour la saison <strong style="color:#E8B84B;">2027</strong> seront acceptées à partir d'<strong style="color:#E8B84B;">octobre 2026</strong>. Revenez nous voir à ce moment pour planifier votre projet!</p>
+  <div style="background:rgba(201,150,42,0.06);border:1px solid rgba(201,150,42,0.2);padding:20px 24px;margin-bottom:24px;">
+    <p style="font-family:'EB Garamond',serif;font-size:17px;color:rgba(240,234,214,0.8);line-height:1.8;margin:0;">Merci de l'intérêt que vous portez à notre travail — nous apprécions sincèrement chaque visite. <strong style="color:#E8B84B;">Bonne saison estivale!</strong> ☀️</p>
+  </div>
+  <button onclick="fermerFormulaire()" style="width:100%;background:linear-gradient(135deg,#E8B84B,#C9962A);color:#0A0806;border:none;padding:14px;font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;cursor:pointer;">FERMER</button>
+</div>
 
     <!-- ══ MODE FORMULAIRE (actif quand FORMULAIRE_ACTIF = true) ══ -->
     <div id="mode-formulaire" style="display:none;">
